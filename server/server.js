@@ -12,10 +12,9 @@ require('mongoose').connect(config.db.url);
 require('./middleware/appMiddlware')(app);
 
 // setup the api
-// app.use('/api', api);
-// app.use('/auth', auth);
-// set up global error handling
+app.use('/api', api);
 
+// set up global error handling
 app.use(function(err, req, res, next) {
   // if error thrown from jwt validation check
   if (err.name === 'UnauthorizedError') {
