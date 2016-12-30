@@ -1,0 +1,42 @@
+{
+  "name": "expenses",
+  "version": "1.0.0",
+  "description": "A web app for follow and analyzing personal expenses.",
+  "main": "index.js",
+  "scripts": {
+    "client": "",
+    "server": "nodemon index.js",
+    "test client": "echo \"Error: no test for client specified\" && exit 1",
+    "test server": "echo \"Error: no test for server specified\" && exit 1",
+    "deploy": "echo \"No deployment script\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nirgn975/Expenses.git"
+  },
+  "keywords": [
+    "node.js",
+    "react"
+  ],
+  "author": "nirgn975",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nirgn975/Expenses/issues"
+  },
+  "homepage": "https://github.com/nirgn975/Expenses#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chalk": "^1.1.3",
+    "cores": "^0.8.5",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.5",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
+  }
+}
