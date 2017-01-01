@@ -1,22 +1,28 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-var TransactionSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const TransactionSchema = new Schema({
   amount: {
     type: Number,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    required: true
+    required: true,
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'category',
+    required: true,
   },
   type: {
     type: String,
     enum: ['expense', 'income'],
-    required: true
+    required: true,
   },
   coordinates: [Number],
-  description: String
+  description: String,
 });
 
-module.exports = mongoose.model('transactions', TransactionSchema);
+module.exports = mongoose.model('transaction', TransactionSchema);

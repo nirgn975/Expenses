@@ -1,10 +1,10 @@
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var passport = require('passport');
-// setup global middleware here
+/** Setup global middleware here **/
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
 
-module.exports = function(app) {
+module.exports = (app) => {
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

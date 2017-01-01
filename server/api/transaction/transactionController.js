@@ -1,11 +1,31 @@
-var Transaction = require('./transactionModel');
-var _ = require('lodash');
+const Transaction = require('./transactionModel');
+const _ = require('lodash');
 
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   Transaction.find({})
-    .then(function(transactions){
+    .then((transactions) => {
       res.json(transactions);
-    }, function(err){
+    }, (err) => {
       next(err);
     });
+};
+
+exports.getOne = (req, res, next) => {
+  console.log('in getOne transaction');
+  next();
+};
+
+exports.post = (req, res, next) => {
+  console.log('in post transaction');
+  next();
+};
+
+exports.put = (req, res, next) => {
+  console.log('in put transaction');
+  next();
+};
+
+exports.delete = (req, res, next) => {
+  console.log('in delete transaction');
+  next();
 };
