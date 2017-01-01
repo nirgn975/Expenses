@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const controller = require('./transactionController');
+const controller = require('./categoryController');
 
 router.route('/')
   .get(controller.get)
