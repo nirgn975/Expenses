@@ -26,7 +26,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
-    "cores": "^0.8.5",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.7.5",
