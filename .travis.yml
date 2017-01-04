@@ -18,7 +18,7 @@ before_install:
 
 install:
   - cd server && npm install
-  - cd ../client && npm install
+  # - cd ../client && npm install
 
 script:
   - cd ../server && npm run eslint .
