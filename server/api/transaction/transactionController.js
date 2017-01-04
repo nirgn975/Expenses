@@ -1,5 +1,22 @@
 const Transaction = require('./transactionModel');
 const _ = require('lodash');
+const logger = require('../../util/logger');
+
+exports.params = (req, res, next, id) => {
+  Transaction.findById(id)
+  .populate('category')
+  .exec()
+  .then((transaction) => {
+    if (!transaction) {
+      next(new Error('No transaction with that id'));
+    } else {
+      req.transaction = transaction;
+      next();
+    }
+  }, (error) => {
+    next(error);
+  });
+};
 
 exports.get = (req, res, next) => {
   Transaction.find({})
@@ -10,22 +27,44 @@ exports.get = (req, res, next) => {
     });
 };
 
-exports.getOne = (req, res, next) => {
-  console.log('in getOne transaction');
-  next();
+exports.post = (req, res, next) => {
+  const newTransaction = req.body;
+
+  Transaction.create(newTransaction)
+    .then((transaction) => {
+      res.json(transaction);
+    }, (error) => {
+      logger.error(error);
+      next(error);
+    });
 };
 
-exports.post = (req, res, next) => {
-  console.log('in post transaction');
-  next();
+exports.getOne = (req, res, next) => {
+  const transaction = req.transaction;
+  res.json(transaction);
 };
 
 exports.put = (req, res, next) => {
-  console.log('in put transaction');
-  next();
+  const transaction = req.transaction;
+  const update = req.body;
+
+  _.merge(transaction, update);
+
+  transaction.save((error, saved) => {
+    if (error) {
+      next(error);
+    } else {
+      res.json(saved);
+    }
+  });
 };
 
 exports.delete = (req, res, next) => {
-  console.log('in delete transaction');
-  next();
+  req.transaction.remove((error, removed) => {
+    if (error) {
+      next(error);
+    } else {
+      res.json(removed);
+    }
+  });
 };
