@@ -9,10 +9,10 @@ exports.params = (req, res, next, id) => {
   .then((transaction) => {
     if (!transaction) {
       next(new Error('No transaction with that id'));
+    } else {
+      req.transaction = transaction;
+      next();
     }
-
-    req.transaction = transaction;
-    next();
   }, (error) => {
     next(error);
   });
@@ -40,7 +40,8 @@ exports.post = (req, res, next) => {
 };
 
 exports.getOne = (req, res, next) => {
-  res.json(req.transaction);
+  const transaction = req.transaction;
+  res.json(transaction);
 };
 
 exports.put = (req, res, next) => {
@@ -52,9 +53,9 @@ exports.put = (req, res, next) => {
   transaction.save((error, saved) => {
     if (error) {
       next(error);
+    } else {
+      res.json(saved);
     }
-
-    res.json(saved);
   });
 };
 
@@ -62,8 +63,8 @@ exports.delete = (req, res, next) => {
   req.transaction.remove((error, removed) => {
     if (error) {
       next(error);
+    } else {
+      res.json(removed);
     }
-
-    res.json(removed);
   });
 };
