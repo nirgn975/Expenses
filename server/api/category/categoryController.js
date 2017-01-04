@@ -20,7 +20,7 @@ exports.param = (req, res, next, id) => {
 exports.get = (req, res, next) => {
   Category.find({})
     .then((categories) => {
-      res.json(categories)
+      res.json(categories);
     }, (error) => {
       next(error);
     });
