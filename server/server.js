@@ -12,7 +12,7 @@ mongoose.connect(config.db.url);
 mongoose.Promise = global.Promise;
 
 if (config.seed) {
-  require('./util/seed');
+  require('./util/seed'); // eslint-disable-line global-require
 }
 
 // setup the app middlware

@@ -4,7 +4,7 @@ const Budget = require('../api/budget/budgetModel');
 const _ = require('lodash');
 const logger = require('./logger');
 
-logger.log('Seeding the Database');
+logger.log(['Seeding the Database']);
 
 const transactions = [
   { amount: 23, date: Date.now(), type: 'expense', coordinates: [21, 22], description: 'description foo bar 1' },
@@ -24,11 +24,11 @@ const budgets = [
   { name: 'nir', limit: 500, currentAmount: 231 },
   { name: 'adi', limit: 750, currentAmount: 112 },
   { name: 'food', limit: 93, currentAmount: 13 },
-  { name: 'gooing out', limit: 235, currentAmount: 450 }
+  { name: 'gooing out', limit: 235, currentAmount: 450 },
 ];
 
 const cleanDB = () => {
-  logger.log('... cleaning the DB');
+  logger.log(['... cleaning the DB']);
   const cleanPromises = [Category, Transaction]
     .map((model) => {
       return model.remove().exec();
@@ -74,7 +74,7 @@ const createTransactions = (data) => {
   });
 
   return Promise.all(newTransactions)
-    .then(() => 'Seeded DB with 3 Transactions, 3 Categories, and 3 Budgets');
+    .then(() => ['Seeded DB with 3 Transactions, 3 Categories, and 3 Budgets']);
 };
 
 

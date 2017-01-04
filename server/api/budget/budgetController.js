@@ -14,7 +14,7 @@ exports.param = (res, req, next, id) => {
       }
     }, (error) => {
       next(error);
-    })
+    });
 };
 
 exports.get = (res, req, next) => {
