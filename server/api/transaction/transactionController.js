@@ -8,7 +8,7 @@ exports.params = (req, res, next, id) => {
   .exec()
   .then((transaction) => {
     if (!transaction) {
-      next(new Error('No transaction with that id'));
+      next(new Error(`No transaction with that id: ${id}`));
     } else {
       req.transaction = transaction;
       next();
@@ -22,8 +22,8 @@ exports.get = (req, res, next) => {
   Transaction.find({})
     .then((transactions) => {
       res.json(transactions);
-    }, (err) => {
-      next(err);
+    }, (error) => {
+      next(error);
     });
 };
 
@@ -31,8 +31,8 @@ exports.post = (req, res, next) => {
   const newTransaction = req.body;
 
   Transaction.create(newTransaction)
-    .then((transaction) => {
-      res.json(transaction);
+    .then((savedTransaction) => {
+      res.json(savedTransaction);
     }, (error) => {
       logger.error(error);
       next(error);
@@ -40,8 +40,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.getOne = (req, res, next) => {
-  const transaction = req.transaction;
-  res.json(transaction);
+  res.json(req.transaction);
 };
 
 exports.put = (req, res, next) => {
