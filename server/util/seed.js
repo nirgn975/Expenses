@@ -1,5 +1,6 @@
 const Transaction = require('../api/transaction/transactionModel');
 const Category = require('../api/category/categoryModel');
+const Budget = require('../api/budget/budgetModel');
 const _ = require('lodash');
 const logger = require('./logger');
 
@@ -17,6 +18,13 @@ const categories = [
   { name: 'Food', icons: 'food' },
   { name: 'Clothing', icons: 'clothing' },
   { name: 'Shopping', icons: 'shopping' },
+];
+
+const budgets = [
+  { name: 'nir', limit: 500, currentAmount: 231 },
+  { name: 'adi', limit: 750, currentAmount: 112 },
+  { name: 'food', limit: 93, currentAmount: 13 },
+  { name: 'gooing out', limit: 235, currentAmount: 450 }
 ];
 
 const cleanDB = () => {
@@ -47,6 +55,18 @@ const createCategories = (data) => {
     });
 };
 
+const createBudgets = (data) => {
+  const newBudgets = budgets.map((budget, i) => {
+    budget.categories = [data.categories[i]._id];
+    return createDoc(Budget, budget);
+  });
+
+  return Promise.all(newBudgets)
+    .then((savedBudgets) => {
+      return _.merge({ budgets: savedBudgets }, data || {});
+    });
+};
+
 const createTransactions = (data) => {
   const newTransactions = transactions.map((transaction, i) => {
     transaction.category = data.categories[i]._id;
@@ -54,12 +74,13 @@ const createTransactions = (data) => {
   });
 
   return Promise.all(newTransactions)
-    .then(() => 'Seeded DB with 3 Transactions 3 Categories');
+    .then(() => 'Seeded DB with 3 Transactions, 3 Categories, and 3 Budgets');
 };
 
 
 cleanDB()
   .then(createCategories)
+  .then(createBudgets)
   .then(createTransactions)
   .then(logger.log.bind(logger))
   .catch(logger.log.bind(logger));
