@@ -11,6 +11,8 @@
     "no-unused-vars": [1, {"vars": "local", "args": "none"}],
     "no-param-reassign": 0,
     "arrow-body-style": 0,
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-console": 0,
+    "import/no-dynamic-require": 0
   }
 }

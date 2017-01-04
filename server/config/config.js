@@ -12,7 +12,7 @@ const config = {
 };
 
 process.env.NODE_ENV = process.env.NODE_ENV || config.dev;
-const envConfig = require(`./${process.env.NODE_ENV}`) || {};
+const envConfig = require(`./${process.env.NODE_ENV}`) || {}; // eslint-disable-line global-require
 
 // merge the two config files together the envConfig file
 // will overwrite properties on the config object.

@@ -6,11 +6,11 @@ const BudgetScheam = new Schema({
   name: String,
   limit: Number,
   currentAmount: Number,
-  categories: {
+  categories: [{
     type: Schema.Types.ObjectId,
     ref: 'category',
     required: true,
-  },
+  }],
 });
 
 module.exports = mongoose.model('budget', BudgetScheam);
