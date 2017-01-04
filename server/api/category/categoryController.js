@@ -64,7 +64,7 @@ exports.delete = (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      next(removed);
+      res.json(removed);
     }
   });
 };
