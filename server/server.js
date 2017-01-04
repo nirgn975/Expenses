@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -7,7 +8,12 @@ const config = require('./config/config');
 const logger = require('./util/logger');
 
 // db.url is different depending on NODE_ENV
-require('mongoose').connect(config.db.url);
+mongoose.connect(config.db.url);
+mongoose.Promise = global.Promise;
+
+if (config.seed) {
+  require('./util/seed');
+}
 
 // setup the app middlware
 require('./middleware/appMiddlware')(app);

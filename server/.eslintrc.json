@@ -8,6 +8,7 @@
     "es6": true
   },
   "rules": {
-    "no-unused-vars": [1, {"vars": "local", "args": "none"}]
+    "no-unused-vars": [1, {"vars": "local", "args": "none"}],
+    "no-param-reassign": 0
   }
 }
