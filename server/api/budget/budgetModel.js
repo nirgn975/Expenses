@@ -2,9 +2,16 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const BudgetScheam = new Schema({
-  name: String,
-  limit: Number,
+const BudgetSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    lowercase: true,
+  },
+  limit: {
+    type: Number,
+    required: true,
+  },
   currentAmount: Number,
   categories: [{
     type: Schema.Types.ObjectId,
@@ -13,4 +20,4 @@ const BudgetScheam = new Schema({
   }],
 });
 
-module.exports = mongoose.model('budget', BudgetScheam);
+module.exports = mongoose.model('budget', BudgetSchema);

@@ -33,7 +33,7 @@ exports.post = (req, res, next) => {
     .then((savedCategory) => {
       res.json(savedCategory);
     }, (error) => {
-      logger.error(error);
+      logger.error([error]);
       next(error);
     });
 };

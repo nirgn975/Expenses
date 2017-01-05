@@ -33,7 +33,7 @@ exports.post = (res, req, next) => {
     .then((savedBudget) => {
       res.json(savedBudget);
     }, (error) => {
-      logger.error(error);
+      logger.error([error]);
       next(error);
     });
 };
