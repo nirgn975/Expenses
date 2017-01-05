@@ -1,3 +1,4 @@
+require('dotenv').config();
 const _ = require('lodash');
 
 const config = {
@@ -7,7 +8,11 @@ const config = {
   port: process.env.PORT || 3000,
   expireTime: 24 * 60 * 10, // 10 days in minutes
   secrets: {
-    jwt: process.env.JWT || 'gumball',
+    facebookAuth: {
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
+    },
   },
 };
 

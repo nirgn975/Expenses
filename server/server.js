@@ -15,6 +15,8 @@ if (config.seed) {
   require('./util/seed'); // eslint-disable-line global-require
 }
 
+require('./config/passport');
+
 // setup the app middlware
 require('./middleware/appMiddlware')(app);
 
@@ -29,7 +31,7 @@ app.use((err, req, res, next) => {
     return;
   }
 
-  logger.error(err.stack);
+  logger.error([err.stack]);
   res.status(500).send('Oops');
 });
 
