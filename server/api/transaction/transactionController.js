@@ -34,7 +34,7 @@ exports.post = (req, res, next) => {
     .then((savedTransaction) => {
       res.json(savedTransaction);
     }, (error) => {
-      logger.error(error);
+      logger.error([error]);
       next(error);
     });
 };

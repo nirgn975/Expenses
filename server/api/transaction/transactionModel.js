@@ -22,7 +22,10 @@ const TransactionSchema = new Schema({
     required: true,
   },
   coordinates: [Number],
-  description: String,
+  description: {
+    type: String,
+    lowercase: true,
+  },
 });
 
 module.exports = mongoose.model('transaction', TransactionSchema);
