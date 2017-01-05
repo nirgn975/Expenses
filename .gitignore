@@ -104,6 +104,7 @@ Temporary Items
 .idea/
 server/.idea/
 client/.idea/
+server/.env
 
 ## File-based project format:
 *.iws
