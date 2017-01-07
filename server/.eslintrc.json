@@ -5,15 +5,17 @@
   ],
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
+    "mocha": true
   },
   "rules": {
-    "no-unused-vars": [1, {"vars": "local", "args": "none"}],
     "no-param-reassign": 0,
     "arrow-body-style": 0,
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
     "no-console": 0,
     "import/no-dynamic-require": 0,
-    "consistent-return": 0
+    "consistent-return": 0,
+    "no-unused-vars": [1, {"vars": "all", "args": "none", "varsIgnorePattern": "should"}],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.spec.js"]}]
   }
 }
