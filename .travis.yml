@@ -21,4 +21,7 @@ install:
   # - cd ../client && npm install
 
 script:
-  - cd ../server && npm run eslint .
+  # Server
+  - cd ../server
+  - npm run eslint .
+  - npm run test

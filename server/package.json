@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "eslint": "./node_modules/.bin/eslint",
-    "test": "echo \"Error: no test for server specified\" && exit 1",
+    "test": "mocha './**/*.spec.js'",
     "deploy": "echo \"No deployment script\" && exit 1"
   },
   "repository": {
@@ -38,10 +38,10 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.2.0",
-    "supertest": "^2.0.1"
+    "mocha": "^3.2.0"
   }
 }

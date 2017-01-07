@@ -9,7 +9,7 @@ const TransactionSchema = new Schema({
   },
   date: {
     type: Date,
-    required: true,
+    defaultValue: Date.now(),
   },
   category: {
     type: Schema.Types.ObjectId,
