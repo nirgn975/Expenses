@@ -29,7 +29,7 @@ const budgets = [
 
 const cleanDB = () => {
   logger.log(['... cleaning the DB']);
-  const cleanPromises = [Category, Transaction]
+  const cleanPromises = [Category, Transaction, Budget]
     .map((model) => {
       return model.remove().exec();
     });

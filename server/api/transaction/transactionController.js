@@ -18,32 +18,35 @@ exports.params = (req, res, next, id) => {
   });
 };
 
-exports.get = (req, res, next) => {
+exports.get = (req, res) => {
   Transaction.find({})
     .then((transactions) => {
       res.json(transactions);
     }, (error) => {
-      next(error);
+      res.send(error);
     });
 };
 
-exports.post = (req, res, next) => {
+exports.post = (req, res) => {
   const newTransaction = req.body;
 
   Transaction.create(newTransaction)
     .then((savedTransaction) => {
-      res.json(savedTransaction);
+      res.json({
+        message: 'Transaction successfully created!',
+        transaction: savedTransaction,
+      });
     }, (error) => {
       logger.error([error]);
-      next(error);
+      res.send(error);
     });
 };
 
-exports.getOne = (req, res, next) => {
+exports.getOne = (req, res) => {
   res.json(req.transaction);
 };
 
-exports.put = (req, res, next) => {
+exports.put = (req, res) => {
   const transaction = req.transaction;
   const update = req.body;
 
@@ -51,19 +54,25 @@ exports.put = (req, res, next) => {
 
   transaction.save((error, saved) => {
     if (error) {
-      next(error);
+      res.send(error);
     } else {
-      res.json(saved);
+      res.json({
+        message: 'Transaction successfully updated!',
+        transaction: saved,
+      });
     }
   });
 };
 
-exports.delete = (req, res, next) => {
+exports.delete = (req, res) => {
   req.transaction.remove((error, removed) => {
     if (error) {
-      next(error);
+      res.send(error);
     } else {
-      res.json(removed);
+      res.json({
+        message: 'Transaction successfully deleted!',
+        transaction: removed,
+      });
     }
   });
 };
