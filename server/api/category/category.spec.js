@@ -29,4 +29,41 @@ describe(chalk.blue('Category'), () => {
         done();
       });
   });
+
+  it('should POST a category', (done) => {
+    const category = {
+      name: 'food',
+      icon: 'burger',
+    };
+
+    chai.request(server)
+      .post('/api/category')
+      .send(category)
+      .end((postError, postRes) => {
+        postRes.should.have.status(200);
+        postRes.body.should.have.property('message').equal('Category successfully created!');
+        postRes.body.category.should.have.property('_id');
+        postRes.body.category.should.have.property('name');
+        postRes.body.category.should.have.property('icon');
+
+        this.category = postRes.body.category;
+        done();
+      });
+  });
+
+  it('should PUT a category', (done) => {
+    this.category.name = 'drink';
+
+    chai.request(server)
+      .put(`/api/category/${this.category._id}`)
+      .send(this.category)
+      .end((editCategoryError, editCategoryRes) => {
+        editCategoryRes.should.have.status(200);
+        editCategoryRes.body.should.have.property('message').equal('Category successfully updated!');
+        editCategoryRes.body.category.should.be.eql(this.category);
+
+        this.category = editCategoryRes.body.category;
+        done();
+      });
+  });
 });
