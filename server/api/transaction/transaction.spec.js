@@ -55,17 +55,17 @@ describe(chalk.blue('Transaction'), () => {
     chai.request(server)
       .post('/api/transaction')
       .send(transaction)
-      .end((transactionError, transactionRes) => {
-        transactionRes.should.have.status(200);
-        transactionRes.body.should.have.property('message').equal('Transaction successfully created!');
-        transactionRes.body.transaction.should.have.property('_id');
-        transactionRes.body.transaction.should.have.property('amount');
-        transactionRes.body.transaction.should.have.property('type');
-        transactionRes.body.transaction.should.have.property('coordinates');
-        transactionRes.body.transaction.should.have.property('category');
-        transactionRes.body.transaction.should.have.property('description');
+      .end((transactionPostError, transactionPostRes) => {
+        transactionPostRes.should.have.status(200);
+        transactionPostRes.body.should.have.property('message').equal('Transaction successfully created!');
+        transactionPostRes.body.transaction.should.have.property('_id');
+        transactionPostRes.body.transaction.should.have.property('amount');
+        transactionPostRes.body.transaction.should.have.property('type');
+        transactionPostRes.body.transaction.should.have.property('coordinates');
+        transactionPostRes.body.transaction.should.have.property('category');
+        transactionPostRes.body.transaction.should.have.property('description');
 
-        this.transaction = transactionRes.body.transaction;
+        this.transaction = transactionPostRes.body.transaction;
         done();
       });
   });
@@ -87,7 +87,6 @@ describe(chalk.blue('Transaction'), () => {
   it('should DELETE a transaction', (done) => {
     chai.request(server)
       .del(`/api/transaction/${this.transaction._id}`)
-      .send(this.transaction)
       .end((deletedTransactionError, deletedTransactionRes) => {
         deletedTransactionRes.should.have.status(200);
         deletedTransactionRes.body.should.have.property('message').equal('Transaction successfully deleted!');

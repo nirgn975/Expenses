@@ -2,9 +2,10 @@ const Budget = require('./budgetModel');
 const _ = require('lodash');
 const logger = require('../../util/logger');
 
-exports.param = (res, req, next, id) => {
+exports.param = (req, res, next, id) => {
   Budget.findById(id)
     .populate('categories')
+    .exec()
     .then((budget) => {
       if (!budget) {
         next(new Error(`No budget with that id: ${id}`));
@@ -17,7 +18,7 @@ exports.param = (res, req, next, id) => {
     });
 };
 
-exports.get = (res, req) => {
+exports.get = (req, res) => {
   Budget.find({})
     .then((budgets) => {
       res.json(budgets);
@@ -26,23 +27,26 @@ exports.get = (res, req) => {
     });
 };
 
-exports.post = (res, req) => {
+exports.post = (req, res) => {
   const newBudget = req.body;
 
   Budget.create(newBudget)
     .then((savedBudget) => {
-      res.json(savedBudget);
+      res.json({
+        message: 'Budget successfully created!',
+        budget: savedBudget,
+      });
     }, (error) => {
       logger.error([error]);
       res.send(error);
     });
 };
 
-exports.getOne = (res, req) => {
+exports.getOne = (req, res) => {
   res.json(req.budget);
 };
 
-exports.put = (res, req) => {
+exports.put = (req, res) => {
   const budget = req.budget;
   const update = req.body;
 
@@ -52,17 +56,23 @@ exports.put = (res, req) => {
     if (error) {
       res.send(error);
     } else {
-      res.json(saved);
+      res.json({
+        message: 'Budget successfully updated!',
+        budget: saved,
+      });
     }
   });
 };
 
-exports.delete = (res, req) => {
-  req.body.remove((error, removed) => {
+exports.delete = (req, res) => {
+  req.budget.remove((error, removed) => {
     if (error) {
       res.send(error);
     } else {
-      res.json(removed);
+      res.json({
+        message: 'Budget successfully deleted!',
+        budget: removed,
+      });
     }
   });
 };
