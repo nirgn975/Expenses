@@ -3,17 +3,18 @@ process.env.NODE_ENV = 'testing';
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
+const chalk = require('chalk');
 const server = require('../../server');
 
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('Transaction', () => {
+describe(chalk.blue('Transaction'), () => {
   before((done) => {
     // Empty all the collection.
     Object.keys(mongoose.connection.collections).forEach((collectionName) => {
-      mongoose.connection.collections[collectionName].drop();
+      mongoose.connection.collections[collectionName].remove();
     });
 
     const category = {
