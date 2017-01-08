@@ -17,16 +17,16 @@ exports.param = (res, req, next, id) => {
     });
 };
 
-exports.get = (res, req, next) => {
+exports.get = (res, req) => {
   Budget.find({})
     .then((budgets) => {
       res.json(budgets);
     }, (error) => {
-      next(error);
+      res.send(error);
     });
 };
 
-exports.post = (res, req, next) => {
+exports.post = (res, req) => {
   const newBudget = req.body;
 
   Budget.create(newBudget)
@@ -34,15 +34,15 @@ exports.post = (res, req, next) => {
       res.json(savedBudget);
     }, (error) => {
       logger.error([error]);
-      next(error);
+      res.send(error);
     });
 };
 
-exports.getOne = (res, req, next) => {
+exports.getOne = (res, req) => {
   res.json(req.budget);
 };
 
-exports.put = (res, req, next) => {
+exports.put = (res, req) => {
   const budget = req.budget;
   const update = req.body;
 
@@ -50,19 +50,17 @@ exports.put = (res, req, next) => {
 
   budget.save((error, saved) => {
     if (error) {
-      next(error);
+      res.send(error);
     } else {
       res.json(saved);
     }
   });
 };
 
-exports.delete = (res, req, next) => {
-  const budget = req.body;
-
-  budget.delete((error, removed) => {
+exports.delete = (res, req) => {
+  req.body.remove((error, removed) => {
     if (error) {
-      next(error);
+      res.send(error);
     } else {
       res.json(removed);
     }

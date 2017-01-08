@@ -17,32 +17,35 @@ exports.param = (req, res, next, id) => {
     });
 };
 
-exports.get = (req, res, next) => {
+exports.get = (req, res) => {
   Category.find({})
     .then((categories) => {
       res.json(categories);
     }, (error) => {
-      next(error);
+      res.send(error);
     });
 };
 
-exports.post = (req, res, next) => {
+exports.post = (req, res) => {
   const newCategory = req.body;
 
   Category.create(newCategory)
     .then((savedCategory) => {
-      res.json(savedCategory);
+      res.json({
+        message: 'Category successfully created!',
+        category: savedCategory,
+      });
     }, (error) => {
       logger.error([error]);
-      next(error);
+      res.send(error);
     });
 };
 
-exports.getOne = (req, res, next) => {
+exports.getOne = (req, res) => {
   res.json(req.category);
 };
 
-exports.put = (req, res, next) => {
+exports.put = (req, res) => {
   const category = req.category;
   const update = req.body;
 
@@ -50,21 +53,25 @@ exports.put = (req, res, next) => {
 
   category.save((error, saved) => {
     if (error) {
-      next(error);
+      res.send(error);
     } else {
-      res.json(saved);
+      res.json({
+        message: 'Category successfully updated!',
+        category: saved,
+      });
     }
   });
 };
 
-exports.delete = (req, res, next) => {
-  const category = req.category;
-
-  category.delete((error, removed) => {
+exports.delete = (req, res) => {
+  req.category.remove((error, removed) => {
     if (error) {
-      next(error);
+      res.send(error);
     } else {
-      res.json(removed);
+      res.json({
+        message: 'Category successfully deleted!',
+        category: removed,
+      });
     }
   });
 };

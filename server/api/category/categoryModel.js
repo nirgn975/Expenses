@@ -8,7 +8,7 @@ const CategorySchema = new Schema({
     required: true,
     lowercase: true,
   },
-  icons: {
+  icon: {
     type: String,
     required: true,
   },

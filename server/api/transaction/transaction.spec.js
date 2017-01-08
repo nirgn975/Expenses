@@ -3,29 +3,30 @@ process.env.NODE_ENV = 'testing';
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
+const chalk = require('chalk');
 const server = require('../../server');
 
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('Transaction', () => {
+describe(chalk.blue('Transaction'), () => {
   before((done) => {
     // Empty all the collection.
     Object.keys(mongoose.connection.collections).forEach((collectionName) => {
-      mongoose.connection.collections[collectionName].drop();
+      mongoose.connection.collections[collectionName].remove();
     });
 
     const category = {
       name: 'Salary',
-      icons: 'salary',
+      icon: 'money',
     };
 
     chai.request(server)
       .post('/api/category')
       .send(category)
       .end((categoryError, categoryRes) => {
-        this.category = categoryRes.body;
+        this.category = categoryRes.body.category;
         done();
       });
   });
@@ -57,6 +58,7 @@ describe('Transaction', () => {
       .end((transactionError, transactionRes) => {
         transactionRes.should.have.status(200);
         transactionRes.body.should.have.property('message').equal('Transaction successfully created!');
+        transactionRes.body.transaction.should.have.property('_id');
         transactionRes.body.transaction.should.have.property('amount');
         transactionRes.body.transaction.should.have.property('type');
         transactionRes.body.transaction.should.have.property('coordinates');
@@ -69,26 +71,23 @@ describe('Transaction', () => {
   });
 
   it('should PUT a transaction', (done) => {
-    const changedTransaction = this.transaction;
-    changedTransaction.amount = 10;
+    this.transaction.amount = 10;
 
     chai.request(server)
-      .put(`/api/transaction/${changedTransaction._id}`)
-      .send(changedTransaction)
+      .put(`/api/transaction/${this.transaction._id}`)
+      .send(this.transaction)
       .end((editTransactionError, editTransactionRes) => {
         editTransactionRes.should.have.status(200);
         editTransactionRes.body.should.have.property('message').equal('Transaction successfully updated!');
-        editTransactionRes.body.transaction.should.be.eql(changedTransaction);
+        editTransactionRes.body.transaction.should.be.eql(this.transaction);
         done();
       });
   });
 
   it('should DELETE a transaction', (done) => {
-    const transactionToDelete = this.transaction;
-
     chai.request(server)
-      .del(`/api/transaction/${transactionToDelete._id}`)
-      .send(transactionToDelete)
+      .del(`/api/transaction/${this.transaction._id}`)
+      .send(this.transaction)
       .end((deletedTransactionError, deletedTransactionRes) => {
         deletedTransactionRes.should.have.status(200);
         deletedTransactionRes.body.should.have.property('message').equal('Transaction successfully deleted!');
