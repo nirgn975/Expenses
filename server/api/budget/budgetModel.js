@@ -12,7 +12,10 @@ const BudgetSchema = new Schema({
     type: Number,
     required: true,
   },
-  currentAmount: Number,
+  currentAmount: {
+    type: Number,
+    defaultValue: 0,
+  },
   categories: [{
     type: Schema.Types.ObjectId,
     ref: 'category',

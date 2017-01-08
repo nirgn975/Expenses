@@ -4,18 +4,18 @@ const logger = require('../../util/logger');
 
 exports.params = (req, res, next, id) => {
   Transaction.findById(id)
-  .populate('category')
-  .exec()
-  .then((transaction) => {
-    if (!transaction) {
-      next(new Error(`No transaction with that id: ${id}`));
-    } else {
-      req.transaction = transaction;
-      next();
-    }
-  }, (error) => {
-    next(error);
-  });
+    .populate('category')
+    .exec()
+    .then((transaction) => {
+      if (!transaction) {
+        next(new Error(`No transaction with that id: ${id}`));
+      } else {
+        req.transaction = transaction;
+        next();
+      }
+    }, (error) => {
+      next(error);
+    });
 };
 
 exports.get = (req, res) => {

@@ -70,7 +70,6 @@ describe(chalk.blue('Category'), () => {
   it('should DELETE a category', (done) => {
     chai.request(server)
       .del(`/api/category/${this.category._id}`)
-      .send(this.category)
       .end((deletedCategoryError, deletedCategoryRes) => {
         deletedCategoryRes.should.have.status(200);
         deletedCategoryRes.body.should.have.property('message').equal('Category successfully deleted!');
