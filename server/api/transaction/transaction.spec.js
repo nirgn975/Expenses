@@ -19,14 +19,14 @@ describe(chalk.blue('Transaction'), () => {
 
     const category = {
       name: 'Salary',
-      icons: 'salary',
+      icon: 'money',
     };
 
     chai.request(server)
       .post('/api/category')
       .send(category)
       .end((categoryError, categoryRes) => {
-        this.category = categoryRes.body;
+        this.category = categoryRes.body.category;
         done();
       });
   });
@@ -58,6 +58,7 @@ describe(chalk.blue('Transaction'), () => {
       .end((transactionError, transactionRes) => {
         transactionRes.should.have.status(200);
         transactionRes.body.should.have.property('message').equal('Transaction successfully created!');
+        transactionRes.body.transaction.should.have.property('_id');
         transactionRes.body.transaction.should.have.property('amount');
         transactionRes.body.transaction.should.have.property('type');
         transactionRes.body.transaction.should.have.property('coordinates');
@@ -70,26 +71,23 @@ describe(chalk.blue('Transaction'), () => {
   });
 
   it('should PUT a transaction', (done) => {
-    const changedTransaction = this.transaction;
-    changedTransaction.amount = 10;
+    this.transaction.amount = 10;
 
     chai.request(server)
-      .put(`/api/transaction/${changedTransaction._id}`)
-      .send(changedTransaction)
+      .put(`/api/transaction/${this.transaction._id}`)
+      .send(this.transaction)
       .end((editTransactionError, editTransactionRes) => {
         editTransactionRes.should.have.status(200);
         editTransactionRes.body.should.have.property('message').equal('Transaction successfully updated!');
-        editTransactionRes.body.transaction.should.be.eql(changedTransaction);
+        editTransactionRes.body.transaction.should.be.eql(this.transaction);
         done();
       });
   });
 
   it('should DELETE a transaction', (done) => {
-    const transactionToDelete = this.transaction;
-
     chai.request(server)
-      .del(`/api/transaction/${transactionToDelete._id}`)
-      .send(transactionToDelete)
+      .del(`/api/transaction/${this.transaction._id}`)
+      .send(this.transaction)
       .end((deletedTransactionError, deletedTransactionRes) => {
         deletedTransactionRes.should.have.status(200);
         deletedTransactionRes.body.should.have.property('message').equal('Transaction successfully deleted!');
