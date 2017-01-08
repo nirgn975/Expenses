@@ -64,7 +64,7 @@ exports.put = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  req.category.delete((error, removed) => {
+  req.category.remove((error, removed) => {
     if (error) {
       res.send(error);
     } else {
