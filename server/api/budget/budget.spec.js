@@ -47,7 +47,7 @@ describe(chalk.blue('Budget'), () => {
       name: 'Going Out',
       limit: 100,
       currentAmount: 20,
-      categories: [this.category._id],
+      categories: [this.category],
     };
 
     chai.request(server)
@@ -67,22 +67,22 @@ describe(chalk.blue('Budget'), () => {
       });
   });
 
-  // it('should PUT a budget', (done) => {
-  //   this.budget.name = 'Going Down';
-  //   console.log(this.budget);
-  //
-  //   chai.request(server)
-  //     .put(`/api/budget/${this.budget._id}`)
-  //     .send(this.budget)
-  //     .end((editCategoryError, editCategoryRes) => {
-  //       editCategoryRes.should.have.status(200);
-  //       editCategoryRes.body.should.have.property('message').equal('Budget successfully updated!');
-  //
-  //       this.budget.name = this.budget.name.toLowerCase();
-  //       editCategoryRes.body.budget.should.be.eql(this.budget);
-  //       done();
-  //     });
-  // });
+  it('should PUT a budget', (done) => {
+    this.budget.name = 'Going Down';
+    this.budget.categories = [this.category];
+
+    chai.request(server)
+      .put(`/api/budget/${this.budget._id}`)
+      .send(this.budget)
+      .end((editCategoryError, editCategoryRes) => {
+        editCategoryRes.should.have.status(200);
+        editCategoryRes.body.should.have.property('message').equal('Budget successfully updated!');
+
+        this.budget.name = this.budget.name.toLowerCase();
+        editCategoryRes.body.budget.should.be.eql(this.budget);
+        done();
+      });
+  });
 
   it('should DELETE a budget', (done) => {
     chai.request(server)
@@ -91,6 +91,59 @@ describe(chalk.blue('Budget'), () => {
         deletedBudgetRes.should.have.status(200);
         deletedBudgetRes.body.should.have.property('message').equal('Budget successfully deleted!');
         deletedBudgetRes.body.budget.should.be.a('object');
+        done();
+      });
+  });
+
+  it('should not POST a budget without a name', (done) => {
+    const budget = {
+      limit: 100,
+      currentAmount: 20,
+      categories: [this.category],
+    };
+
+    chai.request(server)
+      .post('/api/budget')
+      .send(budget)
+      .end((categoryWithoutAmountError, categoryWithoutAmountRes) => {
+        categoryWithoutAmountRes.should.have.status(200);
+        categoryWithoutAmountRes.body.should.have.property('message').equal('budget validation failed');
+        categoryWithoutAmountRes.body.errors.name.message.should.equal('Path `name` is required.');
+        done();
+      });
+  });
+
+  it('should not POST a budget without a limit', (done) => {
+    const budget = {
+      name: 'Clothing',
+      currentAmount: 20,
+      categories: [this.category],
+    };
+
+    chai.request(server)
+      .post('/api/budget')
+      .send(budget)
+      .end((categoryWithoutLimitError, categoryWithoutLimitRes) => {
+        categoryWithoutLimitRes.should.have.status(200);
+        categoryWithoutLimitRes.body.should.have.property('message').equal('budget validation failed');
+        categoryWithoutLimitRes.body.errors.limit.message.should.equal('Path `limit` is required.');
+        done();
+      });
+  });
+
+  it('should not POST a budget without categories', (done) => {
+    const budget = {
+      name: 'Clothing',
+      limit: 120,
+    };
+
+    chai.request(server)
+      .post('/api/budget')
+      .send(budget)
+      .end((categoryWithoutCategoriesError, categoryWithoutCategoriesRes) => {
+        categoryWithoutCategoriesRes.should.have.status(200);
+        categoryWithoutCategoriesRes.body.should.have.property('message').equal('budget validation failed');
+        categoryWithoutCategoriesRes.body.errors.categories.message.should.equal('Path `categories` is required.');
         done();
       });
   });
