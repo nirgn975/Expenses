@@ -14,10 +14,10 @@ const transactions = [
 ];
 
 const categories = [
-  { name: 'Salary', icons: 'salary' },
-  { name: 'Food', icons: 'food' },
-  { name: 'Clothing', icons: 'clothing' },
-  { name: 'Shopping', icons: 'shopping' },
+  { name: 'Salary', icon: 'salary' },
+  { name: 'Food', icon: 'food' },
+  { name: 'Clothing', icon: 'clothing' },
+  { name: 'Shopping', icon: 'shopping' },
 ];
 
 const budgets = [
@@ -82,5 +82,5 @@ cleanDB()
   .then(createCategories)
   .then(createBudgets)
   .then(createTransactions)
-  .then(logger.log.bind(logger))
-  .catch(logger.log.bind(logger));
+  .then(logger.log.bind([logger]))
+  .catch(logger.log.bind([logger]));
