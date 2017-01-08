@@ -12,12 +12,18 @@ const BudgetSchema = new Schema({
     type: Number,
     required: true,
   },
-  currentAmount: Number,
-  categories: [{
-    type: Schema.Types.ObjectId,
-    ref: 'category',
+  currentAmount: {
+    type: Number,
+    defaultValue: 0,
+  },
+  categories: {
+    type: 'array',
+    values: {
+      type: Schema.Types.ObjectId,
+      ref: 'category',
+    },
     required: true,
-  }],
+  },
 });
 
 module.exports = mongoose.model('budget', BudgetSchema);
