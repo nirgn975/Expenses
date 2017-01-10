@@ -1,6 +1,6 @@
 # Expenses
 
-[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Donate][donate-image]][donate-url]
+[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Donate][donate-image]][donate-url]
 
 Something about the project.
 
@@ -71,5 +71,7 @@ Not yet..
 [license-url]: https://github.com/nirgn975/WhatsBuzz/blob/master/LICENSE
 [travis-image]: https://travis-ci.org/nirgn975/Expenses.svg?branch=master
 [travis-url]: https://travis-ci.org/nirgn975/Expenses
+[coveralls-image]: https://coveralls.io/repos/github/nirgn975/Expenses/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/nirgn975/Expenses?branch=master
 [donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
