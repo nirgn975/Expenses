@@ -31,7 +31,6 @@ install:
 script:
   # Server
   - cd ../server
-  - npm run eslint .
   - npm run test
 
 after_script:
