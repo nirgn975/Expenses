@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "eslint": "./node_modules/.bin/eslint",
-    "test": "mocha './**/*.spec.js'",
+    "test": "eslint . && mocha './**/*.spec.js'",
     "deploy": "echo \"No deployment script\" && exit 1"
   },
   "repository": {
