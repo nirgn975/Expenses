@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "eslint": "./node_modules/.bin/eslint",
-    "test": "mocha './**/*.spec.js'",
+    "test": "eslint . && mocha './**/*.spec.js'",
     "deploy": "echo \"No deployment script\" && exit 1"
   },
   "repository": {
@@ -45,6 +44,7 @@
     "eslint-plugin-import": "^2.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "nsp": "^2.6.2"
   }
 }
