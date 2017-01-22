@@ -23,7 +23,9 @@ exports.get = (req, res) => {
     .then((budgets) => {
       res.json(budgets);
     }, (error) => {
-      res.send(error);
+      res.json({
+        error: error.message
+      });
     });
 };
 
@@ -38,7 +40,9 @@ exports.post = (req, res) => {
       });
     }, (error) => {
       logger.error([error]);
-      res.send(error);
+      res.json({
+        error: error.message
+      });
     });
 };
 
@@ -54,7 +58,9 @@ exports.put = (req, res) => {
 
   budget.save((error, saved) => {
     if (error) {
-      res.send(error);
+      res.json({
+        error: error.message
+      });
     } else {
       res.json({
         message: 'Budget successfully updated!',
@@ -67,7 +73,9 @@ exports.put = (req, res) => {
 exports.delete = (req, res) => {
   req.budget.remove((error, removed) => {
     if (error) {
-      res.send(error);
+      res.json({
+        error: error.message
+      });
     } else {
       res.json({
         message: 'Budget successfully deleted!',
