@@ -13,6 +13,12 @@ node_js:
   - "6"
   - "7"
 
+cache:
+  npm: true
+  directories:
+  - client/node_modules
+  - server/node_modules
+
 env:
   global:
     - FACEBOOK_APP_ID=12345
@@ -37,8 +43,8 @@ script:
   # Client
   - cd ../client
   - npm run lint
-  - npm run test
-  - npm run e2e
+#  - npm run test
+#  - npm run e2e
 
 after_script:
   - istanbul cover ./node_modules/mocha/bin/_mocha './**/*.spec.js' --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
