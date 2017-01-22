@@ -26,12 +26,19 @@ before_install:
 
 install:
   - cd server && npm install
-  # - cd ../client && npm install
+  - cd ../client && npm install
 
 script:
   # Server
   - cd ../server
+  - npm run lint
   - npm run test
+
+  # Client
+  - cd ../client
+  - npm run lint
+  - npm run test
+  - npm run e2e
 
 after_script:
   - istanbul cover ./node_modules/mocha/bin/_mocha './**/*.spec.js' --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
