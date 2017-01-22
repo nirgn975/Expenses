@@ -53,5 +53,7 @@ script:
 
 after_script:
   - cat ./coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
+  - ls
+  - pwd
   - cd ../server istanbul cover ./node_modules/mocha/bin/_mocha './**/*.spec.js' --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
   - nsp check
