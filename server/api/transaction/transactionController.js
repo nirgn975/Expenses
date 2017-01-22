@@ -23,9 +23,7 @@ exports.get = (req, res) => {
     .then((transactions) => {
       res.json(transactions);
     }, (error) => {
-      res.json({
-        error: error.message
-      });
+      res.json(error);
     });
 };
 
@@ -40,9 +38,7 @@ exports.post = (req, res) => {
       });
     }, (error) => {
       logger.error([error]);
-      res.json({
-        error: error.message
-      });
+      res.json(error);
     });
 };
 
@@ -58,9 +54,7 @@ exports.put = (req, res) => {
 
   transaction.save((error, saved) => {
     if (error) {
-      res.json({
-        error: error.message
-      });
+      res.json(error);
     } else {
       res.json({
         message: 'Transaction successfully updated!',
@@ -73,9 +67,7 @@ exports.put = (req, res) => {
 exports.delete = (req, res) => {
   req.transaction.remove((error, removed) => {
     if (error) {
-      res.json({
-        error: error.message
-      });
+      res.json(error);
     } else {
       res.json({
         message: 'Transaction successfully deleted!',
