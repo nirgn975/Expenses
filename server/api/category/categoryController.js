@@ -22,7 +22,7 @@ exports.get = (req, res) => {
     .then((categories) => {
       res.json(categories);
     }, (error) => {
-      res.send(error);
+      res.json(error);
     });
 };
 
@@ -37,7 +37,7 @@ exports.post = (req, res) => {
       });
     }, (error) => {
       logger.error([error]);
-      res.send(error);
+      res.json(error);
     });
 };
 
@@ -53,7 +53,7 @@ exports.put = (req, res) => {
 
   category.save((error, saved) => {
     if (error) {
-      res.send(error);
+      res.json(error);
     } else {
       res.json({
         message: 'Category successfully updated!',
@@ -66,7 +66,7 @@ exports.put = (req, res) => {
 exports.delete = (req, res) => {
   req.category.remove((error, removed) => {
     if (error) {
-      res.send(error);
+      res.json(error);
     } else {
       res.json({
         message: 'Category successfully deleted!',
