@@ -6,15 +6,15 @@ Something about the project.
 
 ## Our Stack
 
-  * [React](https://facebook.github.io/react/)
+  * [Angular](https://angular.io/)
   * [Express](http://expressjs.com/)
   * [Node.js](https://nodejs.org)
   * [MongoDB](https://www.mongodb.com/)
 
 **Tools we use**
 
-  * [Material-UI](http://www.material-ui.com/)
-  * [Redux](http://redux.js.org/)
+  * [Angular Material](https://material.angular.io/)
+  * [ngrx](https://github.com/ngrx)
   * [Passport](http://passportjs.org/)
   * [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/)
 
@@ -27,20 +27,22 @@ Something about the project.
 
 **Client**
 
-  1. Not yet..
+  1. Install requirements with `npm install` (located under `client` directory).
+  2. Run the server with `ng start`.
+  3. Open the browser at [http://localhost:4200](http://localhost:4200).
 
 **Server**
 
   1. Install requirements with `npm install` (located under `server` directory).
-  2. Import the dummy data with `python manage.py import_data`.
-  3. Run the server with `npm start`.
-  4. Open the browser at [http://localhost:3000](http://localhost:3000).
+  2. Run the server with `npm start`.
+  3. Open the browser at [http://localhost:3000](http://localhost:3000).
 
 ## Tests
 
 **Client**
 
-  * Not yet..
+  * Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  * Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 **Server**
 
