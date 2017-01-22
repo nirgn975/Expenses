@@ -34,8 +34,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - cd server && npm install
-  - cd ../client && npm install
+  - cd server && yarn install
+  - cd ../client && yarn install
 
 script:
   # Server
