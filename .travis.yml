@@ -13,12 +13,6 @@ node_js:
   - "6"
   - "7"
 
-cache:
-  npm: true
-  directories:
-  - client/node_modules
-  - server/node_modules
-
 env:
   global:
     - FACEBOOK_APP_ID=12345
