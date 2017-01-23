@@ -7,7 +7,7 @@
     "start": "nodemon index.js",
     "lint": "eslint .",
     "test": "mocha './**/*.spec.js'",
-    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha './**/*.spec.js' --report lcovonly -- -R spec && cat ./coverage/lcov.info",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha './**/*.spec.js' --report lcovonly -- -R spec && cat ./coverage/lcov.info",
     "deploy": "echo \"No deployment script\" && exit 1"
   },
   "repository": {
@@ -41,7 +41,6 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "codecov": "^1.0.1",
-    "coveralls": "^2.11.15",
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
