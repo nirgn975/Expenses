@@ -1,5 +1,40 @@
-<div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
-  <div class="flex-item">1</div>
-  <div class="flex-item">2</div>
-  <div class="flex-item">3</div>
-</div>
+<md-sidenav-container fullscreen>
+  <md-sidenav #start>
+    <md-list>
+      <md-list-item> Transactions </md-list-item>
+      <md-list-item> Budgets </md-list-item>
+      <md-list-item> Settings </md-list-item>
+    </md-list>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="start.open()">
+      <md-icon> menu </md-icon>
+    </button>
+    <span>Expenses</span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+
+    <md-menu #menu="mdMenu">
+      <button md-menu-item>
+        <md-icon> person </md-icon>
+        <span> Sign Out  </span>
+      </button>
+      <button md-menu-item>
+        <md-icon> settings </md-icon>
+        <span> Settings </span>
+      </button>
+      <button md-menu-item>
+        <md-icon> help </md-icon>
+        <span> Help </span>
+      </button>
+    </md-menu>
+  </md-toolbar>
+
+  <exp-transaction-view></exp-transaction-view>
+</md-sidenav-container>

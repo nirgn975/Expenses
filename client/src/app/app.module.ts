@@ -9,10 +9,18 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ExpComponent } from './exp.component';
+import { TransactionCardComponent } from './components/transaction-card/transaction-card.component';
+import { TransactionDetailsComponent } from './components/transaction-details/transaction-details.component';
+import { TransactionViewComponent } from './components/transaction-view/transaction-view.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     ExpComponent,
+    TransactionCardComponent,
+    TransactionDetailsComponent,
+    TransactionViewComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
