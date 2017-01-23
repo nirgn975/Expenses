@@ -1,8 +1,9 @@
 {
   "name": "expenses",
   "version": "1.0.0",
-  "description": "",
+  "description": "Keep track of your expenses the smart way",
   "license": "ISC",
+  "author": "nirgn975",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
@@ -13,6 +14,14 @@
     "e2e": "protractor"
   },
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nirgn975/Expenses.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nirgn975/Expenses/issues"
+  },
+  "homepage": "https://github.com/nirgn975/Expenses#readme",
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",

@@ -6,9 +6,4 @@ describe('expenses App', function() {
   beforeEach(() => {
     page = new ExpensesPage();
   });
-
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('exp works!');
-  });
 });
