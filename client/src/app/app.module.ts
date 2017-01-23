@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
-import { AppComponent } from './app.component';
+import { ExpComponent } from './exp.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    ExpComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +17,6 @@ import { AppComponent } from './app.component';
     MaterialModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ExpComponent]
 })
 export class AppModule { }
