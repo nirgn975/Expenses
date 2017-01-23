@@ -1,7 +1,7 @@
 {
   "name": "expenses",
   "version": "1.0.0",
-  "description": "A web app for follow and analyzing personal expenses.",
+  "description": "Keep track of your expenses the smart way",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

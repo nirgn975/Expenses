@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./exp.component.scss']
 })
 export class ExpComponent {
-  title = 'exp works!';
 }

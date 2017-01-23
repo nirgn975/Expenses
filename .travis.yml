@@ -14,7 +14,7 @@ node_js:
   - "7"
 
 cache:
-  yarn: true
+  npm: true
   directories:
   - client/node_modules
   - server/node_modules
@@ -34,8 +34,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - cd server && yarn install
-  - cd ../client && yarn install
+  - cd server && npm install
+  - cd ../client && npm install
 
 script:
   # Server
