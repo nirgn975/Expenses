@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { MaterialModule } from '@angular/material';
 
 import { TransactionViewComponent } from './transaction-view.component';
 
@@ -11,6 +12,7 @@ describe('TransactionViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MaterialModule.forRoot() ],
       declarations: [ TransactionViewComponent ]
     })
     .compileComponents();
