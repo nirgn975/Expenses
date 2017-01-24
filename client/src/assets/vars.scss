@@ -1,0 +1,8 @@
+@import '~@angular/material/core/theming/theming';
+@import '../styles.scss';
+
+$app-primary: md-color($candy-app-primary);
+$app-accent: md-color($candy-app-accent);
+$app-warn: md-color($candy-app-warn);
+
+$app-neutral: md-color($md-grey, A200);
