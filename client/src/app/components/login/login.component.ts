@@ -1,16 +1,10 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'exp-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   @HostBinding('class') class = 'login-view';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
