@@ -9,12 +9,22 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ExpComponent } from './exp.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
 import { TransactionViewComponent } from './components/transaction-view/transaction-view.component';
+import { SettingsViewComponent } from './components/settings-view/settings-view.component';
+import { BudgetsViewComponent } from './components/budgets-view/budgets-view.component';
 
 @NgModule({
   declarations: [
     ExpComponent,
+    LoginComponent,
+    MainComponent,
     TransactionViewComponent,
+    SettingsViewComponent,
+    BudgetsViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +32,7 @@ import { TransactionViewComponent } from './components/transaction-view/transact
     HttpModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [ExpComponent]

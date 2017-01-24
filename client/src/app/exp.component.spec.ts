@@ -1,21 +1,19 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { ExpComponent } from './exp.component';
 import { MaterialModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { TransactionViewComponent } from './components/transaction-view/transaction-view.component';
+import { ExpComponent } from './exp.component';
 
 describe('ExpComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        RouterTestingModule,
       ],
-      declarations: [
-        TransactionViewComponent,
-        ExpComponent
-      ],
+      declarations: [ ExpComponent ],
     });
     TestBed.compileComponents();
   });
