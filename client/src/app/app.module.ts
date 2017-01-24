@@ -10,11 +10,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ExpComponent } from './exp.component';
 import { TransactionViewComponent } from './components/transaction-view/transaction-view.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     ExpComponent,
     TransactionViewComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
