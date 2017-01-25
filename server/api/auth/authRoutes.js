@@ -11,7 +11,7 @@ router.route('/facebook/callback')
       res.cookie('userToken', req.user.token);
       res.redirect(`${config.client.url}/home`);
     } else {
-      res.redirect(config.client.url)
+      res.redirect(config.client.url);
     }
   });
 
