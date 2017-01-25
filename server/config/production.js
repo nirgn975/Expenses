@@ -1,3 +1,6 @@
 module.exports = {
-  logging: false, // disbable logging for production
+  logging: false, // Disable logging for production
+  client: {
+    url: '',
+  },
 };
