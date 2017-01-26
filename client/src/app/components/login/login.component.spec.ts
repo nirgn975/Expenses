@@ -5,7 +5,6 @@ import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
 import { LoginComponent } from './login.component';
-import {element} from "protractor";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
