@@ -3,4 +3,7 @@ module.exports = {
   db: {
     url: 'mongodb://localhost/expenses-test',
   },
+  client: {
+    url: '',
+  },
 };
