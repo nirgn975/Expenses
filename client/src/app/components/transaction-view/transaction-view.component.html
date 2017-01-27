@@ -1,10 +1,10 @@
 <md-tab-group>
-  <md-tab label="One">
+  <md-tab *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" label="{{num}}">
     <h1>Some tab content</h1>
     <p>...</p>
   </md-tab>
-  <md-tab label="Two">
-    <h1>Some more tab content</h1>
-    <p>...</p>
-  </md-tab>
 </md-tab-group>
+
+<button md-fab>
+  <md-icon class="md-24">add</md-icon>
+</button>

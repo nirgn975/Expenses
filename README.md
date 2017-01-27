@@ -63,7 +63,7 @@ Not yet..
 
 **Client**
 
-  1. Not yet..
+  1. Run `ng build -prod -aot` to build the project.
 
 **Server**
 
