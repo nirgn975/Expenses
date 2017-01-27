@@ -10,6 +10,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let debug: DebugElement;
+  let debugs: DebugElement[];
   let element: HTMLElement;
 
   beforeEach(async(() => {
@@ -34,5 +35,33 @@ describe('LoginComponent', () => {
     debug = fixture.debugElement.query(By.css('md-card-title'));
     element = debug.nativeElement;
     expect(element.textContent).toContain('Welcome to Expenses!');
+  });
+
+  it('should have the proper login links', () => {
+    const links = [
+      {
+        url: '/api/auth/facebook',
+        className: 'button facebook',
+      },
+      {
+        url: '/api/auth/twitter',
+        className: 'button twitter',
+      },
+      {
+        url: '/api/auth/google',
+        className: 'button google-plus',
+      },
+      {
+        url: '/api/auth/github',
+        className: 'button github',
+      },
+    ];
+
+    debugs = fixture.debugElement.queryAll(By.css('a'));
+    debugs.forEach((link, index) => {
+      element = link.nativeElement;
+      expect(element.getAttribute('href')).toEqual(links[index].url);
+      expect(element.getAttribute('class')).toEqual(links[index].className);
+    });
   });
 });
