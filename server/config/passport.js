@@ -16,26 +16,30 @@ passport.use(
     clientID: config.secrets.facebookAuth.clientID,
     clientSecret: config.secrets.facebookAuth.clientSecret,
     callbackURL: config.secrets.facebookAuth.callbackURL,
+    profileFields: ['id', 'emails', 'name', 'picture', 'gender'],
   }, (accessToken, refreshToken, profile, done) => {
-    User.find({ id: profile.id }, (err, user) => {
+    User.find({ facebookId: profile.id }, (err, user) => {
       if (err) { return done(err); }
-      console.log(profile);
 
       if (user.length) {
-        done(null, user);
+        done(null, { token: accessToken, user });
       } else {
         const newUser = {
           provider: profile.provider,
-          id: profile.id,
-          // firstName: profile.name.givenName,
-          // lastName: profile.name.familyName,
-          // email: profile.emails.value,
-          // profileImage: profile.photos.value,
+          facebookId: profile.id,
+          facebook: {
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+            email: profile.emails[0].value,
+            gender: profile.gender,
+            profileImage: profile.photos[0].value,
+            token: accessToken,
+          },
         };
 
         User.create(newUser)
           .then((savedUser) => {
-            done(null, savedUser);
+            done(null, { token: accessToken, user: savedUser });
           }, (error) => {
             done(error);
           });

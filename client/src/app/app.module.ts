@@ -17,6 +17,8 @@ import { TransactionViewComponent } from './components/transaction-view/transact
 import { SettingsViewComponent } from './components/settings-view/settings-view.component';
 import { BudgetsViewComponent } from './components/budgets-view/budgets-view.component';
 
+import { AuthGuard } from './guards/auth.guard';
+
 @NgModule({
   declarations: [
     ExpComponent,
@@ -34,7 +36,9 @@ import { BudgetsViewComponent } from './components/budgets-view/budgets-view.com
     FlexLayoutModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [ExpComponent]
 })
 export class AppModule { }

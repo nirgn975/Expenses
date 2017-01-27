@@ -1,0 +1,95 @@
+@import "../../../assets/vars";
+
+:host(.login-view) {
+  background: url('/assets/login-hero-image.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+md-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.line {
+  content: '';
+  background-color: $app-neutral;
+  width: 2px;
+  margin: 0 50px;
+}
+
+.card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 250px;
+  width: 300px;
+  justify-content: center;
+}
+
+.login-buttons-container {
+  text-align: center;
+  justify-content: space-around;
+
+  p {
+    font-family: 'Inconsolata', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .button {
+    display: inline-block;
+    height: 40px;
+    width: 85px;
+    line-height: 40px;
+    padding-right: 30px;
+    padding-left: 70px;
+    position: relative;
+    color: rgb(255,255,255);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+  }
+
+  .button:hover {
+    text-decoration: none;
+    color: #eeeaee;
+  }
+
+  .button p {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .button span {
+    position: absolute;
+    left: 0;
+    width: 50px;
+    font-size: 30px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: 1px solid  rgba(0,0,0,0.15);
+    text-decoration: none;
+  }
+
+  .button.twitter {
+    background: #00acee;
+  }
+
+  .button.facebook {
+    background: #3b5998;
+  }
+
+  .button.google-plus{
+    background: #db4a39;
+  }
+
+  .button.github{
+    background: #171515;
+  }
+}

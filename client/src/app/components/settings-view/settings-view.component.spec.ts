@@ -9,6 +9,8 @@ import { SettingsViewComponent } from './settings-view.component';
 describe('SettingsViewComponent', () => {
   let component: SettingsViewComponent;
   let fixture: ComponentFixture<SettingsViewComponent>;
+  let debug: DebugElement;
+  let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,5 +28,11 @@ describe('SettingsViewComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain text', () => {
+    debug = fixture.debugElement.query(By.css('p'));
+    element = debug.nativeElement;
+    expect(element.textContent).toContain('settings-view works!');
   });
 });

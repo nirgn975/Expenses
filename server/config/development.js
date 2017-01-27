@@ -4,4 +4,7 @@ module.exports = {
   db: {
     url: 'mongodb://localhost/expenses',
   },
+  client: {
+    url: 'http://localhost:4200',
+  },
 };

@@ -7,6 +7,7 @@ import { TransactionViewComponent } from './components/transaction-view/transact
 import { BudgetsViewComponent } from './components/budgets-view/budgets-view.component';
 import { SettingsViewComponent } from './components/settings-view/settings-view.component';
 
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: MainComponent,
+    canActivateChild: [AuthGuard],
     children: [
       { path: 'transactions',  component: TransactionViewComponent, },
       { path: 'budgets',  component: BudgetsViewComponent, },
