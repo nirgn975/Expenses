@@ -13,8 +13,11 @@ coverage:
   round: down
   status:
     changes: false
-    patch: true
     project:
+      default:
+        enabled: yes
+        target: 80%
+    patch:
       default:
         enabled: yes
         target: 80%
