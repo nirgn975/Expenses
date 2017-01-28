@@ -12,9 +12,9 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-function nockGitHubUserAPI(nockRef) {
-  // Intercept `https://api.github.com:443/user` API Call.
-  nockRef('https://api.github.com:443')
+function nockAPI(nockRef) {
+  // Intercept `https://api.github.com/user` API Call.
+  nockRef('https://api.github.com')
     .filteringPath(/\/user.+/, '/user')
     .get('/user')
     .reply(200, {
@@ -33,7 +33,7 @@ describe(chalk.blue('Auth'), () => {
       mongoose.connection.collections[collectionName].remove();
     });
 
-    nockGitHubUserAPI(nock);
+    nockAPI(nock);
     done();
   });
 
@@ -81,10 +81,9 @@ describe(chalk.blue('Auth'), () => {
       });
   });
 
-  it('should get a token and create a new user', (done) => {
+  it('should get a token and create a new user in github callback', (done) => {
     const agent = chai.request.agent(server);
     agent.get('/api/auth/github/callback')
-      // .query({ code: '9835b716e83875665b21' })
       .query({ code: '12345' })
       .end((err, res) => {
         const cookie = res.req.connection._httpMessage._headers.cookie;

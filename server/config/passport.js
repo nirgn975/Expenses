@@ -73,7 +73,6 @@ passport.use(
     clientSecret: config.secrets.googleAuth.clientSecret,
     callbackURL: config.secrets.googleAuth.callbackURL,
   }, (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
     const newUser = {
       email: profile.emails[0].value,
       google: {
