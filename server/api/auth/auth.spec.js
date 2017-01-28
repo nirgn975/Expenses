@@ -26,7 +26,7 @@ describe(chalk.blue('Auth'), () => {
       .redirects(0)
       .end((err, res) => {
         res.should.have.status(302);
-        res.headers['location'].should.be.match(/^https:\/\/www.facebook.com\/dialog\/oauth/);
+        res.headers.location.should.be.match(/^https:\/\/www.facebook.com\/dialog\/oauth/);
         done();
       });
   });
@@ -37,7 +37,7 @@ describe(chalk.blue('Auth'), () => {
       .redirects(0)
       .end((err, res) => {
         res.should.have.status(302);
-        res.headers['location'].should.be.match(/^https:\/\/api.twitter.com\/oauth\/authenticate/);
+        res.headers.location.should.be.match(/^https:\/\/api.twitter.com\/oauth\/authenticate/);
         done();
       });
   });
@@ -48,7 +48,7 @@ describe(chalk.blue('Auth'), () => {
       .redirects(0)
       .end((err, res) => {
         res.should.have.status(302);
-        res.headers['location'].should.be.match(/^https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth/);
+        res.headers.location.should.be.match(/^https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth/);
         done();
       });
   });
@@ -59,9 +59,8 @@ describe(chalk.blue('Auth'), () => {
       .redirects(0)
       .end((err, res) => {
         res.should.have.status(302);
-        res.headers['location'].should.be.match(/^https:\/\/github.com\/login\/oauth\/authorize/);
+        res.headers.location.should.be.match(/^https:\/\/github.com\/login\/oauth\/authorize/);
         done();
       });
   });
-
 });
