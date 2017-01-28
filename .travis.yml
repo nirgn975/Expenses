@@ -53,5 +53,8 @@ script:
 
 after_script:
   - cd ../server && npm run coverage
-  - cd.. && codecov
+  - pwd
+  - cd..
+  - pwd
+  - codecov
   - nsp check
