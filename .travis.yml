@@ -53,8 +53,5 @@ script:
 
 after_script:
   - cd ../server && npm run coverage
-  - pwd
-  - cd..
-  - pwd
-  - codecov
+  - cd /home/travis/build/nirgn975/Expenses && codecov
   - nsp check
