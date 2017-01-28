@@ -31,6 +31,15 @@ Something about the project.
   2. Run the server with `ng start`.
   3. Open the browser at [http://localhost:4200](http://localhost:4200).
 
+For social login create a `.env` file in the root of the `server` directory, and add there all the configuration:
+```
+FACEBOOK_APP_ID=12345
+FACEBOOK_APP_SECRET=12345
+TWITTER_CONSUMER_KEY=12345
+TWITTER_APP_SECRET=12345
+```
+    
+
 **Server**
 
   1. Install requirements with `npm install` (located under `server` directory).

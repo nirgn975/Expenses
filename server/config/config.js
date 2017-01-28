@@ -13,6 +13,11 @@ const config = {
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
     },
+    twitterAuth: {
+      consumerKey: process.env.TWITTER_CONSUMER_KEY,
+      consumerSecret: process.env.TWITTER_APP_SECRET,
+      callbackURL: 'http://localhost:3000/api/auth/twitter/callback',
+    },
   },
 };
 

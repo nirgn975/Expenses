@@ -1,5 +1,6 @@
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 const config = require('./config');
 const User = require('../api/user/userModel');
 
@@ -16,33 +17,49 @@ passport.use(
     clientID: config.secrets.facebookAuth.clientID,
     clientSecret: config.secrets.facebookAuth.clientSecret,
     callbackURL: config.secrets.facebookAuth.callbackURL,
-    profileFields: ['id', 'emails', 'name', 'picture', 'gender'],
+    profileFields: ['id', 'emails', 'name', 'picture'],
   }, (accessToken, refreshToken, profile, done) => {
-    User.find({ facebookId: profile.id }, (err, user) => {
-      if (err) { return done(err); }
+    const newUser = {
+      email: profile.emails[0].value,
+      facebook: {
+        id: profile.id,
+        name: `${profile.name.givenName} ${profile.name.familyName}`,
+        profileImage: profile.photos[0].value,
+        token: accessToken,
+      },
+    };
 
-      if (user.length) {
-        done(null, { token: accessToken, user });
-      } else {
-        const newUser = {
-          provider: profile.provider,
-          facebookId: profile.id,
-          facebook: {
-            firstName: profile.name.givenName,
-            lastName: profile.name.familyName,
-            email: profile.emails[0].value,
-            gender: profile.gender,
-            profileImage: profile.photos[0].value,
-            token: accessToken,
-          },
-        };
+    User.update({ email : profile.emails[0].value }, newUser, {upsert: true})
+      .then((savedUser) => {
+        done(null, { token: accessToken, user: savedUser });
+      }, (error) => {
+        done(error);
+      });
+  }));
 
-        User.create(newUser)
-          .then((savedUser) => {
-            done(null, { token: accessToken, user: savedUser });
-          }, (error) => {
-            done(error);
-          });
-      }
-    });
+passport.use(
+  new TwitterStrategy({
+    consumerKey: config.secrets.twitterAuth.consumerKey,
+    consumerSecret: config.secrets.twitterAuth.consumerSecret,
+    callbackURL: config.secrets.twitterAuth.callbackURL,
+    includeEmail: true,
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log(profile);
+    const newUser = {
+      email: profile.emails[0].value,
+      twitter: {
+        id: profile.id,
+        name: profile.displayName,
+        profileImage: profile.photos[0].value,
+        token: accessToken,
+      },
+    };
+
+    User.update({ email : profile.email }, newUser, {upsert: true})
+      .then((savedUser) => {
+        done(null, { token: accessToken, user: savedUser });
+      }, (error) => {
+        done(error);
+      });
   }));
