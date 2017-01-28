@@ -1,6 +1,6 @@
 codecov:
   notify:
-    require_ci_to_pass: false
+    require_ci_to_pass: true
 comment:
   behavior: default
   layout: header, diff
@@ -24,3 +24,7 @@ parsers:
       method: false
   javascript:
     enable_partials: false
+ignore:
+  - "server/util"
+  - "server/middleware"
+
