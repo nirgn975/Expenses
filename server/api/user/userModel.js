@@ -6,7 +6,6 @@ const UserSchema = new Schema({
   email: {
     type: String,
     trim: true,
-    lowercase: true,
     required: true,
   },
   facebook: {
