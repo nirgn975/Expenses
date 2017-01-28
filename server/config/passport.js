@@ -21,7 +21,6 @@ passport.use(
     callbackURL: config.secrets.facebookAuth.callbackURL,
     profileFields: ['id', 'emails', 'name', 'picture', 'location', 'gender'],
   }, (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
     const newUser = {
       email: profile.emails[0].value,
       facebook: {
@@ -100,7 +99,6 @@ passport.use(
     clientSecret: config.secrets.githubAuth.clientSecret,
     callbackURL: config.secrets.githubAuth.callbackURL,
   }, (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
     const newUser = {
       email: profile.emails[0].value,
       github: {
