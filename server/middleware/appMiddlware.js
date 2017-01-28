@@ -8,8 +8,8 @@ const passport = require('passport');
 const sess = {
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true
-  // cookie: { secure: true }
+  saveUninitialized: true,
+  // cookie: { secure: true },
 };
 
 module.exports = (app) => {

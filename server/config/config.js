@@ -18,6 +18,11 @@ const config = {
       consumerSecret: process.env.TWITTER_APP_SECRET,
       callbackURL: 'http://localhost:3000/api/auth/twitter/callback',
     },
+    googleAuth: {
+      clientID: process.env.GOOGLE_APP_ID,
+      clientSecret: process.env.GOOGLE_APP_SECRET,
+      callbackURL: 'http://localhost:3000/api/auth/google/callback',
+    },
   },
 };
 
