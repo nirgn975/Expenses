@@ -15,9 +15,9 @@ const UserSchema = new Schema({
       type: String,
       lowercase: true,
     },
-    profileImage: {
-      type: String,
-    },
+    profileImage: String,
+    location: String,
+    gender: String,
   },
   twitter: {
     id: String,
@@ -25,9 +25,8 @@ const UserSchema = new Schema({
       type: String,
       lowercase: true,
     },
-    profileImage: {
-      type: String,
-    },
+    profileImage: String,
+    location: String,
   },
   google: {
     id: String,
@@ -35,9 +34,9 @@ const UserSchema = new Schema({
       type: String,
       lowercase: true,
     },
-    profileImage: {
-      type: String,
-    },
+    profileImage: String,
+    location: String,
+    gender: String,
   },
   github: {
     id: String,
@@ -45,9 +44,8 @@ const UserSchema = new Schema({
       type: String,
       lowercase: true,
     },
-    profileImage: {
-      type: String,
-    },
+    profileImage: String,
+    location: String,
   },
 });
 

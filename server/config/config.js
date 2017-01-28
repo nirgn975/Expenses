@@ -23,6 +23,11 @@ const config = {
       clientSecret: process.env.GOOGLE_APP_SECRET,
       callbackURL: 'http://localhost:3000/api/auth/google/callback',
     },
+    githubAuth: {
+      clientID: process.env.GITHUB_APP_ID,
+      clientSecret: process.env.GITHUB_APP_SECRET,
+      callbackURL: 'http://localhost:3000/api/auth/github/callback',
+    },
   },
 };
 
