@@ -14,7 +14,10 @@ coverage:
   status:
     changes: false
     patch: true
-    project: true
+    project:
+      default:
+        enabled: yes
+        target: 80%
 parsers:
   gcov:
     branch_detection:
