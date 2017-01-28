@@ -15,7 +15,7 @@
     "import/no-dynamic-require": 0,
     "consistent-return": 0,
     "no-unused-vars": [1, {"vars": "all", "args": "none", "varsIgnorePattern": "should"}],
-    "no-underscore-dangle": ["error", { "allow": ["_id", "_json"] }],
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_json", "_headers", "_httpMessage"] }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.spec.js"]}]
   }
 }
