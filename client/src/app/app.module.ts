@@ -18,6 +18,7 @@ import { SettingsViewComponent } from './components/settings-view/settings-view.
 import { BudgetsViewComponent } from './components/budgets-view/budgets-view.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthGuard } from './guards/auth.guard';
   ],
   providers: [
     AuthGuard,
+    LoginGuard,
   ],
   bootstrap: [ExpComponent]
 })

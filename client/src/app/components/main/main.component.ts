@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'exp-main',
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+
+  constructor(
+    private router: Router,
+  ) { }
+
+  logout() {
+    console.log('in logut')
+    localStorage.removeItem('userToken');
+    this.router.navigateByUrl('/login');
+  }
 }
