@@ -38,7 +38,7 @@ FACEBOOK_APP_SECRET=12345
 TWITTER_CONSUMER_KEY=12345
 TWITTER_APP_SECRET=12345
 ```
-    
+
 
 **Server**
 
@@ -73,6 +73,7 @@ Not yet..
 **Client**
 
   1. Run `ng build -prod -aot` to build the project.
+  2. Run `npm run sw` to generate the service worker file (in `dist` directory).
 
 **Server**
 

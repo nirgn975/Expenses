@@ -8,11 +8,16 @@ import { BudgetsViewComponent } from './components/budgets-view/budgets-view.com
 import { SettingsViewComponent } from './components/settings-view/settings-view.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', redirectTo: 'home/transactions', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginGuard]
+  },
   {
     path: 'home',
     component: MainComponent,
