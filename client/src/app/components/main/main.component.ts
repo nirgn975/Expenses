@@ -13,7 +13,6 @@ export class MainComponent {
   ) { }
 
   logout() {
-    console.log('in logut')
     localStorage.removeItem('userToken');
     this.router.navigateByUrl('/login');
   }

@@ -15,13 +15,16 @@ describe('LoginGuard', () => {
   }));
 
   it('should allow access when there is no token', inject([LoginGuard], (guard: LoginGuard) => {
-    expect(guard.canActivateChild()).toBeTruthy();
+    // Make sure there is no token.
+    localStorage.removeItem('userToken');
+
+    expect(guard.canActivate()).toBeTruthy();
   }));
 
   it('should not allow access when there is a token', inject([LoginGuard], (guard: LoginGuard) => {
     // Set token in localStorage
     localStorage.setItem('userToken', '12345');
 
-    expect(guard.canActivateChild()).toBeFalsy();
+    expect(guard.canActivate()).toBeFalsy();
   }));
 });
