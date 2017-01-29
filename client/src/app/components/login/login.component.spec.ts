@@ -39,22 +39,10 @@ describe('LoginComponent', () => {
 
   it('should have the proper login links', () => {
     const links = [
-      {
-        url: '/api/auth/facebook',
-        className: 'button facebook',
-      },
-      {
-        url: '/api/auth/twitter',
-        className: 'button twitter',
-      },
-      {
-        url: '/api/auth/google',
-        className: 'button google-plus',
-      },
-      {
-        url: '/api/auth/github',
-        className: 'button github',
-      },
+      { url: '/api/auth/facebook', className: 'button facebook', },
+      { url: '/api/auth/twitter', className: 'button twitter', },
+      { url: '/api/auth/google', className: 'button google-plus', },
+      { url: '/api/auth/github', className: 'button github', },
     ];
 
     debugs = fixture.debugElement.queryAll(By.css('a'));
