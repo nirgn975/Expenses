@@ -98,3 +98,19 @@ exports.getMonths = (req, res) => {
     }
   });
 };
+
+exports.getByYearAndMonth = (req, res) => {
+  const now = new Date(req.params.year, req.params.month - 1);
+  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  Transaction.find({
+    date: {
+      $gt: firstDay,
+      $lt: lastDay,
+    } })
+    .then((transactions) => {
+      res.json(transactions);
+    }, (error) => {
+      res.json(error);
+    });
+};

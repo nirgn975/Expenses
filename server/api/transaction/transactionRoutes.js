@@ -15,4 +15,7 @@ router.route('/:id')
   .put(controller.put)
   .delete(controller.delete);
 
+router.route('/:year/:month')
+  .get(controller.getByYearAndMonth);
+
 module.exports = router;
