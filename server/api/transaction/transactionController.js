@@ -19,7 +19,14 @@ exports.params = (req, res, next, id) => {
 };
 
 exports.get = (req, res) => {
-  Transaction.find({})
+  const now = new Date();
+  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  Transaction.find({
+    date: {
+      $gt: firstDay,
+      $lt: lastDay,
+    } })
     .then((transactions) => {
       res.json(transactions);
     }, (error) => {
