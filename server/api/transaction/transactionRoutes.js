@@ -7,6 +7,9 @@ router.route('/')
   .get(controller.get)
   .post(controller.post);
 
+router.route('/all-months')
+  .get(controller.getMonths);
+
 router.route('/:id')
   .get(controller.getOne)
   .put(controller.put)

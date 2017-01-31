@@ -83,3 +83,18 @@ exports.delete = (req, res) => {
     }
   });
 };
+
+exports.getMonths = (req, res) => {
+  Transaction.aggregate([{
+    '$group': {
+      _id : { month: { $month: "$date" }, year: { $year: "$date" } },
+    }
+  }],
+  function (error, allMonths) {
+    if (error) {
+      res.json(error);
+    } else {
+      res.json(allMonths);
+    }
+  });
+};
