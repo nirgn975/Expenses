@@ -3,7 +3,6 @@ import {  Transaction } from '../models/transaction';
 import {  TransactionMonth } from '../models/transaction-month';
 import { type } from '../util';
 
-
 export const ActionTypes = {
   LOAD_TRANSACTION:                type('[Transaction] Load Transaction'),
   LOAD_TRANSACTION_SUCCESS:        type('[Transaction] Load Transactions Success'),

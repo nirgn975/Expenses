@@ -1,7 +1,6 @@
 import { Transaction } from '../models/transaction';
 import * as transaction from '../actions/transaction';
 
-
 export type  State = Transaction[];
 
 const initialState: State = [{

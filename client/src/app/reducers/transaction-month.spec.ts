@@ -2,7 +2,6 @@
 
 import { reducer } from './index';
 
-
 describe('reducers', () => {
   it('should handle "Load All Transaction Months" action', () => {
     let state;

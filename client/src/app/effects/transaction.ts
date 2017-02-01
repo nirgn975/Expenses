@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { TransactionService } from '../services/transaction.service';
 import * as transaction from '../actions/transaction';
 
-
 @Injectable()
 export class TransactionEffects {
   constructor(

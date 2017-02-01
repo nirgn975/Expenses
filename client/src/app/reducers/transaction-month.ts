@@ -1,7 +1,6 @@
 import { TransactionMonth } from '../models/transaction-month';
 import * as transaction from '../actions/transaction';
 
-
 export type  State = TransactionMonth[];
 
 const initialState: State = [{
