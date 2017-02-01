@@ -24,8 +24,8 @@ exports.get = (req, res) => {
   const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
   Transaction.find({
     date: {
-      $gt: firstDay,
-      $lt: lastDay,
+      $gte: firstDay,
+      $lte: lastDay,
     } })
     .then((transactions) => {
       res.json(transactions);
@@ -104,8 +104,8 @@ exports.getByYearAndMonth = (req, res) => {
   const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
   Transaction.find({
     date: {
-      $gt: firstDay,
-      $lt: lastDay,
+      $gte: firstDay,
+      $lte: lastDay,
     } })
     .then((transactions) => {
       res.json(transactions);

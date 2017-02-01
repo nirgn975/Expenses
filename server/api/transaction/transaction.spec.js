@@ -31,14 +31,32 @@ describe(chalk.blue('Transaction'), () => {
       });
   });
 
-  it('should GET all transactions', (done) => {
+  it('should GET all transactions for current month', (done) => {
+    const now = new Date();
+    const transaction = {
+      amount: 1000,
+      date: new Date(now.getFullYear(), now.getMonth() + 2),
+      type: 'income',
+      coordinates: [-17, 48],
+      category: this.category._id,
+      description: 'description foo bar 1',
+    };
+
+    // Add a new transaction for next month.
     chai.request(server)
-      .get('/api/transaction')
-      .end((error, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('array');
-        res.body.length.should.be.equal(0);
-        done();
+      .post('/api/transaction')
+      .send(transaction)
+      .end((transactionPostError, transactionPostRes) => {
+
+        // Get all transactions for this month (zero).
+        chai.request(server)
+          .get('/api/transaction')
+          .end((error, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('array');
+            res.body.length.should.be.equal(0);
+            done();
+          });
       });
   });
 
@@ -49,7 +67,7 @@ describe(chalk.blue('Transaction'), () => {
       type: 'expense',
       coordinates: [21, 22],
       category: this.category._id,
-      description: 'description foo bar 1',
+      description: 'description foo bar 2',
     };
 
     chai.request(server)
@@ -66,6 +84,29 @@ describe(chalk.blue('Transaction'), () => {
         transactionPostRes.body.transaction.should.have.property('description');
 
         this.transaction = transactionPostRes.body.transaction;
+        done();
+      });
+  });
+
+  it('should get all transactions months', (done) => {
+    chai.request(server)
+      .get('/api/transaction/all-months')
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('array');
+        res.body.length.should.be.equal(2);
+        done();
+      });
+  });
+
+  it('should get all transactions for next month', (done) => {
+    const now = new Date();
+    chai.request(server)
+      .get(`/api/transaction/${now.getFullYear()}/${now.getMonth() + 2}`)
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('array');
+        res.body.length.should.be.equal(1);
         done();
       });
   });
