@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
+import { reducer } from '../../reducers';
+import { StoreModule } from '@ngrx/store';
 
 import { TransactionViewComponent } from './transaction-view.component';
 
@@ -12,7 +14,10 @@ describe('TransactionViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MaterialModule.forRoot() ],
+      imports: [
+        MaterialModule.forRoot(),
+        StoreModule.provideStore(reducer)
+      ],
       declarations: [ TransactionViewComponent ]
     })
     .compileComponents();

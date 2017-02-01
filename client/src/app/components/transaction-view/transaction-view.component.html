@@ -1,7 +1,8 @@
 <md-tab-group>
-  <md-tab *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" label="{{num}}">
-    <h1>Some tab content</h1>
-    <p>...</p>
+  <md-tab *ngFor="let currentTime of transactionMonths$ | async" label="{{currentTime._id.year}}-{{currentTime._id.month}}">
+    <div *ngFor="let transaction of transaction$ | async">
+      <p>{{transaction.description}}</p>
+    </div>
   </md-tab>
 </md-tab-group>
 
