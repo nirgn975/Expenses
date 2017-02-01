@@ -11,6 +11,8 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe(chalk.blue('Transaction'), () => {
+  let someTransactionId = '';
+
   before((done) => {
     // Empty all the collection.
     Object.keys(mongoose.connection.collections).forEach((collectionName) => {
@@ -83,6 +85,7 @@ describe(chalk.blue('Transaction'), () => {
         transactionPostRes.body.transaction.should.have.property('description');
 
         this.transaction = transactionPostRes.body.transaction;
+        someTransactionId = transactionPostRes.body.transaction._id;
         done();
       });
   });
@@ -106,6 +109,28 @@ describe(chalk.blue('Transaction'), () => {
         res.should.have.status(200);
         res.body.should.be.a('array');
         res.body.length.should.be.equal(1);
+        done();
+      });
+  });
+
+  it('should get a specific transaction', (done) => {
+    chai.request(server)
+      .get(`/api/transaction/${someTransactionId}`)
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id').equal(someTransactionId);
+        done();
+      });
+  });
+
+  it('should get an error when transaction id is wrong', (done) => {
+    chai.request(server)
+      .get('/api/transaction/12345')
+      .end((error, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').equal('No transaction with that id: 12345');
         done();
       });
   });

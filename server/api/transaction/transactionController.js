@@ -14,7 +14,11 @@ exports.params = (req, res, next, id) => {
         next();
       }
     }, (error) => {
-      next(error);
+      res.status(404);
+      res.json({
+        message: `No transaction with that id: ${id}`,
+        error: error,
+      });
     });
 };
 
