@@ -6,11 +6,14 @@ const logger = require('./logger');
 
 logger.log(['Seeding the Database']);
 
+const now = new Date();
+const nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 1);
 const transactions = [
   { amount: 23, date: Date.now(), type: 'expense', coordinates: [21, 22], description: 'description foo bar 1' },
   { amount: 54, date: Date.now(), type: 'income', coordinates: [21, 42], description: 'description foo bar 2' },
   { amount: 76, date: Date.now(), type: 'expense', coordinates: [15, 12], description: 'description foo bar 3' },
   { amount: 1009, date: Date.now(), type: 'income', coordinates: [-23, 76], description: 'description foo bar 4' },
+  { amount: 101, date: nextMonth, type: 'income', coordinates: [41, -17], description: 'description foo bar 5' },
 ];
 
 const categories = [
@@ -18,6 +21,7 @@ const categories = [
   { name: 'Food', icon: 'food' },
   { name: 'Clothing', icon: 'clothing' },
   { name: 'Shopping', icon: 'shopping' },
+  { name: 'Going Out', icon: 'shopping' },
 ];
 
 const budgets = [
