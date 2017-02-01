@@ -47,7 +47,6 @@ describe(chalk.blue('Transaction'), () => {
       .post('/api/transaction')
       .send(transaction)
       .end((transactionPostError, transactionPostRes) => {
-
         // Get all transactions for this month (zero).
         chai.request(server)
           .get('/api/transaction')
