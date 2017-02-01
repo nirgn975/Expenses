@@ -14,12 +14,23 @@ exports.params = (req, res, next, id) => {
         next();
       }
     }, (error) => {
-      next(error);
+      res.status(404);
+      res.json({
+        message: `No transaction with that id: ${id}`,
+        error,
+      });
     });
 };
 
 exports.get = (req, res) => {
-  Transaction.find({})
+  const now = new Date();
+  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  Transaction.find({
+    date: {
+      $gte: firstDay,
+      $lte: lastDay,
+    } })
     .then((transactions) => {
       res.json(transactions);
     }, (error) => {
@@ -75,4 +86,34 @@ exports.delete = (req, res) => {
       });
     }
   });
+};
+
+exports.getMonths = (req, res) => {
+  Transaction.aggregate([{
+    $group: {
+      _id: { month: { $month: '$date' }, year: { $year: '$date' } },
+    },
+  }], (error, allMonths) => {
+    if (error) {
+      res.json(error);
+    } else {
+      res.json(allMonths);
+    }
+  });
+};
+
+exports.getByYearAndMonth = (req, res) => {
+  const now = new Date(req.params.year, req.params.month - 1);
+  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  Transaction.find({
+    date: {
+      $gte: firstDay,
+      $lte: lastDay,
+    } })
+    .then((transactions) => {
+      res.json(transactions);
+    }, (error) => {
+      res.json(error);
+    });
 };
