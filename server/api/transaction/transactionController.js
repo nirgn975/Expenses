@@ -39,7 +39,8 @@ exports.get = (req, res) => {
 };
 
 exports.post = (req, res) => {
-  const newTransaction = req.body;
+  let newTransaction = req.body;
+  newTransaction.user = req.user;
 
   Transaction.create(newTransaction)
     .then((savedTransaction) => {
@@ -59,7 +60,8 @@ exports.getOne = (req, res) => {
 
 exports.put = (req, res) => {
   const transaction = req.transaction;
-  const update = req.body;
+  let update = req.body;
+  update.user = req.user;
 
   _.merge(transaction, update);
 

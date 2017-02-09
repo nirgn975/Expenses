@@ -27,7 +27,8 @@ exports.get = (req, res) => {
 };
 
 exports.post = (req, res) => {
-  const newCategory = req.body;
+  let newCategory = req.body;
+  newCategory.user = req.user;
 
   Category.create(newCategory)
     .then((savedCategory) => {
@@ -47,7 +48,8 @@ exports.getOne = (req, res) => {
 
 exports.put = (req, res) => {
   const category = req.category;
-  const update = req.body;
+  let update = req.body;
+  update.user = req.user;
 
   _.merge(category, update);
 

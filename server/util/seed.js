@@ -33,9 +33,9 @@ const budgets = [
 ];
 
 const users = [
-  { email: 'nir@galon.io' },
-  { email: 'nirgn975@gmail.com' },
-  { email: 'adisaar3@gmail.com' },
+  { email: 'nir@galon.io', token: '123' },
+  { email: 'nirgn975@gmail.com', token: '1234' },
+  { email: 'adisaar3@gmail.com', token: '12345' },
 ];
 
 const cleanDB = () => {
@@ -68,7 +68,7 @@ const createUsers = (data) => {
 
 const createCategories = (data) => {
   const newCategories = categories.map((category, i) => {
-    category.user = data.users[i % users.length]._id;
+    category.user = data.users[i % users.length];
     return createDoc(Category, category);
   });
 
@@ -80,8 +80,8 @@ const createCategories = (data) => {
 
 const createBudgets = (data) => {
   const newBudgets = budgets.map((budget, i) => {
-    budget.categories = [data.categories[i % categories.length]._id];
-    budget.user = data.users[i % users.length]._id;
+    budget.categories = [data.categories[i % categories.length]];
+    budget.user = data.users[i % users.length];
     return createDoc(Budget, budget);
   });
 
@@ -93,8 +93,8 @@ const createBudgets = (data) => {
 
 const createTransactions = (data) => {
   const newTransactions = transactions.map((transaction, i) => {
-    transaction.category = data.categories[i % categories.length]._id;
-    transaction.user = data.users[i % users.length]._id;
+    transaction.category = data.categories[i % categories.length];
+    transaction.user = data.users[i % users.length];
     return createDoc(Transaction, transaction);
   });
 

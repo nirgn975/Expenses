@@ -24,12 +24,25 @@ describe(chalk.blue('Transaction'), () => {
       icon: 'money',
     };
 
+    const user = {
+      email: 'nir@galon.io',
+      token: '123',
+    };
+
     chai.request(server)
-      .post('/api/category')
-      .send(category)
-      .end((categoryError, categoryRes) => {
-        this.category = categoryRes.body.category;
-        done();
+      .post('/api/user')
+      .send(user)
+      .end((userError, userRes) => {
+        this.user = userRes.body.user;
+
+        chai.request(server)
+          .post('/api/category')
+          .set('token', this.user.token)
+          .send(category)
+          .end((categoryError, categoryRes) => {
+            this.category = categoryRes.body.category;
+            done();
+          });
       });
   });
 
@@ -47,11 +60,13 @@ describe(chalk.blue('Transaction'), () => {
     // Add a new transaction for next month.
     chai.request(server)
       .post('/api/transaction')
+      .set('token', this.user.token)
       .send(transaction)
       .end((transactionPostError, transactionPostRes) => {
         // Get all transactions for this month (zero).
         chai.request(server)
           .get('/api/transaction')
+          .set('token', this.user.token)
           .end((error, res) => {
             res.should.have.status(200);
             res.body.should.be.a('array');
@@ -73,6 +88,7 @@ describe(chalk.blue('Transaction'), () => {
 
     chai.request(server)
       .post('/api/transaction')
+      .set('token', this.user.token)
       .send(transaction)
       .end((transactionPostError, transactionPostRes) => {
         transactionPostRes.should.have.status(200);
@@ -93,6 +109,7 @@ describe(chalk.blue('Transaction'), () => {
   it('should get all transactions months', (done) => {
     chai.request(server)
       .get('/api/transaction/all-months')
+      .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.be.a('array');
@@ -105,6 +122,7 @@ describe(chalk.blue('Transaction'), () => {
     const now = new Date();
     chai.request(server)
       .get(`/api/transaction/${now.getFullYear()}/${now.getMonth() + 2}`)
+      .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.be.a('array');
@@ -116,6 +134,7 @@ describe(chalk.blue('Transaction'), () => {
   it('should get a specific transaction', (done) => {
     chai.request(server)
       .get(`/api/transaction/${someTransactionId}`)
+      .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
@@ -127,6 +146,7 @@ describe(chalk.blue('Transaction'), () => {
   it('should get an error when transaction id is wrong', (done) => {
     chai.request(server)
       .get('/api/transaction/12345')
+      .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(404);
         res.body.should.be.a('object');
@@ -140,6 +160,7 @@ describe(chalk.blue('Transaction'), () => {
 
     chai.request(server)
       .put(`/api/transaction/${this.transaction._id}`)
+      .set('token', this.user.token)
       .send(this.transaction)
       .end((editTransactionError, editTransactionRes) => {
         editTransactionRes.should.have.status(200);
@@ -152,6 +173,7 @@ describe(chalk.blue('Transaction'), () => {
   it('should DELETE a transaction', (done) => {
     chai.request(server)
       .del(`/api/transaction/${this.transaction._id}`)
+      .set('token', this.user.token)
       .end((deletedTransactionError, deletedTransactionRes) => {
         deletedTransactionRes.should.have.status(200);
         deletedTransactionRes.body.should.have.property('message').equal('Transaction successfully deleted!');
@@ -171,6 +193,7 @@ describe(chalk.blue('Transaction'), () => {
 
     chai.request(server)
       .post('/api/transaction')
+      .set('token', this.user.token)
       .send(transactionWithoutAmount)
       .end((amountTransactionError, amountTransactionRes) => {
         amountTransactionRes.should.have.status(200);
@@ -191,6 +214,7 @@ describe(chalk.blue('Transaction'), () => {
 
     chai.request(server)
       .post('/api/transaction')
+      .set('token', this.user.token)
       .send(transactionWithoutCategory)
       .end((categoryTransactionError, categoryTransactionRes) => {
         categoryTransactionRes.should.have.status(200);
@@ -211,6 +235,7 @@ describe(chalk.blue('Transaction'), () => {
 
     chai.request(server)
       .post('/api/transaction')
+      .set('token', this.user.token)
       .send(transactionWithoutType)
       .end((typeTransactionError, typeTransactionRes) => {
         typeTransactionRes.should.have.status(200);

@@ -1,21 +1,22 @@
 const router = require('express').Router();
 const controller = require('./transactionController');
+const userController = require('../user/userController');
 
 router.param('id', controller.params);
 
 router.route('/')
-  .get(controller.get)
-  .post(controller.post);
+  .get(userController.getByToken, controller.get)
+  .post(userController.getByToken, controller.post);
 
 router.route('/all-months')
-  .get(controller.getMonths);
+  .get(userController.getByToken, controller.getMonths);
 
 router.route('/:id')
-  .get(controller.getOne)
-  .put(controller.put)
-  .delete(controller.delete);
+  .get(userController.getByToken, controller.getOne)
+  .put(userController.getByToken, controller.put)
+  .delete(userController.getByToken, controller.delete);
 
 router.route('/:year/:month')
-  .get(controller.getByYearAndMonth);
+  .get(userController.getByToken, controller.getByYearAndMonth);
 
 module.exports = router;

@@ -22,18 +22,32 @@ describe(chalk.blue('Budget'), () => {
       icon: 'money',
     };
 
+    const user = {
+      email: 'nir@galon.io',
+      token: '123',
+    };
+
     chai.request(server)
-      .post('/api/category')
-      .send(category)
-      .end((categoryError, categoryRes) => {
-        this.category = categoryRes.body.category;
-        done();
+      .post('/api/user')
+      .send(user)
+      .end((userError, userRes) => {
+        this.user = userRes.body.user;
+
+        chai.request(server)
+          .post('/api/category')
+          .set('token', this.user.token)
+          .send(category)
+          .end((categoryError, categoryRes) => {
+            this.category = categoryRes.body.category;
+            done();
+          });
       });
   });
 
   it('should GET all budgets', (done) => {
     chai.request(server)
       .get('/api/budget')
+      .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.be.a('array');
@@ -52,6 +66,7 @@ describe(chalk.blue('Budget'), () => {
 
     chai.request(server)
       .post('/api/budget')
+      .set('token', this.user.token)
       .send(budget)
       .end((categoryPostError, categoryPostRes) => {
         categoryPostRes.should.have.status(200);
@@ -73,6 +88,7 @@ describe(chalk.blue('Budget'), () => {
 
     chai.request(server)
       .put(`/api/budget/${this.budget._id}`)
+      .set('token', this.user.token)
       .send(this.budget)
       .end((editCategoryError, editCategoryRes) => {
         editCategoryRes.should.have.status(200);
@@ -87,6 +103,7 @@ describe(chalk.blue('Budget'), () => {
   it('should DELETE a budget', (done) => {
     chai.request(server)
       .del(`/api/budget/${this.budget._id}`)
+      .set('token', this.user.token)
       .end((deletedBudgetError, deletedBudgetRes) => {
         deletedBudgetRes.should.have.status(200);
         deletedBudgetRes.body.should.have.property('message').equal('Budget successfully deleted!');
@@ -104,6 +121,7 @@ describe(chalk.blue('Budget'), () => {
 
     chai.request(server)
       .post('/api/budget')
+      .set('token', this.user.token)
       .send(budget)
       .end((categoryWithoutAmountError, categoryWithoutAmountRes) => {
         categoryWithoutAmountRes.should.have.status(200);
@@ -122,6 +140,7 @@ describe(chalk.blue('Budget'), () => {
 
     chai.request(server)
       .post('/api/budget')
+      .set('token', this.user.token)
       .send(budget)
       .end((categoryWithoutLimitError, categoryWithoutLimitRes) => {
         categoryWithoutLimitRes.should.have.status(200);
@@ -139,6 +158,7 @@ describe(chalk.blue('Budget'), () => {
 
     chai.request(server)
       .post('/api/budget')
+      .set('token', this.user.token)
       .send(budget)
       .end((categoryWithoutCategoriesError, categoryWithoutCategoriesRes) => {
         categoryWithoutCategoriesRes.should.have.status(200);

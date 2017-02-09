@@ -16,12 +16,25 @@ describe(chalk.blue('Category'), () => {
     Object.keys(mongoose.connection.collections).forEach((collectionName) => {
       mongoose.connection.collections[collectionName].remove();
     });
-    done();
+
+    const user = {
+      email: 'nir@galon.io',
+      token: '123',
+    };
+
+    chai.request(server)
+      .post('/api/user')
+      .send(user)
+      .end((userError, userRes) => {
+        this.user = userRes.body.user;
+        done();
+      });
   });
 
   it('should GET all categories', (done) => {
     chai.request(server)
       .get('/api/category')
+      .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.be.a('array');
@@ -38,6 +51,7 @@ describe(chalk.blue('Category'), () => {
 
     chai.request(server)
       .post('/api/category')
+      .set('token', this.user.token)
       .send(category)
       .end((postError, postRes) => {
         postRes.should.have.status(200);
@@ -56,6 +70,7 @@ describe(chalk.blue('Category'), () => {
 
     chai.request(server)
       .put(`/api/category/${this.category._id}`)
+      .set('token', this.user.token)
       .send(this.category)
       .end((editCategoryError, editCategoryRes) => {
         editCategoryRes.should.have.status(200);
@@ -70,6 +85,7 @@ describe(chalk.blue('Category'), () => {
   it('should DELETE a category', (done) => {
     chai.request(server)
       .del(`/api/category/${this.category._id}`)
+      .set('token', this.user.token)
       .end((deletedCategoryError, deletedCategoryRes) => {
         deletedCategoryRes.should.have.status(200);
         deletedCategoryRes.body.should.have.property('message').equal('Category successfully deleted!');
