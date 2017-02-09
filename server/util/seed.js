@@ -1,6 +1,7 @@
 const Transaction = require('../api/transaction/transactionModel');
 const Category = require('../api/category/categoryModel');
 const Budget = require('../api/budget/budgetModel');
+const User = require('../api/user/userModel');
 const _ = require('lodash');
 const logger = require('./logger');
 
@@ -31,9 +32,15 @@ const budgets = [
   { name: 'gooing out', limit: 235, currentAmount: 450 },
 ];
 
+const users = [
+  { email: 'nir@galon.io' },
+  { email: 'nirgn975@gmail.com' },
+  { email: 'adisaar3@gmail.com' },
+];
+
 const cleanDB = () => {
   logger.log(['... cleaning the DB']);
-  const cleanPromises = [Category, Transaction, Budget]
+  const cleanPromises = [User, Category, Transaction, Budget]
     .map((model) => {
       return model.remove().exec();
     });
@@ -48,12 +55,24 @@ const createDoc = (Model, doc) => {
   });
 };
 
+const createUsers = (data) => {
+  const newUsers = users.map((user, i) => {
+    return createDoc(User, user);
+  });
+
+  return Promise.all(newUsers)
+    .then((savedUsers) => {
+      return _.merge({ users: savedUsers }, data || {});
+    });
+};
+
 const createCategories = (data) => {
-  const promises = categories.map((category) => {
+  const newCategories = categories.map((category, i) => {
+    category.user = data.users[i % users.length]._id;
     return createDoc(Category, category);
   });
 
-  return Promise.all(promises)
+  return Promise.all(newCategories)
     .then((savedCategories) => {
       return _.merge({ categories: savedCategories }, data || {});
     });
@@ -61,7 +80,8 @@ const createCategories = (data) => {
 
 const createBudgets = (data) => {
   const newBudgets = budgets.map((budget, i) => {
-    budget.categories = [data.categories[i]._id];
+    budget.categories = [data.categories[i % categories.length]._id];
+    budget.user = data.users[i % users.length]._id;
     return createDoc(Budget, budget);
   });
 
@@ -73,7 +93,8 @@ const createBudgets = (data) => {
 
 const createTransactions = (data) => {
   const newTransactions = transactions.map((transaction, i) => {
-    transaction.category = data.categories[i]._id;
+    transaction.category = data.categories[i % categories.length]._id;
+    transaction.user = data.users[i % users.length]._id;
     return createDoc(Transaction, transaction);
   });
 
@@ -83,6 +104,7 @@ const createTransactions = (data) => {
 
 
 cleanDB()
+  .then(createUsers)
   .then(createCategories)
   .then(createBudgets)
   .then(createTransactions)
