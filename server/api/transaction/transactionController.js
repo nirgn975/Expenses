@@ -97,7 +97,7 @@ exports.delete = (req, res) => {
 
 exports.getMonths = (req, res) => {
   Transaction.aggregate([{
-    $match: { user: req.user._id }
+    $match: { user: req.user._id },
   }, {
     $group: {
       _id: { month: { $month: '$date' }, year: { $year: '$date' } },
