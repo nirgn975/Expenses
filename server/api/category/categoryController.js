@@ -82,3 +82,15 @@ exports.delete = (req, res) => {
     }
   });
 };
+
+exports.categoryPermissions = (req, res, next) => {
+  if (req.user._id.toString() === req.category.user.toString()) {
+    next();
+  } else {
+    res.status(403);
+    res.json({
+      message: `Access Forbidden to category id: ${req.category._id}`,
+      category: null,
+    });
+  }
+};

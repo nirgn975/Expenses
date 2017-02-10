@@ -16,10 +16,12 @@ router.route('/:id')
     userController.getByToken,
     transactionController.transactionPermissions,
     transactionController.getOne)
-  .put(userController.getByToken,
+  .put(
+    userController.getByToken,
     transactionController.transactionPermissions,
     transactionController.put)
-  .delete(userController.getByToken,
+  .delete(
+    userController.getByToken,
     transactionController.transactionPermissions,
     transactionController.delete);
 
