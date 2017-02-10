@@ -24,13 +24,11 @@ passport.use(
     const newUser = {
       email: profile.emails[0].value,
       token: accessToken,
-      facebook: {
-        id: profile.id,
-        name: `${profile.name.givenName} ${profile.name.familyName}`,
-        profileImage: profile.photos[0].value,
-        location: profile._json.location.name,
-        gender: profile.gender,
-      },
+      facebookId: profile.id,
+      name: `${profile.name.givenName} ${profile.name.familyName}`,
+      profileImage: profile.photos[0].value,
+      location: profile._json.location.name,
+      gender: profile.gender,
     };
 
     User.update({ email: profile.emails[0].value }, newUser, { upsert: true })
@@ -51,12 +49,10 @@ passport.use(
     const newUser = {
       email: profile.emails[0].value,
       token: accessToken,
-      twitter: {
-        id: profile.id,
-        name: profile.displayName,
-        profileImage: profile.photos[0].value,
-        location: profile._json.location,
-      },
+      twitterId: profile.id,
+      name: profile.displayName,
+      profileImage: profile.photos[0].value,
+      location: profile._json.location,
     };
 
     User.update({ email: profile.emails[0].value }, newUser, { upsert: true })
@@ -76,13 +72,11 @@ passport.use(
     const newUser = {
       email: profile.emails[0].value,
       token: accessToken,
-      google: {
-        id: profile.id,
-        name: `${profile.name.givenName} ${profile.name.familyName}`,
-        profileImage: profile.photos[0].value,
-        location: profile._json.placesLived[0].value,
-        gender: profile.gender,
-      },
+      googleId: profile.id,
+      name: `${profile.name.givenName} ${profile.name.familyName}`,
+      profileImage: profile.photos[0].value,
+      location: profile._json.placesLived[0].value,
+      gender: profile.gender,
     };
 
     User.update({ email: profile.emails[0].value }, newUser, { upsert: true })
@@ -102,12 +96,10 @@ passport.use(
     const newUser = {
       email: profile.emails[0].value,
       token: accessToken,
-      github: {
-        id: profile.id,
-        name: profile.displayName,
-        profileImage: profile._json.avatar_url,
-        location: profile._json.location,
-      },
+      githubId: profile.id,
+      name: profile.displayName,
+      profileImage: profile._json.avatar_url,
+      location: profile._json.location,
     };
 
     User.update({ email: profile.emails[0].value }, newUser, { upsert: true })
