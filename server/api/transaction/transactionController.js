@@ -8,13 +8,17 @@ exports.params = (req, res, next, id) => {
     .exec()
     .then((transaction) => {
       if (!transaction) {
-        next(new Error(`No transaction with that id: ${id}`));
+        res.status(404);
+        res.json({
+          message: `No transaction with that id: ${id}`,
+          transaction: null,
+        });
       } else {
         req.transaction = transaction;
         next();
       }
     }, (error) => {
-      res.status(404);
+      res.status(500);
       res.json({
         message: `No transaction with that id: ${id}`,
         error,
@@ -30,12 +34,13 @@ exports.get = (req, res) => {
     date: {
       $gte: firstDay,
       $lte: lastDay,
-    } })
-    .then((transactions) => {
-      res.json(transactions);
-    }, (error) => {
-      res.json(error);
-    });
+    },
+    user: req.user,
+  }).then((transactions) => {
+    res.json(transactions);
+  }, (error) => {
+    res.json(error);
+  });
 };
 
 exports.post = (req, res) => {
@@ -112,10 +117,23 @@ exports.getByYearAndMonth = (req, res) => {
     date: {
       $gte: firstDay,
       $lte: lastDay,
-    } })
-    .then((transactions) => {
-      res.json(transactions);
-    }, (error) => {
-      res.json(error);
+    },
+    user: req.user,
+  }).then((transactions) => {
+    res.json(transactions);
+  }, (error) => {
+    res.json(error);
+  });
+};
+
+exports.transactionPermissions = (req, res, next) => {
+  if (req.user._id.toString() === req.transaction.user.toString()) {
+    next();
+  } else {
+    res.status(403);
+    res.json({
+      message: `Access Forbidden to transaction id: ${req.transaction._id}`,
+      transaction: null,
     });
+  }
 };

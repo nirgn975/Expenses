@@ -8,6 +8,7 @@ exports.param = (req, res, next, id) => {
     .exec()
     .then((budget) => {
       if (!budget) {
+        res.status(404);
         res.json({
           message: `No budget with that id: ${id}`,
           budget: null,
@@ -17,6 +18,7 @@ exports.param = (req, res, next, id) => {
         next();
       }
     }, (error) => {
+      res.status(500);
       res.json(error);
     });
 };

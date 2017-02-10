@@ -7,6 +7,7 @@ exports.param = (req, res, next, id) => {
     .exec()
     .then((category) => {
       if (!category) {
+        res.status(404);
         res.json({
           message: `No category with that id: ${id}`,
           category: null,
@@ -16,6 +17,7 @@ exports.param = (req, res, next, id) => {
         next();
       }
     }, (error) => {
+      res.status(500);
       res.json(error);
     });
 };

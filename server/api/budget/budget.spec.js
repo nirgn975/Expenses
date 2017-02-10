@@ -102,7 +102,7 @@ describe(chalk.blue('Budget'), () => {
       .get('/api/budget/589d608c019e406a7a51fb91')
       .set('token', this.user.token)
       .end((error, res) => {
-        res.should.have.status(200);
+        res.should.have.status(404);
         res.body.should.have.property('message').equal('No budget with that id: 589d608c019e406a7a51fb91');
         res.body.should.have.property('budget').equal(null);
         done();
@@ -114,7 +114,7 @@ describe(chalk.blue('Budget'), () => {
       .get('/api/budget/12345')
       .set('token', this.user.token)
       .end((error, res) => {
-        res.should.have.status(200);
+        res.should.have.status(500);
         res.body.should.have.property('message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "budget"');
         res.body.should.have.property('name').equal('CastError');
         done();
