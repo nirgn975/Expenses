@@ -37,8 +37,8 @@ describe(chalk.blue('Budget'), () => {
           .post('/api/category')
           .set('token', this.user.token)
           .send(category)
-          .end((categoryError, categoryRes) => {
-            this.category = categoryRes.body.category;
+          .end((error, res) => {
+            this.category = res.body.category;
             done();
           });
       });
@@ -68,16 +68,16 @@ describe(chalk.blue('Budget'), () => {
       .post('/api/budget')
       .set('token', this.user.token)
       .send(budget)
-      .end((categoryPostError, categoryPostRes) => {
-        categoryPostRes.should.have.status(200);
-        categoryPostRes.body.should.have.property('message').equal('Budget successfully created!');
-        categoryPostRes.body.budget.should.have.property('_id');
-        categoryPostRes.body.budget.should.have.property('name');
-        categoryPostRes.body.budget.should.have.property('limit');
-        categoryPostRes.body.budget.should.have.property('currentAmount');
-        categoryPostRes.body.budget.should.have.property('categories');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Budget successfully created!');
+        res.body.budget.should.have.property('_id');
+        res.body.budget.should.have.property('name');
+        res.body.budget.should.have.property('limit');
+        res.body.budget.should.have.property('currentAmount');
+        res.body.budget.should.have.property('categories');
 
-        this.budget = categoryPostRes.body.budget;
+        this.budget = res.body.budget;
         done();
       });
   });
@@ -129,12 +129,12 @@ describe(chalk.blue('Budget'), () => {
       .put(`/api/budget/${this.budget._id}`)
       .set('token', this.user.token)
       .send(this.budget)
-      .end((editCategoryError, editCategoryRes) => {
-        editCategoryRes.should.have.status(200);
-        editCategoryRes.body.should.have.property('message').equal('Budget successfully updated!');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Budget successfully updated!');
 
         this.budget.name = this.budget.name.toLowerCase();
-        editCategoryRes.body.budget.should.be.eql(this.budget);
+        res.body.budget.should.be.eql(this.budget);
         done();
       });
   });
@@ -143,10 +143,10 @@ describe(chalk.blue('Budget'), () => {
     chai.request(server)
       .del(`/api/budget/${this.budget._id}`)
       .set('token', this.user.token)
-      .end((deletedBudgetError, deletedBudgetRes) => {
-        deletedBudgetRes.should.have.status(200);
-        deletedBudgetRes.body.should.have.property('message').equal('Budget successfully deleted!');
-        deletedBudgetRes.body.budget.should.be.a('object');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Budget successfully deleted!');
+        res.body.budget.should.be.a('object');
         done();
       });
   });
@@ -162,10 +162,10 @@ describe(chalk.blue('Budget'), () => {
       .post('/api/budget')
       .set('token', this.user.token)
       .send(budget)
-      .end((categoryWithoutAmountError, categoryWithoutAmountRes) => {
-        categoryWithoutAmountRes.should.have.status(200);
-        categoryWithoutAmountRes.body.should.have.property('message').equal('budget validation failed');
-        categoryWithoutAmountRes.body.errors.name.message.should.equal('Path `name` is required.');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('budget validation failed');
+        res.body.errors.name.message.should.equal('Path `name` is required.');
         done();
       });
   });
@@ -181,10 +181,10 @@ describe(chalk.blue('Budget'), () => {
       .post('/api/budget')
       .set('token', this.user.token)
       .send(budget)
-      .end((categoryWithoutLimitError, categoryWithoutLimitRes) => {
-        categoryWithoutLimitRes.should.have.status(200);
-        categoryWithoutLimitRes.body.should.have.property('message').equal('budget validation failed');
-        categoryWithoutLimitRes.body.errors.limit.message.should.equal('Path `limit` is required.');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('budget validation failed');
+        res.body.errors.limit.message.should.equal('Path `limit` is required.');
         done();
       });
   });
@@ -199,10 +199,10 @@ describe(chalk.blue('Budget'), () => {
       .post('/api/budget')
       .set('token', this.user.token)
       .send(budget)
-      .end((categoryWithoutCategoriesError, categoryWithoutCategoriesRes) => {
-        categoryWithoutCategoriesRes.should.have.status(200);
-        categoryWithoutCategoriesRes.body.should.have.property('message').equal('budget validation failed');
-        categoryWithoutCategoriesRes.body.errors.categories.message.should.equal('Path `categories` is required.');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('budget validation failed');
+        res.body.errors.categories.message.should.equal('Path `categories` is required.');
         done();
       });
   });

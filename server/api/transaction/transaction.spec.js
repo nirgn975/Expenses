@@ -39,8 +39,8 @@ describe(chalk.blue('Transaction'), () => {
           .post('/api/category')
           .set('token', this.user.token)
           .send(category)
-          .end((categoryError, categoryRes) => {
-            this.category = categoryRes.body.category;
+          .end((error, res) => {
+            this.category = res.body.category;
             done();
           });
       });
@@ -90,18 +90,18 @@ describe(chalk.blue('Transaction'), () => {
       .post('/api/transaction')
       .set('token', this.user.token)
       .send(transaction)
-      .end((transactionPostError, transactionPostRes) => {
-        transactionPostRes.should.have.status(200);
-        transactionPostRes.body.should.have.property('message').equal('Transaction successfully created!');
-        transactionPostRes.body.transaction.should.have.property('_id');
-        transactionPostRes.body.transaction.should.have.property('amount');
-        transactionPostRes.body.transaction.should.have.property('type');
-        transactionPostRes.body.transaction.should.have.property('coordinates');
-        transactionPostRes.body.transaction.should.have.property('category');
-        transactionPostRes.body.transaction.should.have.property('description');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Transaction successfully created!');
+        res.body.transaction.should.have.property('_id');
+        res.body.transaction.should.have.property('amount');
+        res.body.transaction.should.have.property('type');
+        res.body.transaction.should.have.property('coordinates');
+        res.body.transaction.should.have.property('category');
+        res.body.transaction.should.have.property('description');
 
-        this.transaction = transactionPostRes.body.transaction;
-        someTransactionId = transactionPostRes.body.transaction._id;
+        this.transaction = res.body.transaction;
+        someTransactionId = res.body.transaction._id;
         done();
       });
   });
@@ -162,10 +162,10 @@ describe(chalk.blue('Transaction'), () => {
       .put(`/api/transaction/${this.transaction._id}`)
       .set('token', this.user.token)
       .send(this.transaction)
-      .end((editTransactionError, editTransactionRes) => {
-        editTransactionRes.should.have.status(200);
-        editTransactionRes.body.should.have.property('message').equal('Transaction successfully updated!');
-        editTransactionRes.body.transaction.should.be.eql(this.transaction);
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Transaction successfully updated!');
+        res.body.transaction.should.be.eql(this.transaction);
         done();
       });
   });
@@ -174,10 +174,10 @@ describe(chalk.blue('Transaction'), () => {
     chai.request(server)
       .del(`/api/transaction/${this.transaction._id}`)
       .set('token', this.user.token)
-      .end((deletedTransactionError, deletedTransactionRes) => {
-        deletedTransactionRes.should.have.status(200);
-        deletedTransactionRes.body.should.have.property('message').equal('Transaction successfully deleted!');
-        deletedTransactionRes.body.transaction.should.be.a('object');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Transaction successfully deleted!');
+        res.body.transaction.should.be.a('object');
         done();
       });
   });
@@ -195,10 +195,10 @@ describe(chalk.blue('Transaction'), () => {
       .post('/api/transaction')
       .set('token', this.user.token)
       .send(transactionWithoutAmount)
-      .end((amountTransactionError, amountTransactionRes) => {
-        amountTransactionRes.should.have.status(200);
-        amountTransactionRes.body.should.have.property('message').equal('transaction validation failed');
-        amountTransactionRes.body.errors.amount.message.should.equal('Path `amount` is required.');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('transaction validation failed');
+        res.body.errors.amount.message.should.equal('Path `amount` is required.');
         done();
       });
   });
@@ -216,10 +216,10 @@ describe(chalk.blue('Transaction'), () => {
       .post('/api/transaction')
       .set('token', this.user.token)
       .send(transactionWithoutCategory)
-      .end((categoryTransactionError, categoryTransactionRes) => {
-        categoryTransactionRes.should.have.status(200);
-        categoryTransactionRes.body.should.have.property('message').equal('transaction validation failed');
-        categoryTransactionRes.body.errors.category.message.should.equal('Path `category` is required.');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('transaction validation failed');
+        res.body.errors.category.message.should.equal('Path `category` is required.');
         done();
       });
   });
@@ -237,10 +237,10 @@ describe(chalk.blue('Transaction'), () => {
       .post('/api/transaction')
       .set('token', this.user.token)
       .send(transactionWithoutType)
-      .end((typeTransactionError, typeTransactionRes) => {
-        typeTransactionRes.should.have.status(200);
-        typeTransactionRes.body.should.have.property('message').equal('transaction validation failed');
-        typeTransactionRes.body.errors.type.message.should.equal('Path `type` is required.');
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('transaction validation failed');
+        res.body.errors.type.message.should.equal('Path `type` is required.');
         done();
       });
   });

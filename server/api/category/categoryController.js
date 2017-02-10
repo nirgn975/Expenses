@@ -7,13 +7,16 @@ exports.param = (req, res, next, id) => {
     .exec()
     .then((category) => {
       if (!category) {
-        next(new Error(`No category with that id: ${id}`));
+        res.json({
+          message: `No category with that id: ${id}`,
+          category: null,
+        })
       } else {
         req.category = category;
         next();
       }
     }, (error) => {
-      next(error);
+      res.json(error);
     });
 };
 
