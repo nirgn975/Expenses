@@ -12,5 +12,5 @@ describe('TransactionsModule', () => {
 
   it('should create an instance', () => {
     expect(transactionsModule).toBeTruthy();
-  })
+  });
 });
