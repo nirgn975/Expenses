@@ -8,32 +8,14 @@ const initialState: State = {
   __v: 0,
   email: '',
   token: '',
-  facebook: {
-    id: '',
-    name: '',
-    profileImage: '',
-    location: '',
-    gender: '',
-  },
-  twitter: {
-    id: '',
-    name: '',
-    profileImage: '',
-    location: '',
-  },
-  google: {
-    id: '',
-    name: '',
-    profileImage: '',
-    location: '',
-    gender: '',
-  },
-  github: {
-    id: '',
-    name: '',
-    profileImage: '',
-    location: '',
-  },
+  name: '',
+  profileImage: '',
+  location: '',
+  gender: '',
+  facebookId: '',
+  twitterId: '',
+  googleId: '',
+  githubId: '',
 };
 
 export function reducer(state = initialState, action: user.Actions): State {
