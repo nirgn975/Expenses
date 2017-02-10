@@ -1,5 +1,4 @@
 const User = require('./userModel');
-const _ = require('lodash');
 const logger = require('../../util/logger');
 
 
@@ -14,7 +13,7 @@ exports.getByToken = (req, res, next) => {
 };
 
 exports.post = (req, res) => {
-  let newuser = req.body;
+  const newuser = req.body;
 
   User.create(newuser)
     .then((savedUser) => {

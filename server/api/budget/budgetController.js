@@ -28,7 +28,7 @@ exports.get = (req, res) => {
 };
 
 exports.post = (req, res) => {
-  let newBudget = req.body;
+  const newBudget = req.body;
   newBudget.user = req.user;
 
   // console.log(newBudget);
@@ -51,7 +51,7 @@ exports.getOne = (req, res) => {
 
 exports.put = (req, res) => {
   const budget = req.budget;
-  let update = req.body;
+  const update = req.body;
   update.user = req.user;
 
   _.merge(budget, update);
