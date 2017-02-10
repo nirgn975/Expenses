@@ -1,15 +1,16 @@
 const router = require('express').Router();
-const controller = require('./budgetController');
+const budgetController = require('./budgetController');
+const userController = require('../user/userController');
 
-router.param('id', controller.param);
+router.param('id', budgetController.param);
 
 router.route('/')
-  .get(controller.get)
-  .post(controller.post);
+  .get(userController.getByToken, budgetController.get)
+  .post(userController.getByToken, budgetController.post);
 
 router.route('/:id')
-  .get(controller.getOne)
-  .put(controller.put)
-  .delete(controller.delete);
+  .get(userController.getByToken, budgetController.getOne)
+  .put(userController.getByToken, budgetController.put)
+  .delete(userController.getByToken, budgetController.delete);
 
 module.exports = router;

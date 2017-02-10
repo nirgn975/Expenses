@@ -7,13 +7,16 @@ exports.param = (req, res, next, id) => {
     .exec()
     .then((category) => {
       if (!category) {
-        next(new Error(`No category with that id: ${id}`));
+        res.json({
+          message: `No category with that id: ${id}`,
+          category: null,
+        });
       } else {
         req.category = category;
         next();
       }
     }, (error) => {
-      next(error);
+      res.json(error);
     });
 };
 
@@ -28,6 +31,7 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
   const newCategory = req.body;
+  newCategory.user = req.user;
 
   Category.create(newCategory)
     .then((savedCategory) => {
@@ -48,6 +52,7 @@ exports.getOne = (req, res) => {
 exports.put = (req, res) => {
   const category = req.category;
   const update = req.body;
+  update.user = req.user;
 
   _.merge(category, update);
 

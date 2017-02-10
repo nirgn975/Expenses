@@ -8,13 +8,16 @@ exports.param = (req, res, next, id) => {
     .exec()
     .then((budget) => {
       if (!budget) {
-        next(new Error(`No budget with that id: ${id}`));
+        res.json({
+          message: `No budget with that id: ${id}`,
+          budget: null,
+        });
       } else {
         req.budget = budget;
         next();
       }
     }, (error) => {
-      next(error);
+      res.json(error);
     });
 };
 
@@ -29,6 +32,7 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
   const newBudget = req.body;
+  newBudget.user = req.user;
 
   Budget.create(newBudget)
     .then((savedBudget) => {
@@ -49,6 +53,7 @@ exports.getOne = (req, res) => {
 exports.put = (req, res) => {
   const budget = req.budget;
   const update = req.body;
+  update.user = req.user;
 
   _.merge(budget, update);
 
