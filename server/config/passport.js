@@ -23,13 +23,13 @@ passport.use(
   }, (accessToken, refreshToken, profile, done) => {
     const newUser = {
       email: profile.emails[0].value,
+      token: accessToken,
       facebook: {
         id: profile.id,
         name: `${profile.name.givenName} ${profile.name.familyName}`,
         profileImage: profile.photos[0].value,
         location: profile._json.location.name,
         gender: profile.gender,
-        token: accessToken,
       },
     };
 
@@ -50,12 +50,12 @@ passport.use(
   }, (accessToken, refreshToken, profile, done) => {
     const newUser = {
       email: profile.emails[0].value,
+      token: accessToken,
       twitter: {
         id: profile.id,
         name: profile.displayName,
         profileImage: profile.photos[0].value,
         location: profile._json.location,
-        token: accessToken,
       },
     };
 
@@ -75,13 +75,13 @@ passport.use(
   }, (accessToken, refreshToken, profile, done) => {
     const newUser = {
       email: profile.emails[0].value,
+      token: accessToken,
       google: {
         id: profile.id,
         name: `${profile.name.givenName} ${profile.name.familyName}`,
         profileImage: profile.photos[0].value,
         location: profile._json.placesLived[0].value,
         gender: profile.gender,
-        token: accessToken,
       },
     };
 
@@ -101,12 +101,12 @@ passport.use(
   }, (accessToken, refreshToken, profile, done) => {
     const newUser = {
       email: profile.emails[0].value,
+      token: accessToken,
       github: {
         id: profile.id,
         name: profile.displayName,
         profileImage: profile._json.avatar_url,
         location: profile._json.location,
-        token: accessToken,
       },
     };
 

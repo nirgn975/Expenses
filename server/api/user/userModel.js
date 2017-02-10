@@ -8,6 +8,10 @@ const UserSchema = new Schema({
     trim: true,
     required: true,
   },
+  token: {
+    type: String,
+    required: true,
+  },
   facebook: {
     id: String,
     name: {

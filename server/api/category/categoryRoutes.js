@@ -1,15 +1,16 @@
 const router = require('express').Router();
-const controller = require('./categoryController');
+const categoryController = require('./categoryController');
+const userController = require('../user/userController');
 
-router.param('id', controller.param);
+router.param('id', categoryController.param);
 
 router.route('/')
-  .get(controller.get)
-  .post(controller.post);
+  .get(userController.getByToken, categoryController.get)
+  .post(userController.getByToken, categoryController.post);
 
 router.route('/:id')
-  .get(controller.getOne)
-  .put(controller.put)
-  .delete(controller.delete);
+  .get(userController.getByToken, categoryController.getOne)
+  .put(userController.getByToken, categoryController.put)
+  .delete(userController.getByToken, categoryController.delete);
 
 module.exports = router;
