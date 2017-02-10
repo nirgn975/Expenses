@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import {  Transaction } from '../models/transaction';
-import {  TransactionMonth } from '../models/transaction-month';
+import { Transaction } from '../models/transaction';
+import { TransactionMonth } from '../models/transaction-month';
 import { type } from '../../../util';
 
 export const ActionTypes = {
