@@ -3,28 +3,30 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
-import { reducer } from '../../reducers';
+import { RouterTestingModule } from '@angular/router/testing';
+import { reducer } from './reducers';
 import { StoreModule } from '@ngrx/store';
 
-import { TransactionViewComponent } from './transaction-view.component';
+import { TransactionsComponent } from './transactions.component';
 
-describe('TransactionViewComponent', () => {
-  let component: TransactionViewComponent;
-  let fixture: ComponentFixture<TransactionViewComponent>;
+describe('TransactionsComponent', () => {
+  let component: TransactionsComponent;
+  let fixture: ComponentFixture<TransactionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         MaterialModule.forRoot(),
-        StoreModule.provideStore(reducer)
+        RouterTestingModule,
+        StoreModule.provideStore(reducer),
       ],
-      declarations: [ TransactionViewComponent ]
+      declarations: [ TransactionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TransactionViewComponent);
+    fixture = TestBed.createComponent(TransactionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

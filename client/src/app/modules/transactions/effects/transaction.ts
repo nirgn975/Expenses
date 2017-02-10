@@ -17,7 +17,7 @@ export class TransactionEffects {
   @Effect()
   loadTransaction$: Observable<Action>= this.actions$
     .ofType(transaction.ActionTypes.LOAD_TRANSACTION)
-    .switchMap(() => this.transactionService.getTransactions())
+    .switchMap((time) => this.transactionService.getTransactionsByDate(time.payload))
     .map(transactions => new transaction.LoadTransactionSuccessAction(transactions));
 
   @Effect()

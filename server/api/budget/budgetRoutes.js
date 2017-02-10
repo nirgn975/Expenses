@@ -9,8 +9,17 @@ router.route('/')
   .post(userController.getByToken, budgetController.post);
 
 router.route('/:id')
-  .get(userController.getByToken, budgetController.getOne)
-  .put(userController.getByToken, budgetController.put)
-  .delete(userController.getByToken, budgetController.delete);
+  .get(
+    userController.getByToken,
+    budgetController.budgetPermissions,
+    budgetController.getOne)
+  .put(
+    userController.getByToken,
+    budgetController.budgetPermissions,
+    budgetController.put)
+  .delete(
+    userController.getByToken,
+    budgetController.budgetPermissions,
+    budgetController.delete);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
