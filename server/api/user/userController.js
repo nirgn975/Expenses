@@ -1,7 +1,6 @@
 const User = require('./userModel');
 const logger = require('../../util/logger');
 
-
 exports.getByToken = (req, res, next) => {
   User.findOne({ token: req.headers.token })
     .then((user) => {

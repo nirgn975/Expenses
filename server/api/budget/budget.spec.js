@@ -82,6 +82,21 @@ describe(chalk.blue('Budget'), () => {
       });
   });
 
+  it('should GET all budgets', (done) => {
+    chai.request(server)
+      .get(`/api/budget/${this.budget._id}`)
+      .set('token', this.user.token)
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('limit');
+        res.body.should.have.property('currentAmount');
+        res.body.should.have.property('categories');
+        done();
+      });
+  });
+
   it('should PUT a budget', (done) => {
     this.budget.name = 'Going Down';
     this.budget.categories = [this.category];

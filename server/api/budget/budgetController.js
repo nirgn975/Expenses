@@ -31,8 +31,6 @@ exports.post = (req, res) => {
   const newBudget = req.body;
   newBudget.user = req.user;
 
-  // console.log(newBudget);
-
   Budget.create(newBudget)
     .then((savedBudget) => {
       res.json({
