@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Transaction } from '../models/transaction';
@@ -10,19 +10,27 @@ export class TransactionService {
 
   constructor(
     private http: Http,
-  ) { }
+  ) {}
+
+  _appendToken(): RequestOptions {
+    const headers = new Headers();
+    headers.append('token', localStorage.getItem('userToken'));
+    return new RequestOptions({ headers: headers });
+  }
 
   getTransactions(): Observable<Transaction[]> {
-    return this.http.get('/api/transaction')
+    const options = this._appendToken();
+
+    return this.http.get('/api/transaction', options)
       .map(res => res.json())
-      .do(data => console.log(data))
       .catch(this.handleError);
   }
 
   getTransactionsMonth(): Observable<TransactionMonth[]> {
-    return this.http.get('/api/transaction/all-months')
+    const options = this._appendToken();
+
+    return this.http.get('/api/transaction/all-months', options)
       .map(res => res.json())
-      .do(data => console.log(data))
       .catch(this.handleError);
   }
 
