@@ -56,9 +56,7 @@ describe(chalk.blue('User'), () => {
   });
 
   it('should PUT a user', (done) => {
-    user.twitter = {
-      name: 'nir',
-    };
+    user.name = 'nir';
 
     chai.request(server)
       .put('/api/user/')

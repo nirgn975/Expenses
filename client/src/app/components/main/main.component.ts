@@ -12,7 +12,7 @@ import { User } from '../../models/user';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  private user$: User;
+  public user$: User;
 
   constructor(
     private store: Store<fromRoot.State>,

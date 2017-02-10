@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
+import { reducer } from '../../reducers';
+import { StoreModule } from '@ngrx/store';
 
 import { MainComponent } from './main.component';
 
@@ -16,6 +18,7 @@ describe('MainComponent', () => {
       imports: [
         MaterialModule.forRoot(),
         RouterTestingModule,
+        StoreModule.provideStore(reducer),
       ],
       declarations: [ MainComponent ]
     })
