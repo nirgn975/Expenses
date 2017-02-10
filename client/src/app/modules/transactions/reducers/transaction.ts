@@ -4,15 +4,15 @@ import * as transaction from '../actions/transaction';
 export type  State = Transaction[];
 
 const initialState: State = [{
-  _id: '',
-  amount: 0,
-  date: '',
-  type: '',
-  description: '',
-  category: '',
-  __v: 0,
-  coordinates: '',
-}];
+    _id: '',
+    amount: 0,
+    date: '',
+    type: '',
+    description: '',
+    category: '',
+    __v: 0,
+    coordinates: '',
+  }];
 
 export function reducer(state = initialState, action: transaction.Actions): State {
   switch (action.type) {

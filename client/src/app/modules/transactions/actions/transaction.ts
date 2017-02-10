@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import {  Transaction } from '../models/transaction';
 import {  TransactionMonth } from '../models/transaction-month';
-import { type } from '../util';
+import { type } from '../../../util';
 
 export const ActionTypes = {
   LOAD_TRANSACTION:                type('[Transaction] Load Transaction'),
@@ -13,7 +13,7 @@ export const ActionTypes = {
 export class LoadTransactionAction implements Action {
   type = ActionTypes.LOAD_TRANSACTION;
 
-  constructor() { }
+  constructor(public payload: TransactionMonth) { }
 }
 
 export class LoadTransactionSuccessAction implements Action {

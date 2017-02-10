@@ -18,10 +18,10 @@ export class TransactionService {
     return new RequestOptions({ headers: headers });
   }
 
-  getTransactions(): Observable<Transaction[]> {
+  getTransactionsByDate(time: TransactionMonth): Observable<Transaction[]> {
     const options = this._appendToken();
 
-    return this.http.get('/api/transaction', options)
+    return this.http.get(`/api/transaction/${time._id.year}/${time._id.month}`, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
