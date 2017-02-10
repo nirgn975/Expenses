@@ -40,7 +40,6 @@ import { TransactionMonth } from './models/transaction-month';
       right: 0;
       margin: 10px;
     }
-
   `]
 })
 export class TransactionsComponent implements OnInit {

@@ -10,7 +10,7 @@ export class TransactionService {
 
   constructor(
     private http: Http,
-  ) {}
+  ) { }
 
   _appendToken(): RequestOptions {
     const headers = new Headers();

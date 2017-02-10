@@ -12,7 +12,6 @@ const routes: Routes = [
       { path: ':year/:month', component: TransactionListComponent, },
     ],
   },
-
 ];
 
 @NgModule({
