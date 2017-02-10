@@ -29,19 +29,31 @@ describe(chalk.blue('Transaction'), () => {
       token: '123',
     };
 
+    const user2 = {
+      email: 'nirgn975@gmail.com',
+      token: '1234',
+    };
+
     chai.request(server)
       .post('/api/user')
       .send(user)
-      .end((userError, userRes) => {
-        this.user = userRes.body.user;
+      .end((user1Error, user1Res) => {
+        this.user = user1Res.body.user;
 
         chai.request(server)
-          .post('/api/category')
-          .set('token', this.user.token)
-          .send(category)
-          .end((error, res) => {
-            this.category = res.body.category;
-            done();
+          .post('/api/user')
+          .send(user2)
+          .end((user2Error, user2Res) => {
+            this.user2 = user2Res.body.user;
+
+            chai.request(server)
+              .post('/api/category')
+              .set('token', this.user.token)
+              .send(category)
+              .end((error, res) => {
+                this.category = res.body.category;
+                done();
+              });
           });
       });
   });
@@ -131,7 +143,7 @@ describe(chalk.blue('Transaction'), () => {
       });
   });
 
-  it('should get a specific transaction', (done) => {
+  it('should GET a specific transaction', (done) => {
     chai.request(server)
       .get(`/api/transaction/${someTransactionId}`)
       .set('token', this.user.token)
@@ -163,6 +175,17 @@ describe(chalk.blue('Transaction'), () => {
         res.should.have.status(500);
         res.body.should.be.a('object');
         res.body.should.have.property('message').equal('No transaction with that id: 12345');
+        done();
+      });
+  });
+
+  it('should GET "Access Forbidden" without a user token', (done) => {
+    chai.request(server)
+      .get(`/api/transaction/${someTransactionId}`)
+      .set('token', this.user2.token)
+      .end((error, res) => {
+        res.should.have.status(403);
+        res.body.should.have.property('message').equal(`Access Forbidden to transaction id: ${someTransactionId}`);
         done();
       });
   });

@@ -27,19 +27,31 @@ describe(chalk.blue('Budget'), () => {
       token: '123',
     };
 
+    const user2 = {
+      email: 'nirgn975@gmail.com',
+      token: '1234',
+    };
+
     chai.request(server)
       .post('/api/user')
       .send(user)
-      .end((userError, userRes) => {
-        this.user = userRes.body.user;
+      .end((user1Error, user1Res) => {
+        this.user = user1Res.body.user;
 
         chai.request(server)
-          .post('/api/category')
-          .set('token', this.user.token)
-          .send(category)
-          .end((error, res) => {
-            this.category = res.body.category;
-            done();
+          .post('/api/user')
+          .send(user2)
+          .end((user2Error, user2Res) => {
+            this.user2 = user2Res.body.user;
+
+            chai.request(server)
+              .post('/api/category')
+              .set('token', this.user.token)
+              .send(category)
+              .end((error, res) => {
+                this.category = res.body.category;
+                done();
+              });
           });
       });
   });
@@ -117,6 +129,17 @@ describe(chalk.blue('Budget'), () => {
         res.should.have.status(500);
         res.body.should.have.property('message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "budget"');
         res.body.should.have.property('name').equal('CastError');
+        done();
+      });
+  });
+
+  it('should GET "Access Forbidden" without a user token', (done) => {
+    chai.request(server)
+      .get(`/api/budget/${this.budget._id}`)
+      .set('token', this.user2.token)
+      .end((error, res) => {
+        res.should.have.status(403);
+        res.body.should.have.property('message').equal(`Access Forbidden to budget id: ${this.budget._id}`);
         done();
       });
   });
