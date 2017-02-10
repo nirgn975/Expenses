@@ -82,7 +82,7 @@ describe(chalk.blue('Budget'), () => {
       });
   });
 
-  it('should GET all budgets', (done) => {
+  it('should GET a budget', (done) => {
     chai.request(server)
       .get(`/api/budget/${this.budget._id}`)
       .set('token', this.user.token)
@@ -93,6 +93,30 @@ describe(chalk.blue('Budget'), () => {
         res.body.should.have.property('limit');
         res.body.should.have.property('currentAmount');
         res.body.should.have.property('categories');
+        done();
+      });
+  });
+
+  it('should not GET a budget with none existed id ', (done) => {
+    chai.request(server)
+      .get('/api/budget/589d608c019e406a7a51fb91')
+      .set('token', this.user.token)
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('No budget with that id: 589d608c019e406a7a51fb91');
+        res.body.should.have.property('budget').equal(null);
+        done();
+      });
+  });
+
+  it('should not GET a budget with the wrong id ', (done) => {
+    chai.request(server)
+      .get('/api/budget/12345')
+      .set('token', this.user.token)
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "budget"');
+        res.body.should.have.property('name').equal('CastError');
         done();
       });
   });
