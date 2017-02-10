@@ -8,6 +8,7 @@ exports.param = (req, res, next, id) => {
     .exec()
     .then((budget) => {
       if (!budget) {
+        res.status(404);
         res.json({
           message: `No budget with that id: ${id}`,
           budget: null,
@@ -17,6 +18,7 @@ exports.param = (req, res, next, id) => {
         next();
       }
     }, (error) => {
+      res.status(500);
       res.json(error);
     });
 };
@@ -80,4 +82,16 @@ exports.delete = (req, res) => {
       });
     }
   });
+};
+
+exports.budgetPermissions = (req, res, next) => {
+  if (req.user._id.toString() === req.budget.user.toString()) {
+    next();
+  } else {
+    res.status(403);
+    res.json({
+      message: `Access Forbidden to budget id: ${req.budget._id}`,
+      budget: null,
+    });
+  }
 };

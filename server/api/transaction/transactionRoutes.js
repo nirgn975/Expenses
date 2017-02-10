@@ -12,9 +12,18 @@ router.route('/all-months')
   .get(userController.getByToken, transactionController.getMonths);
 
 router.route('/:id')
-  .get(userController.getByToken, transactionController.getOne)
-  .put(userController.getByToken, transactionController.put)
-  .delete(userController.getByToken, transactionController.delete);
+  .get(
+    userController.getByToken,
+    transactionController.transactionPermissions,
+    transactionController.getOne)
+  .put(
+    userController.getByToken,
+    transactionController.transactionPermissions,
+    transactionController.put)
+  .delete(
+    userController.getByToken,
+    transactionController.transactionPermissions,
+    transactionController.delete);
 
 router.route('/:year/:month')
   .get(userController.getByToken, transactionController.getByYearAndMonth);

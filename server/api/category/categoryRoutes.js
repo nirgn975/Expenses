@@ -9,8 +9,17 @@ router.route('/')
   .post(userController.getByToken, categoryController.post);
 
 router.route('/:id')
-  .get(userController.getByToken, categoryController.getOne)
-  .put(userController.getByToken, categoryController.put)
-  .delete(userController.getByToken, categoryController.delete);
+  .get(
+    userController.getByToken,
+    categoryController.categoryPermissions,
+    categoryController.getOne)
+  .put(
+    userController.getByToken,
+    categoryController.categoryPermissions,
+    categoryController.put)
+  .delete(
+    userController.getByToken,
+    categoryController.categoryPermissions,
+    categoryController.delete);
 
 module.exports = router;

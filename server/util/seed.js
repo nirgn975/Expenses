@@ -14,7 +14,14 @@ const transactions = [
   { amount: 54, date: Date.now(), type: 'income', coordinates: [21, 42], description: 'description foo bar 2' },
   { amount: 76, date: Date.now(), type: 'expense', coordinates: [15, 12], description: 'description foo bar 3' },
   { amount: 1009, date: Date.now(), type: 'income', coordinates: [-23, 76], description: 'description foo bar 4' },
-  { amount: 101, date: nextMonth, type: 'income', coordinates: [41, -17], description: 'description foo bar 5' },
+  { amount: 54, date: nextMonth, type: 'income', coordinates: [41, -17], description: 'description foo bar 5' },
+  { amount: 37, date: nextMonth, type: 'expense', coordinates: [-101, 92], description: 'description foo bar 6' },
+  { amount: 258, date: Date.now(), type: 'income', coordinates: [56, 2], description: 'description foo bar 7' },
+  { amount: 10, date: nextMonth, type: 'expense', coordinates: [-71, -13], description: 'description foo bar 8' },
+  { amount: 7, date: nextMonth, type: 'expense', coordinates: [-71, -13], description: 'description foo bar 9' },
+  { amount: 5, date: Date.now(), type: 'expense', coordinates: [-71, -13], description: 'description foo bar 10' },
+  { amount: 4.5, date: Date.now(), type: 'expense', coordinates: [-71, -13], description: 'description foo bar 11' },
+  { amount: 83, date: nextMonth, type: 'expense', coordinates: [-71, -13], description: 'description foo bar 12' },
 ];
 
 const categories = [
@@ -99,7 +106,7 @@ const createTransactions = (data) => {
   });
 
   return Promise.all(newTransactions)
-    .then(() => ['Seeded DB with 4 Transactions, 4 Categories, and 4 Budgets']);
+    .then(() => ['Seeded DB with 12 Transactions, 5 Categories, 4 Budgets, and 3 Users']);
 };
 
 

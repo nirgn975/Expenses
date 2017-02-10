@@ -59,7 +59,7 @@ passport.use(
       },
     };
 
-    User.update({ email: profile.email }, newUser, { upsert: true })
+    User.update({ email: profile.emails[0].value }, newUser, { upsert: true })
       .then((savedUser) => {
         done(null, { token: accessToken, user: savedUser });
       }, (error) => {

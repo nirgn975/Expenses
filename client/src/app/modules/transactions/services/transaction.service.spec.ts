@@ -56,13 +56,20 @@ describe('TransactionService', () => {
         ]
       }];
 
+      const time = {
+        _id: {
+          month: 2,
+          year: 2017,
+        },
+      };
+
       mockBackend.connections.subscribe((connection) => {
         connection.mockRespond(new Response(new ResponseOptions({
           body: JSON.stringify(mockResponse)
         })));
       });
 
-      service.getTransactions().subscribe(transactions => {
+      service.getTransactionsByDate(time).subscribe(transactions => {
         expect(transactions.length).toEqual(2);
         expect(transactions[0].amount).toEqual(23);
         expect(transactions[0].type).toEqual('expense');
