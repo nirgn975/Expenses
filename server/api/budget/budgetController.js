@@ -11,7 +11,7 @@ exports.param = (req, res, next, id) => {
         res.json({
           message: `No budget with that id: ${id}`,
           budget: null,
-        })
+        });
       } else {
         req.budget = budget;
         next();

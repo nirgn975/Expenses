@@ -10,7 +10,7 @@ exports.param = (req, res, next, id) => {
         res.json({
           message: `No category with that id: ${id}`,
           category: null,
-        })
+        });
       } else {
         req.category = category;
         next();
