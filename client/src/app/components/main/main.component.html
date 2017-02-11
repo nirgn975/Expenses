@@ -16,8 +16,17 @@
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
-    <a (click)="logout()">logout</a>
-    <img class="user-profile-img" src="" alt="">
+    <h4>Hello {{user$.name}}!</h4>
+    <img class="user-profile-img" src="{{user$.profileImage}}" alt="">
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="logout()">
+        <md-icon>person</md-icon>
+        <span>Logout</span>
+      </button>
+    </md-menu>
   </md-toolbar>
 
   <router-outlet></router-outlet>

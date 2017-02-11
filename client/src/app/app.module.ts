@@ -4,8 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { reducer } from './reducers';
 
 import { ExpComponent } from './exp.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,7 +21,9 @@ import { BudgetsViewComponent } from './components/budgets-view/budgets-view.com
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
+import { UserEffects } from './effects/user';
 
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -31,10 +38,14 @@ import { LoginGuard } from './guards/login.guard';
     FormsModule,
     MaterialModule.forRoot(),
     AppRoutingModule,
+    StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(UserEffects),
   ],
   providers: [
     AuthGuard,
     LoginGuard,
+    UserService,
   ],
   bootstrap: [ExpComponent]
 })

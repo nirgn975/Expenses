@@ -1,4 +1,5 @@
 const User = require('./userModel');
+const _ = require('lodash');
 const logger = require('../../util/logger');
 
 exports.getByToken = (req, res, next) => {
@@ -22,6 +23,37 @@ exports.post = (req, res) => {
       });
     }, (error) => {
       logger.error([error]);
+      res.json(error);
+    });
+};
+
+exports.getOwn = (req, res) => {
+  User.findOne({ token: req.headers.token })
+    .then((user) => {
+      res.json(user);
+    }, (error) => {
+      res.json(error);
+    });
+};
+
+exports.put = (req, res) => {
+  const update = req.body;
+
+  User.findOne({ token: req.headers.token })
+    .then((user) => {
+      _.merge(user, update);
+
+      user.save((error, saved) => {
+        if (error) {
+          res.json(error);
+        } else {
+          res.json({
+            message: 'User successfully updated!',
+            user: saved,
+          });
+        }
+      });
+    }, (error) => {
       res.json(error);
     });
 };

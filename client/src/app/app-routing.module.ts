@@ -22,7 +22,6 @@ const routes: Routes = [
     component: MainComponent,
     canActivateChild: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'transactions', pathMatch: 'full' },
       { path: 'transactions', loadChildren: 'app/modules/transactions/transactions.module#TransactionsModule' },
       { path: 'budgets', component: BudgetsViewComponent, },
       { path: 'settings', component: SettingsViewComponent, },
