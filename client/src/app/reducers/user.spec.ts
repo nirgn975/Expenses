@@ -78,6 +78,5 @@ describe('reducers', () => {
         facebookId: '395055497552662'
       }});
   });
-
 });
 
