@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -36,8 +36,7 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromTransaction from './transaction';
-import * as fromTransactionMonth from './transaction-month';
+import * as fromUser from './user';
 
 
 /**
@@ -45,8 +44,7 @@ import * as fromTransactionMonth from './transaction-month';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  transaction: fromTransaction.State;
-  transactionMonth: fromTransactionMonth.State;
+  user: fromUser.State;
 }
 
 
@@ -58,8 +56,7 @@ export interface State {
  * the result from right to left.
  */
 const reducers = {
-  transaction: fromTransaction.reducer,
-  transactionMonth: fromTransactionMonth.reducer,
+  user: fromUser.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -89,5 +86,4 @@ export function reducer(state: any, action: any) {
  * }
  * ```
  */
-export const getTransactionState = (state: State) => state.transaction;
-export const getTransactionMonthState = (state: State) => state.transactionMonth;
+export const getUserState = (state: State) => state.user;

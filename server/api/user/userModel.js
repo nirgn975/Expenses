@@ -12,44 +12,17 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  facebook: {
-    id: String,
-    name: {
-      type: String,
-      lowercase: true,
-    },
-    profileImage: String,
-    location: String,
-    gender: String,
+  name: {
+    type: String,
+    lowercase: true,
   },
-  twitter: {
-    id: String,
-    name: {
-      type: String,
-      lowercase: true,
-    },
-    profileImage: String,
-    location: String,
-  },
-  google: {
-    id: String,
-    name: {
-      type: String,
-      lowercase: true,
-    },
-    profileImage: String,
-    location: String,
-    gender: String,
-  },
-  github: {
-    id: String,
-    name: {
-      type: String,
-      lowercase: true,
-    },
-    profileImage: String,
-    location: String,
-  },
+  profileImage: String,
+  location: String,
+  gender: String,
+  facebookId: String,
+  twitterId: String,
+  googleId: String,
+  githubId: String,
 });
 
 module.exports = mongoose.model('user', UserSchema);

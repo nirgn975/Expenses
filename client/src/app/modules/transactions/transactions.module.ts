@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 
 import { TransactionsComponent } from './transactions.component';
-import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
 
@@ -31,7 +30,6 @@ import { TransactionService } from './services/transaction.service';
   ],
   declarations: [
     TransactionsComponent,
-    TransactionListComponent,
     TransactionComponent,
     TransactionDetailComponent,
   ],

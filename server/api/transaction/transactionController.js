@@ -106,7 +106,7 @@ exports.getMonths = (req, res) => {
     if (error) {
       res.json(error);
     } else {
-      res.json(allMonths);
+      res.json(allMonths.reverse());
     }
   });
 };

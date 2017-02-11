@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { Transaction } from '../models/transaction';
-import { TransactionMonth } from '../models/transaction-month';
+import { User } from '../models/user';
 
 @Injectable()
-export class TransactionService {
+export class UserService {
 
   constructor(
     private http: Http,
@@ -18,18 +17,10 @@ export class TransactionService {
     return new RequestOptions({ headers: headers });
   }
 
-  getTransactionsByDate(time: TransactionMonth): Observable<Transaction[]> {
+  getOwenInfo(): Observable<User> {
     const options = this.appendToken();
 
-    return this.http.get(`/api/transaction/${time._id.year}/${time._id.month}`, options)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-
-  getTransactionsMonth(): Observable<TransactionMonth[]> {
-    const options = this.appendToken();
-
-    return this.http.get('/api/transaction/all-months', options)
+    return this.http.get('/api/user/me', options)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -37,4 +28,5 @@ export class TransactionService {
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }
+
 }
