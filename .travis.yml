@@ -28,7 +28,7 @@ services:
   - mongodb
 
 before_install:
-  - npm install -g npm@latest local-web-server codecov
+  - npm install -g npm@latest codecov
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -47,9 +47,8 @@ script:
   - cd ../client
   - npm run lint
   - npm run test
-  - ng build --prod --aot
-  - cd dist && ws --port 4200&
   - npm run e2e
+  - ng build --prod --aot
 
 after_script:
   - cd ../server && npm run coverage
