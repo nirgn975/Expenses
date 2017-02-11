@@ -7,7 +7,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { reducer } from '../../reducers';
 import { StoreModule } from '@ngrx/store';
 
-
 import { TransactionListComponent } from './transaction-list.component';
 
 describe('TransactionListComponent', () => {

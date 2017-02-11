@@ -24,10 +24,7 @@ export class TransactionListComponent implements DoCheck {
     this.transaction$ = store.select(fromRoot.getTransactionState);
 
     this.date = {
-      _id: {
-        month: 0,
-        year: 0,
-      }
+      _id: { month: 0, year: 0 }
     };
   }
 
@@ -39,10 +36,7 @@ export class TransactionListComponent implements DoCheck {
     if (this.date._id.year !== newYear || this.date._id.month !== newMonth) {
       // Save the new date
       this.date = {
-        _id: {
-          month: newMonth,
-          year: newYear,
-        }
+        _id: { month: newMonth,  year: newYear }
       };
 
       // Get the new transactions
