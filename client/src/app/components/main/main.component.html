@@ -1,23 +1,39 @@
 <md-sidenav-container fullscreen>
   <md-sidenav #start>
+    <div id="nav-hero">
+      <img class="user-profile-img" src="{{user$.profileImage}}" alt="{{user$.name}} profile image">
+      <h2>{{user$.name}}</h2>
+    </div>
+
     <md-list>
-      <md-list-item [routerLink]="['/home/transactions']" routerLinkActive="active"> Transactions </md-list-item>
-      <md-list-item [routerLink]="['/home/budgets']" routerLinkActive="active"> Budgets </md-list-item>
-      <md-list-item [routerLink]="['/home/settings']" routerLinkActive="active"> Settings </md-list-item>
+      <md-list-item [routerLink]="['/home/transactions']" routerLinkActive="active">
+        <md-icon>list</md-icon>
+        <span>Transactions</span>
+      </md-list-item>
+      <md-list-item [routerLink]="['/home/overview']" routerLinkActive="active">
+        <md-icon>timeline</md-icon>
+        <span>Overview</span>
+      </md-list-item>
+      <md-list-item [routerLink]="['/home/budgets']" routerLinkActive="active">
+        <md-icon>work</md-icon>
+        <span>Budgets</span>
+      </md-list-item>
+      <md-list-item [routerLink]="['/home/users']" routerLinkActive="active">
+        <md-icon>supervisor_account</md-icon>
+        <span>Users</span>
+      </md-list-item>
     </md-list>
   </md-sidenav>
 
   <md-toolbar color="primary">
     <button md-icon-button (click)="start.open()">
-      <md-icon> menu </md-icon>
+      <md-icon>menu</md-icon>
     </button>
     <span>Expenses</span>
 
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
-    <h4>Hello {{user$.name}}!</h4>
-    <img class="user-profile-img" src="{{user$.profileImage}}" alt="">
     <button md-icon-button [mdMenuTriggerFor]="menu">
       <md-icon>more_vert</md-icon>
     </button>
@@ -25,6 +41,10 @@
       <button md-menu-item (click)="logout()">
         <md-icon>person</md-icon>
         <span>Logout</span>
+      </button>
+      <button md-menu-item [routerLink]="['/home/settings']">
+        <md-icon>settings</md-icon>
+        <span>Settings</span>
       </button>
     </md-menu>
   </md-toolbar>

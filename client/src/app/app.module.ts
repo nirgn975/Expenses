@@ -16,7 +16,6 @@ import { ExpComponent } from './exp.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { SettingsViewComponent } from './components/settings-view/settings-view.component';
-import { BudgetsViewComponent } from './components/budgets-view/budgets-view.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
@@ -31,13 +30,12 @@ import { UserService } from './services/user.service';
     LoginComponent,
     MainComponent,
     SettingsViewComponent,
-    BudgetsViewComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    MaterialModule.forRoot(),
     AppRoutingModule,
+    MaterialModule.forRoot(),
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),
