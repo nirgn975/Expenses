@@ -12,5 +12,5 @@ describe('OverviewsModule', () => {
 
   it('should create an instance', () => {
     expect(overviewsModule).toBeTruthy();
-  })
+  });
 });
