@@ -58,7 +58,7 @@ export class TransactionsComponent implements OnInit {
     // Get months
     this.store.dispatch(new transactionAction.LoadTransactionMonthsAction());
 
-    // Move the tab to the last month
+    // Move the tab to the last year and month
     this.store.select(fromRoot.getTransactionMonthState).subscribe(
       res => {
         const lastYear = res[res.length - 1]._id.year;
