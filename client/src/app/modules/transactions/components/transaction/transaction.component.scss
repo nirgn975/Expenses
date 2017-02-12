@@ -1,0 +1,19 @@
+md-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+md-card-title {
+  font-size: 200%;
+}
+
+md-card-header,
+md-card-content {
+  flex-direction: column;
+}
+
+
+//md-card-actions {
+//  display: flex;
+//  justify-content: flex-end;
+//}

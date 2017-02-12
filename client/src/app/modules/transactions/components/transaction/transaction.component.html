@@ -1,3 +1,20 @@
-<p>
-  transaction works!
-</p>
+<md-card class="example-card">
+  <md-card-header>
+    <md-card-title>
+      {{transaction.amount}}
+      <span *ngIf="transaction.type == 'income'">+</span>
+      <span *ngIf="transaction.type == 'expense'">-</span>
+    </md-card-title>
+    <div class="category">
+      <md-icon>{{transaction.category.icon}}</md-icon>
+      <p>{{transaction.category.name}}</p>
+    </div>
+  </md-card-header>
+
+  <md-card-content>
+    <md-card-subtitle>{{transaction.date}}</md-card-subtitle>
+    <md-card-actions>
+      <button md-button>More</button>
+    </md-card-actions>
+  </md-card-content>
+</md-card>
