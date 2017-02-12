@@ -1,5 +1,11 @@
 <md-sidenav-container fullscreen>
   <md-sidenav #start>
+
+    <div id="nav-hero">
+      <img class="user-profile-img" src="{{user$.profileImage}}" alt="{{user$.name}} profile image">
+      <h2>{{user$.name}}</h2>
+    </div>
+
     <md-list>
       <md-list-item [routerLink]="['/home/transactions']" routerLinkActive="active">
         <md-icon>list</md-icon>
@@ -29,8 +35,6 @@
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
-    <h4>Hello {{user$.name}}!</h4>
-    <img class="user-profile-img" src="{{user$.profileImage}}" alt="">
     <button md-icon-button [mdMenuTriggerFor]="menu">
       <md-icon>more_vert</md-icon>
     </button>
