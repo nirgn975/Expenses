@@ -28,5 +28,4 @@ export class UserService {
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }
-
 }

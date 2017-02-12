@@ -1,11 +1,35 @@
+@import "../../../assets/vars";
+
 .fill-remaining-space {
   flex: 1 1 auto;
 }
 
-.user-profile-img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  margin: 0 10px 0 25px;
+#nav-hero {
+  width: 100%;
+  height: 20%;
+  background-color: $app-accent;
+  padding: 15% 5% 0 5%;
+
+  .user-profile-img {
+    border-radius: 50%;
+    width: 10vh;
+    height: 10vh;
+    object-fit: cover;
+  }
+
+  h2 {
+    margin: 5% 0;
+  }
+}
+
+md-sidenav {
+  width: 20vw;
+
+  md-icon {
+    margin-right: 10px;
+  }
+
+  md-list-item {
+    cursor: pointer;
+  }
 }
