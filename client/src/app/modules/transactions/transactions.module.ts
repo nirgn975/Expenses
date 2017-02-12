@@ -20,20 +20,20 @@ import { TransactionEffects } from './effects/transaction';
 import { TransactionService } from './services/transaction.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HttpModule,
-    MaterialModule.forRoot(),
-    StoreModule.provideStore(reducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(TransactionEffects),
-    TransactionsRoutingModule,
-  ],
   declarations: [
     TransactionsComponent,
     TransactionListComponent,
     TransactionComponent,
     TransactionDetailComponent,
+  ],
+  imports: [
+    CommonModule,
+    HttpModule,
+    TransactionsRoutingModule,
+    MaterialModule.forRoot(),
+    StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(TransactionEffects),
   ],
   providers: [
     TransactionService,

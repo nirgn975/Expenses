@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
-import { BudgetsViewComponent } from './components/budgets-view/budgets-view.component';
 import { SettingsViewComponent } from './components/settings-view/settings-view.component';
 
 import { AuthGuard } from './guards/auth.guard';
@@ -23,7 +22,9 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       { path: 'transactions', loadChildren: 'app/modules/transactions/transactions.module#TransactionsModule' },
-      { path: 'budgets', component: BudgetsViewComponent, },
+      { path: 'overview', loadChildren: 'app/modules/overviews/overviews.module#OverviewsModule' },
+      { path: 'budgets', loadChildren: 'app/modules/budgets/budgets.module#BudgetsModule' },
+      { path: 'users', loadChildren: 'app/modules/users/users.module#UsersModule' },
       { path: 'settings', component: SettingsViewComponent, },
     ]
   },

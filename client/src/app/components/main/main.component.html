@@ -2,8 +2,12 @@
   <md-sidenav #start>
     <md-list>
       <md-list-item [routerLink]="['/home/transactions']" routerLinkActive="active">
-        <md-icon>timeline</md-icon>
+        <md-icon>list</md-icon>
         <span>Transactions</span>
+      </md-list-item>
+      <md-list-item [routerLink]="['/home/overview']" routerLinkActive="active">
+        <md-icon>timeline</md-icon>
+        <span>Overview</span>
       </md-list-item>
       <md-list-item [routerLink]="['/home/budgets']" routerLinkActive="active">
         <md-icon>work</md-icon>
