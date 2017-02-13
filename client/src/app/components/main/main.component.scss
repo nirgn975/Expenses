@@ -33,3 +33,11 @@ md-sidenav {
     cursor: pointer;
   }
 }
+
+md-sidenav-container {
+  transform: none;
+
+  /deep/ .md-sidenav-content {
+    transform: none !important;
+  }
+}

@@ -1,6 +1,7 @@
 md-card {
   display: flex;
   justify-content: space-between;
+  margin: 2% 5%;
 }
 
 md-card-title {
@@ -11,9 +12,3 @@ md-card-header,
 md-card-content {
   flex-direction: column;
 }
-
-
-//md-card-actions {
-//  display: flex;
-//  justify-content: flex-end;
-//}

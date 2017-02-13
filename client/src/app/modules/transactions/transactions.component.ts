@@ -21,10 +21,6 @@ import { TransactionMonth } from './models/transaction-month';
     </nav>
     
     <router-outlet></router-outlet>
-    
-    <button md-fab>
-      <md-icon class="md-24">add</md-icon>
-    </button>
   `,
   styles: [`
     /deep/ .md-tab-header-pagination {
@@ -33,13 +29,6 @@ import { TransactionMonth } from './models/transaction-month';
     
     /deep/ md-tab-header.md-tab-header {
       border-bottom: none;
-    }
-    
-    button {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      margin: 10px;
     }
   `]
 })
