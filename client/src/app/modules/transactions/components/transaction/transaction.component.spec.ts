@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { MaterialModule } from '@angular/material';
 
 import { TransactionComponent } from './transaction.component';
 
@@ -11,6 +12,9 @@ describe('TransactionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MaterialModule.forRoot(),
+      ],
       declarations: [ TransactionComponent ]
     })
     .compileComponents();
@@ -19,6 +23,17 @@ describe('TransactionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TransactionComponent);
     component = fixture.componentInstance;
+
+    component.transaction = {
+      _id: '5891ce58165eb62d2b84760f',
+      amount: 23,
+      date: '2017-02-01T12:02:32.607Z',
+      type: 'expense',
+      description: 'description foo bar 1',
+      category: '5891ce58165eb62d2b847606',
+      __v: 0,
+      coordinates: [21, 22],
+    };
     fixture.detectChanges();
   });
 

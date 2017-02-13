@@ -6,5 +6,5 @@ export interface Transaction {
   description: string;
   category: string;
   __v: number;
-  coordinates: string;
+  coordinates: Array<number>;
 }
