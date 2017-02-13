@@ -6,11 +6,11 @@ describe('reducers', () => {
   it('should handle "Load Transaction" actions', () => {
     let state;
     state = reducer({
-      transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: ''}],
+      transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: []}],
       transactionMonth: [{_id: {month: 0, year: 0}}]
     }, {type: '[Transaction] Load Transaction'});
     expect(state).toEqual({
-      transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: ''}],
+      transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: []}],
       transactionMonth: [{_id: {month: 0, year: 0}}]
     });
   });
@@ -18,7 +18,7 @@ describe('reducers', () => {
   it('should handle "Load Transactions Success" action', () => {
     let state;
     state = reducer({
-      transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: ''}],
+      transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: []}],
       transactionMonth: []
     }, {
       payload: [{

@@ -24,10 +24,12 @@ describe('TransactionComponent', () => {
     fixture = TestBed.createComponent(TransactionComponent);
     component = fixture.componentInstance;
 
+    // Create a dummy transaction.
+    const now = new Date();
     component.transaction = {
       _id: '5891ce58165eb62d2b84760f',
       amount: 23,
-      date: '2017-02-01T12:02:32.607Z',
+      date: new Date(now.getTime() + (20 * 60 * 1000)).toISOString(),
       type: 'expense',
       description: 'description foo bar 1',
       category: '5891ce58165eb62d2b847606',
