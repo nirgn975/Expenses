@@ -121,9 +121,10 @@ exports.getByYearAndMonth = (req, res) => {
       $lte: lastDay,
     },
     user: req.user,
-  }).populate('category')
-    .exec()
-    .then((transactions) => {
+  })
+  .populate('category')
+  .exec()
+  .then((transactions) => {
     res.json(transactions);
   }, (error) => {
     res.json(error);
