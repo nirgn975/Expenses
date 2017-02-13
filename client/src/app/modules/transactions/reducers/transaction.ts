@@ -11,7 +11,7 @@ const initialState: State = [{
   description: '',
   category: '',
   __v: 0,
-  coordinates: '',
+  coordinates: [],
 }];
 
 export function reducer(state = initialState, action: transaction.Actions): State {
