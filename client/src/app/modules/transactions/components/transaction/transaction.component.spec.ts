@@ -9,6 +9,24 @@ import { TransactionComponent } from './transaction.component';
 describe('TransactionComponent', () => {
   let component: TransactionComponent;
   let fixture: ComponentFixture<TransactionComponent>;
+  let element: HTMLElement;
+  const transaction: any = {
+    _id: '58a173fb78d435e1c6575e08',
+    amount: 12.5,
+    date: new Date(new Date().getTime() - (20 * 60 * 1000)).toISOString(),
+    type: 'expense',
+    description: 'description foo bar 143',
+    category: {
+      _id: '58a173fa78d435e1c6575d73',
+      name: 'health',
+      icon: 'favorite',
+      user: '58a173fa78d435e1c6575d58',
+      __v: 0
+    },
+    user: '58a173fa78d435e1c6575d57',
+    __v: 0,
+    coordinates: [-79, -15]
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,21 +43,28 @@ describe('TransactionComponent', () => {
     component = fixture.componentInstance;
 
     // Create a dummy transaction.
-    const now = new Date();
-    component.transaction = {
-      _id: '5891ce58165eb62d2b84760f',
-      amount: 23,
-      date: new Date(now.getTime() + (20 * 60 * 1000)).toISOString(),
-      type: 'expense',
-      description: 'description foo bar 1',
-      category: '5891ce58165eb62d2b847606',
-      __v: 0,
-      coordinates: [21, 22],
-    };
+    component.transaction = transaction;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should see amount and a minus sign', () => {
+    element = fixture.debugElement.query(By.css('md-card-title')).nativeElement;
+    expect(element.textContent).toContain(transaction.amount);
+    expect(element.textContent).toContain('-');
+  });
+
+  it('should see the category name and icon', () => {
+    element = fixture.debugElement.query(By.css('.category')).nativeElement;
+    expect(element.textContent).toContain(transaction.category.name);
+    expect(element.textContent).toContain(transaction.category.icon);
+  });
+
+  it('should see the date in a momentjs now format', () => {
+    element = fixture.debugElement.query(By.css('md-card-subtitle')).nativeElement;
+    expect(element.textContent).toContain('20 minutes ago');
   });
 });
