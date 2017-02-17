@@ -103,7 +103,7 @@ describe('reducers', () => {
           _id: '58a173fa78d435e1c6575d73',
           name: 'health',
           icon: 'favorite',
-          color: 'red',
+          color: '#E91E63',
           user: '58a173fa78d435e1c6575d58',
           __v: 0
         },
@@ -120,7 +120,7 @@ describe('reducers', () => {
           _id: '58a173fa78d435e1c6575d59',
           name: 'salary',
           icon: 'account_balance',
-          color: 'blue',
+          color: '#009688',
           user: '58a173fa78d435e1c6575d56',
           __v: 0
         },
@@ -140,7 +140,7 @@ describe('reducers', () => {
           _id: '58a173fa78d435e1c6575d73',
           name: 'health',
           icon: 'favorite',
-          color: 'red',
+          color: '#E91E63',
           user: '58a173fa78d435e1c6575d58',
           __v: 0
         },
@@ -157,7 +157,7 @@ describe('reducers', () => {
           _id: '58a173fa78d435e1c6575d59',
           name: 'salary',
           icon: 'account_balance',
-          color: 'blue',
+          color: '#009688',
           user: '58a173fa78d435e1c6575d56',
           __v: 0
         },
@@ -174,4 +174,3 @@ describe('reducers', () => {
     });
   });
 });
-
