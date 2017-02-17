@@ -52,19 +52,19 @@ describe('TransactionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should see amount and a minus sign', () => {
+  it('should display amount and a minus sign', () => {
     element = fixture.debugElement.query(By.css('md-card-title')).nativeElement;
     expect(element.textContent).toContain(transaction.amount);
     expect(element.textContent).toContain('-');
   });
 
-  it('should see the category name and icon', () => {
+  it('should display the category name and icon', () => {
     element = fixture.debugElement.query(By.css('.category')).nativeElement;
     expect(element.textContent).toContain(transaction.category.name);
     expect(element.textContent).toContain(transaction.category.icon);
   });
 
-  it('should see the date in a momentjs now format', () => {
+  it('should display the date in a momentjs now format', () => {
     element = fixture.debugElement.query(By.css('md-card-subtitle')).nativeElement;
     expect(element.textContent).toContain('20 minutes ago');
   });

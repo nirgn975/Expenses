@@ -49,4 +49,9 @@ describe('TransactionDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display the Less button', () => {
+    element = fixture.debugElement.query(By.css('md-card-actions')).nativeElement;
+    expect(element.textContent).toContain('Less');
+  });
 });
