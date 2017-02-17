@@ -21,7 +21,7 @@ describe('TransactionComponent', () => {
       _id: '58a173fa78d435e1c6575d73',
       name: 'health',
       icon: 'favorite',
-      color: 'grey',
+      color: '#E91E63',
       user: '58a173fa78d435e1c6575d58',
       __v: 0
     },
@@ -64,8 +64,19 @@ describe('TransactionComponent', () => {
     expect(element.textContent).toContain(transaction.category.icon);
   });
 
+  it('should display the category background color as the chip background color', () => {
+    element = fixture.debugElement.query(By.css('md-chip')).nativeElement;
+    const rgbColor = hexToRgb(transaction.category.color);
+    expect(element.style['background-color']).toContain(rgbColor);
+  });
+
   it('should display the date in a momentjs now format', () => {
     element = fixture.debugElement.query(By.css('md-card-subtitle')).nativeElement;
     expect(element.textContent).toContain('20 minutes ago');
   });
 });
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})`;
+}
