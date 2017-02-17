@@ -13,6 +13,7 @@ const initialState: State = [{
     _id: '',
     name: '',
     icon: '',
+    color: '',
     user: '',
     __v: 0
   },

@@ -14,7 +14,7 @@ describe('SettingsViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MaterialModule.forRoot() ],
+      imports: [ MaterialModule ],
       declarations: [ SettingsViewComponent ]
     })
     .compileComponents();

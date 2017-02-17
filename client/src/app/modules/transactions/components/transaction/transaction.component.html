@@ -6,7 +6,12 @@
       <span *ngIf="transaction.type == 'expense'">-</span>
     </md-card-title>
     <div class="category">
-      <md-icon>{{transaction.category.icon}}</md-icon>
+      <md-chip-list>
+        <!--<md-chip color="{{transaction.category.color}}">-->
+        <md-chip>
+          <md-icon>{{transaction.category.icon}}</md-icon>
+        </md-chip>
+      </md-chip-list>
       <p>{{transaction.category.name}}</p>
     </div>
   </md-card-header>

@@ -16,7 +16,7 @@ import { BudgetListComponent } from './components/budget-list/budget-list.compon
   imports: [
     CommonModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     BudgetsRoutingModule,
   ],
   providers: [

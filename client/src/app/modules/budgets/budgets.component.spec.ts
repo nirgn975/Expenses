@@ -14,7 +14,7 @@ describe('BudgetsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        MaterialModule,
         RouterTestingModule,
       ],
       declarations: [ BudgetsComponent ]

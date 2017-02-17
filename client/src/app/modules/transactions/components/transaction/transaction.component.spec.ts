@@ -20,6 +20,7 @@ describe('TransactionComponent', () => {
       _id: '58a173fa78d435e1c6575d73',
       name: 'health',
       icon: 'favorite',
+      color: 'grey',
       user: '58a173fa78d435e1c6575d58',
       __v: 0
     },
@@ -31,7 +32,7 @@ describe('TransactionComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        MaterialModule,
       ],
       declarations: [ TransactionComponent ]
     })

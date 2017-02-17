@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MaterialModule.forRoot() ],
+      imports: [ MaterialModule ],
       declarations: [ LoginComponent ]
     })
     .compileComponents();

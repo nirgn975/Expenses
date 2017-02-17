@@ -15,7 +15,7 @@ import { OverviewsComponent } from './overviews.component';
     CommonModule,
     HttpModule,
     OverviewsRoutingModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
   ],
   providers: [
 
