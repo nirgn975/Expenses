@@ -59,6 +59,7 @@ describe(chalk.blue('Category'), () => {
     const category = {
       name: 'food',
       icon: 'burger',
+      color: '#F44336',
     };
 
     chai.request(server)
@@ -71,6 +72,7 @@ describe(chalk.blue('Category'), () => {
         res.body.category.should.have.property('_id');
         res.body.category.should.have.property('name');
         res.body.category.should.have.property('icon');
+        res.body.category.should.have.property('color');
 
         this.category = res.body.category;
         done();

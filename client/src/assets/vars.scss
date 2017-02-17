@@ -1,7 +1,14 @@
-@import '../styles.scss';
+@import '../styles';
 
 $app-primary: mat-color($expenses-app-primary);
 $app-accent: mat-color($expenses-app-accent);
 $app-warn: mat-color($expenses-app-warn);
 
 $app-neutral: mat-color($mat-grey, A200);
+
+@mixin transaction-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 2% 5%;
+  padding: 12px;
+}

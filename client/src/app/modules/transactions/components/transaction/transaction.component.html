@@ -1,25 +1,26 @@
-<md-card>
+<md-card *ngIf="!showDetail">
   <md-card-header>
     <md-card-title>
-      {{transaction.amount}}
+      {{ transaction.amount }}
       <span *ngIf="transaction.type == 'income'">+</span>
       <span *ngIf="transaction.type == 'expense'">-</span>
     </md-card-title>
     <div class="category">
       <md-chip-list>
-        <!--<md-chip color="{{transaction.category.color}}">-->
-        <md-chip>
-          <md-icon>{{transaction.category.icon}}</md-icon>
+        <md-chip [style.background-color]="transaction.category.color">
+          <md-icon>{{ transaction.category.icon }}</md-icon>
         </md-chip>
       </md-chip-list>
-      <p>{{transaction.category.name}}</p>
+      <p>{{ transaction.category.name }}</p>
     </div>
   </md-card-header>
 
   <md-card-content>
-    <md-card-subtitle>{{transactionDate}}</md-card-subtitle>
+    <md-card-subtitle>{{ transactionDate }}</md-card-subtitle>
     <md-card-actions>
-      <button md-button>More</button>
+      <button md-button (click)="showMore(true)">More</button>
     </md-card-actions>
   </md-card-content>
 </md-card>
+
+<exp-transaction-detail *ngIf="showDetail" [transaction]="transaction" (showDetail)="showMore($event)"></exp-transaction-detail>

@@ -11,6 +11,7 @@ import { Transaction } from '../../models/transaction';
 export class TransactionComponent implements OnInit {
   @Input() transaction: Transaction;
   public transactionDate: string;
+  public showDetail: Boolean = false;
 
   constructor() { }
 
@@ -26,5 +27,9 @@ export class TransactionComponent implements OnInit {
     } else {
       this.transactionDate = moment(this.transaction.date).calendar();
     }
+  }
+
+  showMore($event) {
+    this.showDetail = $event;
   }
 }

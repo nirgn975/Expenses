@@ -16,17 +16,17 @@ import { TransactionMonth } from './models/transaction-month';
          [routerLink]="['/home/transactions', currentTime._id.year, currentTime._id.month]"
          routerLinkActive #rla="routerLinkActive"
          [active]="rla.isActive">
-        {{currentTime._id.year}}-{{currentTime._id.month}}
+        {{ currentTime._id.year }}-{{ currentTime._id.month }}
       </a>
     </nav>
-    
+
     <router-outlet></router-outlet>
   `,
   styles: [`
     /deep/ .md-tab-header-pagination {
       box-shadow: none;
     }
-    
+
     /deep/ md-tab-header.md-tab-header {
       border-bottom: none;
     }
