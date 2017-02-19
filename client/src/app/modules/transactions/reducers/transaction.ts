@@ -9,9 +9,17 @@ const initialState: State = [{
   date: '',
   type: '',
   description: '',
-  category: '',
+  category: {
+    _id: '',
+    name: '',
+    icon: '',
+    color: '',
+    user: '',
+    __v: 0
+  },
+  user: '',
   __v: 0,
-  coordinates: '',
+  coordinates: [],
 }];
 
 export function reducer(state = initialState, action: transaction.Actions): State {

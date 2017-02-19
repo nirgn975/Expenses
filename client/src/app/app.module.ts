@@ -35,7 +35,7 @@ import { UserService } from './services/user.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),

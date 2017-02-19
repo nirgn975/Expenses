@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'exp-transaction-detail',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transaction-detail.component.scss']
 })
 export class TransactionDetailComponent implements OnInit {
+  @Input() transaction: Transaction;
+  @Output() showDetail = new EventEmitter<Boolean>();
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -11,7 +11,8 @@ import { Transaction } from '../../models/transaction';
 @Component({
   selector: 'exp-transaction-list',
   templateUrl: './transaction-list.component.html',
-  styleUrls: ['./transaction-list.component.scss']
+  styleUrls: ['./transaction-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionListComponent implements DoCheck {
   private transaction$: Observable<Transaction[]>;

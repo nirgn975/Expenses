@@ -22,6 +22,7 @@ describe(chalk.blue('Transaction'), () => {
     const category = {
       name: 'Salary',
       icon: 'money',
+      color: '#F44336',
     };
 
     const user = {

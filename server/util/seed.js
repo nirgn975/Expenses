@@ -4,46 +4,14 @@ const Budget = require('../api/budget/budgetModel');
 const User = require('../api/user/userModel');
 const _ = require('lodash');
 const logger = require('./logger');
+const dummyData = require('./dummyData');
+
+const transactions = dummyData.transactions;
+const categories = dummyData.categories;
+const budgets = dummyData.budgets;
+const users = dummyData.users;
 
 logger.log(['Seeding the Database']);
-
-const now = new Date();
-const nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 1);
-const transactions = [
-  { amount: 23, date: Date.now(), type: 'expense', coordinates: [21, 22], description: 'description foo bar 1' },
-  { amount: 54, date: Date.now(), type: 'income', coordinates: [21, 42], description: 'description foo bar 2' },
-  { amount: 76, date: Date.now(), type: 'expense', coordinates: [15, 12], description: 'description foo bar 3' },
-  { amount: 1009, date: Date.now(), type: 'income', coordinates: [-23, 76], description: 'description foo bar 4' },
-  { amount: 54, date: nextMonth, type: 'income', coordinates: [41, -17], description: 'description foo bar 5' },
-  { amount: 37, date: nextMonth, type: 'expense', coordinates: [-101, 92], description: 'description foo bar 6' },
-  { amount: 258, date: Date.now(), type: 'income', coordinates: [56, 2], description: 'description foo bar 7' },
-  { amount: 10, date: nextMonth, type: 'expense', coordinates: [-71, -13], description: 'description foo bar 8' },
-  { amount: 7, date: nextMonth, type: 'expense', coordinates: [-71, -13], description: 'description foo bar 9' },
-  { amount: 5, date: Date.now(), type: 'expense', coordinates: [-71, -13], description: 'description foo bar 10' },
-  { amount: 4.5, date: Date.now(), type: 'expense', coordinates: [-71, -13], description: 'description foo bar 11' },
-  { amount: 83, date: nextMonth, type: 'expense', coordinates: [-71, -13], description: 'description foo bar 12' },
-];
-
-const categories = [
-  { name: 'Salary', icon: 'salary' },
-  { name: 'Food', icon: 'food' },
-  { name: 'Clothing', icon: 'clothing' },
-  { name: 'Shopping', icon: 'shopping' },
-  { name: 'Going Out', icon: 'shopping' },
-];
-
-const budgets = [
-  { name: 'nir', limit: 500, currentAmount: 231 },
-  { name: 'adi', limit: 750, currentAmount: 112 },
-  { name: 'food', limit: 93, currentAmount: 13 },
-  { name: 'gooing out', limit: 235, currentAmount: 450 },
-];
-
-const users = [
-  { email: 'nir@galon.io', token: '123' },
-  { email: 'nirgn975@gmail.com', token: '1234' },
-  { email: 'adisaar3@gmail.com', token: '12345' },
-];
 
 const cleanDB = () => {
   logger.log(['... cleaning the DB']);
@@ -106,7 +74,7 @@ const createTransactions = (data) => {
   });
 
   return Promise.all(newTransactions)
-    .then(() => ['Seeded DB with 12 Transactions, 5 Categories, 4 Budgets, and 3 Users']);
+    .then(() => ['Seeded DB with 520 Transactions, 29 Categories, 4 Budgets, and 3 Users']);
 };
 
 

@@ -16,7 +16,7 @@ describe('TransactionsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        MaterialModule,
         RouterTestingModule,
         StoreModule.provideStore(reducer),
       ],
