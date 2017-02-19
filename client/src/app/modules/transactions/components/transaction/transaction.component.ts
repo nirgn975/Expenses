@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import * as moment from 'moment';
 
 import { Transaction } from '../../models/transaction';
@@ -6,7 +6,8 @@ import { Transaction } from '../../models/transaction';
 @Component({
   selector: 'exp-transaction',
   templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.scss']
+  styleUrls: ['./transaction.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionComponent implements OnInit {
   @Input() transaction: Transaction;

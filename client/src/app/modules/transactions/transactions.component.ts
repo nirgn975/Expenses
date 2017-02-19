@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -30,7 +30,8 @@ import { TransactionMonth } from './models/transaction-month';
     /deep/ md-tab-header.md-tab-header {
       border-bottom: none;
     }
-  `]
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsComponent implements OnInit {
   private transactionMonths$: Observable<TransactionMonth[]>;
