@@ -36,4 +36,9 @@ describe('TransactionListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display a div for all the transacations', () => {
+    const element: HTMLElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    expect(element.textContent).toContain('add');
+  });
 });

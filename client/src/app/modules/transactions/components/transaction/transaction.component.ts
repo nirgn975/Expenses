@@ -22,8 +22,8 @@ export class TransactionComponent implements OnInit {
 
     // Check if the year, month and day are the same as now
     if (originalTime.getFullYear() === now.getFullYear() &&
-      originalTime.getMonth() === now.getMonth() &&
-      originalTime.getDate() === now.getDate()) {
+        originalTime.getMonth() === now.getMonth() &&
+        originalTime.getDate() === now.getDate()) {
       this.transactionDate = moment(this.transaction.date).fromNow();
     } else {
       this.transactionDate = moment(this.transaction.date).calendar();
