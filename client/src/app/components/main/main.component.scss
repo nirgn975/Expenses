@@ -43,7 +43,7 @@ md-sidenav {
 md-sidenav-container {
   transform: none;
 
-  /deep/ .md-sidenav-content {
+  /deep/ .mat-sidenav-content {
     transform: none !important;
   }
 }

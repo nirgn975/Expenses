@@ -38,7 +38,7 @@ describe('TransactionListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display a div for all the transacations', () => {
+  it('should display an add button', () => {
     const element: HTMLElement = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(element.textContent).toContain('add');
   });

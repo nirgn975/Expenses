@@ -320,7 +320,6 @@ const transactions = [
   { amount: 17, date: new Date(now.getFullYear(), now.getMonth() + 3, 1), type: 'expense', coordinates: [-74, -15], description: 'description foo bar 318' },
   { amount: 62, date: new Date(now.getFullYear(), now.getMonth() + 3, 1), type: 'expense', coordinates: [-75, -15], description: 'description foo bar 319' },
   { amount: 9, date: new Date(now.getFullYear(), now.getMonth() + 3, 1), type: 'expense', coordinates: [-76, -15], description: 'description foo bar 320' },
-
   { amount: 23, date: Date.now(), type: 'expense', coordinates: [21, 22], description: 'description foo bar 321' },
   { amount: 54, date: new Date().setTime(now.getTime() + (20 * 60 * 1000)), type: 'income', coordinates: [21, 42], description: 'description foo bar 322' },
   { amount: 76, date: Date.now(), type: 'expense', coordinates: [15, 12], description: 'description foo bar 323' },
@@ -521,7 +520,6 @@ const transactions = [
   { amount: 7.2, date: new Date(now.getFullYear(), now.getMonth() + 7, 1), type: 'expense', coordinates: [-77, -10], description: 'description foo bar 518' },
   { amount: 81.9, date: new Date(now.getFullYear(), now.getMonth() + 7, 1), type: 'expense', coordinates: [-65, -19], description: 'description foo bar 519' },
   { amount: 6, date: new Date(now.getFullYear(), now.getMonth() + 7, 1), type: 'expense', coordinates: [-66, -12], description: 'description foo bar 520' },
-
 ];
 
 const categories = [
