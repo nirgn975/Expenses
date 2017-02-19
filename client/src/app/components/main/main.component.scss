@@ -9,12 +9,18 @@
   height: 20%;
   background-color: $app-accent;
   padding: 15% 5% 0 5%;
+  position: relative;
+
+  h2,
+  .user-profile-img {
+    position: absolute;
+    bottom: 0;
+  }
 
   .user-profile-img {
     border-radius: 50%;
-    width: 10vh;
-    height: 10vh;
     object-fit: cover;
+    margin: 15% 0;
   }
 
   h2 {
@@ -31,5 +37,13 @@ md-sidenav {
 
   md-list-item {
     cursor: pointer;
+  }
+}
+
+md-sidenav-container {
+  transform: none;
+
+  /deep/ .mat-sidenav-content {
+    transform: none !important;
   }
 }

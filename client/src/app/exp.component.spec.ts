@@ -10,7 +10,7 @@ describe('ExpComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        MaterialModule,
         RouterTestingModule,
       ],
       declarations: [ ExpComponent ],

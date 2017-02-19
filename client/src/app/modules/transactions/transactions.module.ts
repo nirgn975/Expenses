@@ -30,7 +30,7 @@ import { TransactionService } from './services/transaction.service';
     CommonModule,
     HttpModule,
     TransactionsRoutingModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(TransactionEffects),

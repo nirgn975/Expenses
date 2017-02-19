@@ -36,7 +36,14 @@ describe('TransactionService', () => {
         'date': '2017-02-01T12:02:32.607Z',
         'type': 'expense',
         'description': 'description foo bar 1',
-        'category': '5891ce58165eb62d2b847606',
+        'category': {
+          '_id': '58a173fa78d435e1c6575d73',
+          'name': 'health',
+          'icon': 'favorite',
+          'color': '#E91E63',
+          'user': '58a173fa78d435e1c6575d58',
+          '__v': 0
+        },
         '__v': 0,
         'coordinates': [
           21,
@@ -48,7 +55,14 @@ describe('TransactionService', () => {
         'date': '2017-02-01T12:02:32.607Z',
         'type': 'income',
         'description': 'description foo bar 2',
-        'category': '5891ce58165eb62d2b847607',
+        'category': {
+          '_id': '58a173fa78d435e1c6575d59',
+          'name': 'salary',
+          'icon': 'account_balance',
+          'color': '#009688',
+          'user': '58a173fa78d435e1c6575d56',
+          '__v': 0
+        },
         '__v': 0,
         'coordinates': [
           21,
@@ -73,8 +87,10 @@ describe('TransactionService', () => {
         expect(transactions.length).toEqual(2);
         expect(transactions[0].amount).toEqual(23);
         expect(transactions[0].type).toEqual('expense');
+        expect(transactions[0].category.name).toEqual('health');
         expect(transactions[1].amount).toEqual(54);
         expect(transactions[1].type).toEqual('income');
+        expect(transactions[1].category.name).toEqual('salary');
       });
   }));
 

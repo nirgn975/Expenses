@@ -1,4 +1,5 @@
 /* tslint:disable:no-unused-variable */
+import 'hammerjs';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -9,13 +10,13 @@ import { LoginComponent } from './login.component';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let debug: DebugElement;
   let debugs: DebugElement[];
+  let debug: DebugElement;
   let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MaterialModule.forRoot() ],
+      imports: [ MaterialModule ],
       declarations: [ LoginComponent ]
     })
     .compileComponents();

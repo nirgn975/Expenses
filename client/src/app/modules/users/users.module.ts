@@ -15,7 +15,7 @@ import { UsersComponent } from './users.component';
     CommonModule,
     HttpModule,
     UsersRoutingModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
   ],
   providers: [
 

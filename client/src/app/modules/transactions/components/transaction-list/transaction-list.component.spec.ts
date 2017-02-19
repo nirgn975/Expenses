@@ -1,4 +1,6 @@
 /* tslint:disable:no-unused-variable */
+import 'hammerjs';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -16,11 +18,12 @@ describe('TransactionListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        MaterialModule,
         RouterTestingModule,
         StoreModule.provideStore(reducer),
       ],
-      declarations: [ TransactionListComponent ]
+      declarations: [ TransactionListComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
       .compileComponents();
   }));
@@ -33,5 +36,10 @@ describe('TransactionListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display an add button', () => {
+    const element: HTMLElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    expect(element.textContent).toContain('add');
   });
 });

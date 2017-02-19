@@ -1,8 +1,14 @@
-@import '~@angular/material/core/theming/theming';
-@import '../styles.scss';
+@import '../styles';
 
-$app-primary: md-color($candy-app-primary);
-$app-accent: md-color($candy-app-accent);
-$app-warn: md-color($candy-app-warn);
+$app-primary: mat-color($expenses-app-primary);
+$app-accent: mat-color($expenses-app-accent);
+$app-warn: mat-color($expenses-app-warn);
 
-$app-neutral: md-color($md-grey, A200);
+$app-neutral: mat-color($mat-grey, A200);
+
+@mixin transaction-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 2% 5%;
+  padding: 12px;
+}

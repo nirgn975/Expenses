@@ -1,3 +1,7 @@
-<div *ngFor="let transaction of transaction$ | async" >
-  <p>{{transaction.description}}</p>
+<div *ngFor="let transaction of transaction$ | async">
+  <exp-transaction [transaction]="transaction"></exp-transaction>
 </div>
+
+<button md-fab>
+  <md-icon class="md-24">add</md-icon>
+</button>
