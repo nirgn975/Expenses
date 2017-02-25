@@ -43,6 +43,13 @@ GITHUB_APP_ID=12345
 GITHUB_APP_SECRET=12345
 ```
 
+To see the Google Maps features, add your [Google Maps API Key](https://developers.google.com/maps/web/) in `transactions.module.ts` file:
+```
+AgmCoreModule.forRoot({
+  apiKey: 'YouApiKey'
+})
+```
+
 
 **Server**
 

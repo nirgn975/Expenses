@@ -17,7 +17,20 @@ const initialState: State = [{
     user: '',
     __v: 0
   },
-  user: '',
+  user: {
+    _id: '',
+    __v: 0,
+    email: '',
+    token: '',
+    name: '',
+    profileImage: '',
+    location: '',
+    gender: '',
+    facebookId: '',
+    twitterId: '',
+    googleId: '',
+    githubId: '',
+  },
   __v: 0,
   coordinates: [],
 }];
