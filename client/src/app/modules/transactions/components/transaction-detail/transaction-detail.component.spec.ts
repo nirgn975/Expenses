@@ -22,11 +22,24 @@ describe('TransactionDetailComponent', () => {
       _id: '58a173fa78d435e1c6575d73',
       name: 'health',
       icon: 'favorite',
-      color: 'grey',
+      color: '#E91E63',
       user: '58a173fa78d435e1c6575d58',
       __v: 0
     },
-    user: '58a173fa78d435e1c6575d57',
+    user: {
+      _id: '58b13f4c75807f236705f6c5c',
+      __v: 0,
+      email: 'adisaar3@gmail.com',
+      token: 'EAAR4ZBkaWvfABABEqyAaZABZBbFsdy4ZCO32',
+      name: 'Adi Saar',
+      profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/g',
+      location: 'Israel',
+      gender: 'female',
+      facebookId: '3920554077552162',
+      twitterId: '',
+      googleId: '',
+      githubId: '',
+    },
     __v: 0,
     coordinates: [-79, -15]
   };
@@ -57,4 +70,42 @@ describe('TransactionDetailComponent', () => {
     element = fixture.debugElement.query(By.css('md-card-actions')).nativeElement;
     expect(element.textContent).toContain('Less');
   });
+
+  it('should display amount and a minus sign', () => {
+    element = fixture.debugElement.query(By.css('md-card-title')).nativeElement;
+    expect(element.textContent).toContain(transaction.amount);
+    expect(element.textContent).toContain('-');
+  });
+
+  it('should display the category name and icon', () => {
+    element = fixture.debugElement.query(By.css('.category')).nativeElement;
+    expect(element.textContent).toContain(transaction.category.name);
+    expect(element.textContent).toContain(transaction.category.icon);
+  });
+
+  it('should display the category background color as the chip background color', () => {
+    element = fixture.debugElement.query(By.css('md-chip')).nativeElement;
+    const rgbColor = hexToRgb(transaction.category.color);
+    expect(element.style['background-color']).toContain(rgbColor);
+  });
+
+  it('should display the date in a momentjs now format', () => {
+    element = fixture.debugElement.query(By.css('md-card-subtitle')).nativeElement;
+    expect(element.textContent).toContain('20 minutes ago');
+  });
+
+  it('should display the description', () => {
+    element = fixture.debugElement.query(By.css('.description')).nativeElement;
+    expect(element.textContent).toContain(transaction.description);
+  });
+
+  it('should display a Google map', () => {
+    element = fixture.debugElement.query(By.css('#map')).nativeElement;
+    expect(element.textContent).toContain('');
+  });
 });
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})`;
+}
