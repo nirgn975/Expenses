@@ -20,7 +20,20 @@ describe('reducers', () => {
           user: '',
           __v: 0
         },
-        user: '',
+        user: {
+          _id: '',
+          __v: 0,
+          email: '',
+          token: '',
+          name: '',
+          profileImage: '',
+          location: '',
+          gender: '',
+          facebookId: '',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: []
       }],
@@ -53,7 +66,20 @@ describe('reducers', () => {
           user: '',
           __v: 0
         },
-        user: '',
+        user: {
+          _id: '',
+          __v: 0,
+          email: '',
+          token: '',
+          name: '',
+          profileImage: '',
+          location: '',
+          gender: '',
+          facebookId: '',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: []
       }],
@@ -83,7 +109,20 @@ describe('reducers', () => {
           user: '',
           __v: 0
         },
-        user: '',
+        user: {
+          _id: '',
+          __v: 0,
+          email: '',
+          token: '',
+          name: '',
+          profileImage: '',
+          location: '',
+          gender: '',
+          facebookId: '',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: []
       }],
@@ -107,7 +146,20 @@ describe('reducers', () => {
           user: '58a173fa78d435e1c6575d58',
           __v: 0
         },
-        user: '58a173fa78d435e1c6575d57',
+        user: {
+          _id: '58b13a2c75807f66705f6c5c',
+          __v: 0,
+          email: 'nirgn975@gmail.com',
+          token: 'EAAR4ZBkqEW8ABABEqyAaZABZBbFsy4ZCO32',
+          name: 'Nir Galon',
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p',
+          location: 'Ramat Gan',
+          gender: 'male',
+          facebookId: '395055497552662',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: [-79, -15]
       }, {
@@ -124,7 +176,20 @@ describe('reducers', () => {
           user: '58a173fa78d435e1c6575d56',
           __v: 0
         },
-        user: '58a173fa78d435e1c6575d57',
+        user: {
+          _id: '58b13f4c75807f236705f6c5c',
+          __v: 0,
+          email: 'adisaar3@gmail.com',
+          token: 'EAAR4ZBkaWvfABABEqyAaZABZBbFsdy4ZCO32',
+          name: 'Adi Saar',
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/g',
+          location: 'Israel',
+          gender: 'female',
+          facebookId: '3920554077552162',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: [-77, -17]
       }], type: '[Transaction] Load Transactions Success'
@@ -144,7 +209,20 @@ describe('reducers', () => {
           user: '58a173fa78d435e1c6575d58',
           __v: 0
         },
-        user: '58a173fa78d435e1c6575d57',
+        user: {
+          _id: '58b13a2c75807f66705f6c5c',
+          __v: 0,
+          email: 'nirgn975@gmail.com',
+          token: 'EAAR4ZBkqEW8ABABEqyAaZABZBbFsy4ZCO32',
+          name: 'Nir Galon',
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p',
+          location: 'Ramat Gan',
+          gender: 'male',
+          facebookId: '395055497552662',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: [-79, -15]
       }, {
@@ -161,7 +239,20 @@ describe('reducers', () => {
           user: '58a173fa78d435e1c6575d56',
           __v: 0
         },
-        user: '58a173fa78d435e1c6575d57',
+        user: {
+          _id: '58b13f4c75807f236705f6c5c',
+          __v: 0,
+          email: 'adisaar3@gmail.com',
+          token: 'EAAR4ZBkaWvfABABEqyAaZABZBbFsdy4ZCO32',
+          name: 'Adi Saar',
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/g',
+          location: 'Israel',
+          gender: 'female',
+          facebookId: '3920554077552162',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
         __v: 0,
         coordinates: [-77, -17]
       }],

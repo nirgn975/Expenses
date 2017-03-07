@@ -5,6 +5,7 @@ const logger = require('../../util/logger');
 exports.params = (req, res, next, id) => {
   Transaction.findById(id)
     .populate('category')
+    .populate('user')
     .exec()
     .then((transaction) => {
       if (!transaction) {
@@ -36,7 +37,8 @@ exports.get = (req, res) => {
       $lte: lastDay,
     },
     user: req.user,
-  }).then((transactions) => {
+  })
+  .then((transactions) => {
     res.json(transactions);
   }, (error) => {
     res.json(error);
@@ -123,6 +125,7 @@ exports.getByYearAndMonth = (req, res) => {
     user: req.user,
   })
   .populate('category')
+  .populate('user')
   .exec()
   .then((transactions) => {
     res.json(transactions);
@@ -132,7 +135,7 @@ exports.getByYearAndMonth = (req, res) => {
 };
 
 exports.transactionPermissions = (req, res, next) => {
-  if (req.user._id.toString() === req.transaction.user.toString()) {
+  if (req.user._id.toString() === req.transaction.user._id.toString()) {
     next();
   } else {
     res.status(403);

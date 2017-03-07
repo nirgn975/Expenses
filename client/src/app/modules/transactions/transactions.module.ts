@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { TransactionsRoutingModule } from './transactions-routing.module';
 
@@ -34,6 +35,9 @@ import { TransactionService } from './services/transaction.service';
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(TransactionEffects),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCRnQ6EoWwKKgxj2lF6OZgKZSNEd5ypYcw'
+    })
   ],
   providers: [
     TransactionService,

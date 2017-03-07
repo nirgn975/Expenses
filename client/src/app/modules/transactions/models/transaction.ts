@@ -1,4 +1,5 @@
 import { Category } from './category';
+import { User } from '../../../models/user';
 
 export interface Transaction {
   _id: string;
@@ -7,7 +8,7 @@ export interface Transaction {
   type: string;
   description: string;
   category: Category;
-  user: string;
+  user: User;
   __v: number;
   coordinates: Array<number>;
 }
