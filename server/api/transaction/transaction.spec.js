@@ -152,6 +152,7 @@ describe(chalk.blue('Transaction'), () => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have.property('_id').equal(someTransactionId);
+        res.body.user.should.have.property('_id').equal(this.user._id);
         done();
       });
   });

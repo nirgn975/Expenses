@@ -1,10 +1,44 @@
 <md-card>
-  <p>
-    transaction-detail works!
-  </p>
-  <md-card-content>
-    <md-card-actions>
-      <button md-button (click)="showDetail.emit(false)">Less</button>
-    </md-card-actions>
-  </md-card-content>
+  <div id="header">
+    <md-card-header>
+      <md-card-title>
+        {{ transaction.amount }}
+        <span *ngIf="transaction.type == 'income'">+</span>
+        <span *ngIf="transaction.type == 'expense'">-</span>
+      </md-card-title>
+      <div class="category">
+        <md-chip-list>
+          <md-chip [style.background-color]="transaction.category.color">
+            <md-icon>{{ transaction.category.icon }}</md-icon>
+          </md-chip>
+        </md-chip-list>
+        <p>{{ transaction.category.name }}</p>
+      </div>
+      <div class="description">
+        <p><span>Description: </span>{{ transaction.description }}</p>
+      </div>
+    </md-card-header>
+    <md-card-content>
+      <md-card-subtitle>{{ transactionDate }}</md-card-subtitle>
+      <md-card-subtitle><span>User: </span>{{ transaction.user.name }}</md-card-subtitle>
+    </md-card-content>
+  </div>
+
+  <div id="map">
+    <sebm-google-map
+      [latitude]="transaction.coordinates[0]"
+      [longitude]="transaction.coordinates[1]"
+      [zoom]="17"
+      [scrollwheel]="false"
+      [streetViewControl]="false">
+      <sebm-google-map-marker
+        [latitude]="transaction.coordinates[0]"
+        [longitude]="transaction.coordinates[1]">
+      </sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+
+  <md-card-actions>
+    <button md-button (click)="showDetail.emit(false)">Less</button>
+  </md-card-actions>
 </md-card>
