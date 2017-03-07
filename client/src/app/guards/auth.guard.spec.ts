@@ -6,7 +6,7 @@ import { AuthGuard } from './auth.guard';
 describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuard]
+      providers: [ AuthGuard ]
     });
   });
 
@@ -26,20 +26,34 @@ describe('AuthGuard', () => {
   }));
 
   it('should allow access when token is in cookie', inject([AuthGuard], (guard: AuthGuard) => {
-    // Set token in a cookie
-    document.cookie = 'userToken=12345; expires=' + new Date().toUTCString() + '; path=/';
+    cleanLocalStorageAndCreateCookie('userToken', '12345', 1);
 
     expect(guard.canActivateChild()).toBeTruthy();
   }));
 
-  it('should save token from cookie in local storage', () => {
+  it('should save token from cookie in local storage', inject([AuthGuard], (guard: AuthGuard) => {
     const token = '12345';
+    cleanLocalStorageAndCreateCookie('userToken', token, 1);
 
-    // Set token in a cookie
-    document.cookie = 'userToken=' + token + '; expires=' + new Date().toUTCString() + '; path=/';
+    // Call the guard
+    guard.canActivateChild();
 
     // Get the token from localStorage
     const localStorageToken = localStorage.getItem('userToken');
     expect(localStorageToken).toEqual(token);
-  });
+  }));
 });
+
+function cleanLocalStorageAndCreateCookie(name: string, value: string, expireDays: number) {
+  // Remove old userToken from localStorageToken
+  localStorage.removeItem('userToken');
+
+  // Set token in a cookie
+  let expires = '';
+  if (expireDays) {
+    const date = new Date();
+    date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
+    expires = '; expires=' + date.toUTCString();
+  }
+  document.cookie = name + '=' + value + expires + '; path=/';
+}

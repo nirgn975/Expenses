@@ -36,7 +36,7 @@ import { TransactionService } from './services/transaction.service';
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(TransactionEffects),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyCRnQ6EoWwKKgxj2lF6OZgKZSNEd5ypYcw'
     })
   ],
   providers: [
