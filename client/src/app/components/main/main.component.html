@@ -8,19 +8,19 @@
     <md-list>
       <md-list-item [routerLink]="['/home/transactions']" routerLinkActive="active">
         <md-icon>list</md-icon>
-        <span>Transactions</span>
+        <span i18n>Transactions</span>
       </md-list-item>
       <md-list-item [routerLink]="['/home/overview']" routerLinkActive="active">
         <md-icon>timeline</md-icon>
-        <span>Overview</span>
+        <span i18n>Overview</span>
       </md-list-item>
       <md-list-item [routerLink]="['/home/budgets']" routerLinkActive="active">
         <md-icon>work</md-icon>
-        <span>Budgets</span>
+        <span i18n>Budgets</span>
       </md-list-item>
       <md-list-item [routerLink]="['/home/users']" routerLinkActive="active">
         <md-icon>supervisor_account</md-icon>
-        <span>Users</span>
+        <span i18n>Users</span>
       </md-list-item>
     </md-list>
   </md-sidenav>
@@ -29,7 +29,7 @@
     <button md-icon-button (click)="start.open()">
       <md-icon>menu</md-icon>
     </button>
-    <span>Expenses</span>
+    <span i18n>Expenses</span>
 
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
@@ -40,11 +40,11 @@
     <md-menu #menu="mdMenu">
       <button md-menu-item (click)="logout()">
         <md-icon>person</md-icon>
-        <span>Logout</span>
+        <span i18n>Logout</span>
       </button>
       <button md-menu-item [routerLink]="['/home/settings']">
         <md-icon>settings</md-icon>
-        <span>Settings</span>
+        <span i18n>Settings</span>
       </button>
     </md-menu>
   </md-toolbar>
