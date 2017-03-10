@@ -1,0 +1,16 @@
+<md-card *ngIf="!showDetail">
+  <md-card-header>
+    <md-card-title>
+      {{ 'bar' }}
+    </md-card-title>
+  </md-card-header>
+
+  <md-card-content>
+    <md-card-subtitle>{{ 'foo' }}</md-card-subtitle>
+    <md-card-actions>
+      <button md-button (click)="showMore(true)">More</button>
+    </md-card-actions>
+  </md-card-content>
+</md-card>
+
+<!-- <exp-transaction-detail *ngIf="showDetail" [transaction]="transaction" (showDetail)="showMore($event)"></exp-transaction-detail> -->

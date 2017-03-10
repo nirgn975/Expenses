@@ -24,7 +24,9 @@ exports.param = (req, res, next, id) => {
 };
 
 exports.get = (req, res) => {
-  Budget.find({})
+  Budget.find({
+    user: req.user,
+  })
     .then((budgets) => {
       res.json(budgets);
     }, (error) => {
