@@ -21,6 +21,7 @@
   "bugs": {
     "url": "https://github.com/nirgn975/Expenses/issues"
   },
+  "homepage": "https://github.com/nirgn975/Expenses#readme",
   "dependencies": {
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
