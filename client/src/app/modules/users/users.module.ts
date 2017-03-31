@@ -17,8 +17,6 @@ import { UsersComponent } from './users.component';
     UsersRoutingModule,
     MaterialModule,
   ],
-  providers: [
-
-  ],
+  providers: [],
 })
 export class UsersModule { }

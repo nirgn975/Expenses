@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async, inject } from '@angular/core/testing';
-import { TransactionService } from './transaction.service';
+import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule, Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+
+import { TransactionService } from './transaction.service';
 
 describe('TransactionService', () => {
   beforeEach(() => {
@@ -121,5 +120,5 @@ describe('TransactionService', () => {
         expect(transactionMonths[1]._id.month).toEqual(2);
         expect(transactionMonths[1]._id.year).toEqual(2017);
       });
-    }));
+  }));
 });

@@ -12,11 +12,11 @@ const initialState: State = [{
 
 export function reducer(state = initialState, action: transaction.Actions): State {
   switch (action.type) {
-    case transaction.ActionTypes.LOAD_TRANSACTION_MONTHS: {
+    case transaction.LOAD_TRANSACTION_MONTHS: {
       return initialState;
     }
 
-    case transaction.ActionTypes.LOAD_TRANSACTION_MONTHS_SUCCESS: {
+    case transaction.LOAD_TRANSACTION_MONTHS_SUCCESS: {
       return action.payload;
     }
 

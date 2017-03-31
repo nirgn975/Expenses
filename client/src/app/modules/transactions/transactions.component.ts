@@ -34,7 +34,7 @@ import { TransactionMonth } from './models/transaction-month';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsComponent implements OnInit {
-  private transactionMonths$: Observable<TransactionMonth[]>;
+  public transactionMonths$: Observable<TransactionMonth[]>;
 
   constructor(
     private store: Store<fromRoot.State>,
