@@ -1,10 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 import { EffectsTestingModule } from '@ngrx/effects/testing';
 
-import { TransactionService } from './transaction.service';
 import { TransactionEffects } from './transaction';
+import { TransactionService } from '../services/transaction.service';
 
-describe('TransactionService', () => {
+describe('TransactionEffects', () => {
+  const transactionServiceStub = {};
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -17,7 +19,7 @@ describe('TransactionService', () => {
     });
   });
 
-  it('should ...', inject([TransactionService], (service: TransactionService) => {
+  it('should create the service', inject([TransactionEffects], (service: TransactionEffects) => {
     expect(service).toBeTruthy();
   }));
 });

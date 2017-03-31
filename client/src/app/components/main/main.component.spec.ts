@@ -52,7 +52,6 @@ describe('MainComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('should display those nav buttons, in that order, with those icons and links', () => {
     const links = [
       { url: '/home/transactions', icon: 'list', text: 'Transactions', },

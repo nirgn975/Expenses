@@ -1,19 +1,23 @@
 import { TestBed, async } from '@angular/core/testing';
+import { MaterialModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { AppComponent } from './app.component';
+import { ExpComponent } from './exp.component';
 
-describe('AppComponent', () => {
+describe('ExpComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
+      imports: [
+        MaterialModule,
+        RouterTestingModule,
       ],
+      declarations: [ ExpComponent ],
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  it('should create the exp', async(() => {
+    const fixture = TestBed.createComponent(ExpComponent);
+    const exp = fixture.debugElement.componentInstance;
+    expect(exp).toBeTruthy();
   }));
 });
