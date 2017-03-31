@@ -1,4 +1,3 @@
-/* tslint:disable:no-unused-variable */
 import 'hammerjs';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -52,6 +51,7 @@ describe('MainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 
   it('should display those nav buttons, in that order, with those icons and links', () => {
     const links = [
