@@ -23,8 +23,6 @@ import { LoginGuard } from './guards/login.guard';
 import { UserEffects } from './effects/user';
 
 import { UserService } from './services/user.service';
-import { OverviewsComponent } from './modules/overviews/overviews.component';
-import { TransactionsComponent } from './modules/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +30,6 @@ import { TransactionsComponent } from './modules/transactions/transactions.compo
     LoginComponent,
     MainComponent,
     SettingsViewComponent,
-    OverviewsComponent,
-    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
