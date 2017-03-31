@@ -15,7 +15,7 @@ import { Transaction } from '../../models/transaction';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionListComponent implements DoCheck {
-  private transaction$: Observable<Transaction[]>;
+  public transaction$: Observable<Transaction[]>;
   private date: TransactionMonth;
 
   constructor(

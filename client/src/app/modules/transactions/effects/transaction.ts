@@ -16,13 +16,13 @@ export class TransactionEffects {
 
   @Effect()
   loadTransaction$: Observable<Action>= this.actions$
-    .ofType(transaction.ActionTypes.LOAD_TRANSACTION)
+    .ofType(transaction.LOAD_TRANSACTION)
     .switchMap((time) => this.transactionService.getTransactionsByDate(time.payload))
     .map(transactions => new transaction.LoadTransactionSuccessAction(transactions));
 
   @Effect()
   loadTransactionsMonth$: Observable<Action>= this.actions$
-    .ofType(transaction.ActionTypes.LOAD_TRANSACTION_MONTHS)
+    .ofType(transaction.LOAD_TRANSACTION_MONTHS)
     .switchMap(() => this.transactionService.getTransactionsMonth())
     .map(months => new transaction.LoadTransactionMonthsSuccessAction(months));
 }

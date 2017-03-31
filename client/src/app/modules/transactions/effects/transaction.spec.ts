@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async, inject } from '@angular/core/testing';
+import { EffectsTestingModule } from '@ngrx/effects/testing';
+
 import { TransactionEffects } from './transaction';
 import { TransactionService } from '../services/transaction.service';
-import { EffectsTestingModule } from '@ngrx/effects/testing';
 
 describe('TransactionEffects', () => {
   const transactionServiceStub = {};
