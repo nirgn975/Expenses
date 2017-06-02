@@ -8,7 +8,7 @@ describe('ExpComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ExpComponent
+        ExpComponent,
       ],
       imports: [
         MaterialModule,

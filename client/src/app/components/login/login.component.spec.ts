@@ -16,10 +16,10 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule
+        MaterialModule,
       ],
       declarations: [
-        LoginComponent
+        LoginComponent,
       ]
     })
     .compileComponents();

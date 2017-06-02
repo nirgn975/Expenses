@@ -32,9 +32,15 @@ describe('TransactionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MaterialModule ],
-      declarations: [ TransactionComponent ],
-      schemas: [ NO_ERRORS_SCHEMA ]
+      imports: [
+        MaterialModule,
+      ],
+      declarations: [
+        TransactionComponent,
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA,
+      ]
     })
     .compileComponents();
   }));

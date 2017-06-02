@@ -83,7 +83,7 @@ describe(chalk.blue('Budget'), () => {
       .send(budget)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Budget successfully created!');
+        res.body.should.have.property('_message').equal('Budget successfully created!');
         res.body.budget.should.have.property('_id');
         res.body.budget.should.have.property('name');
         res.body.budget.should.have.property('limit');
@@ -116,7 +116,7 @@ describe(chalk.blue('Budget'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(404);
-        res.body.should.have.property('message').equal('No budget with that id: 589d608c019e406a7a51fb91');
+        res.body.should.have.property('_message').equal('No budget with that id: 589d608c019e406a7a51fb91');
         res.body.should.have.property('budget').equal(null);
         done();
       });
@@ -128,7 +128,7 @@ describe(chalk.blue('Budget'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(500);
-        res.body.should.have.property('message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "budget"');
+        res.body.should.have.property('_message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "budget"');
         res.body.should.have.property('name').equal('CastError');
         done();
       });
@@ -140,7 +140,7 @@ describe(chalk.blue('Budget'), () => {
       .set('token', this.user2.token)
       .end((error, res) => {
         res.should.have.status(403);
-        res.body.should.have.property('message').equal(`Access Forbidden to budget id: ${this.budget._id}`);
+        res.body.should.have.property('_message').equal(`Access Forbidden to budget id: ${this.budget._id}`);
         done();
       });
   });
@@ -155,7 +155,7 @@ describe(chalk.blue('Budget'), () => {
       .send(this.budget)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Budget successfully updated!');
+        res.body.should.have.property('_message').equal('Budget successfully updated!');
 
         this.budget.name = this.budget.name.toLowerCase();
         res.body.budget.should.be.eql(this.budget);
@@ -169,7 +169,7 @@ describe(chalk.blue('Budget'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Budget successfully deleted!');
+        res.body.should.have.property('_message').equal('Budget successfully deleted!');
         res.body.budget.should.be.a('object');
         done();
       });
@@ -189,7 +189,7 @@ describe(chalk.blue('Budget'), () => {
       .end((error, res) => {
         res.should.have.status(200);
         console.log('body', res.body);
-        res.body.should.have.property('message').equal('budget validation failed');
+        res.body.should.have.property('_message').equal('budget validation failed');
         res.body.errors.name.message.should.equal('Path `name` is required.');
         done();
       });
@@ -208,7 +208,7 @@ describe(chalk.blue('Budget'), () => {
       .send(budget)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('budget validation failed');
+        res.body.should.have.property('_message').equal('budget validation failed');
         res.body.errors.limit.message.should.equal('Path `limit` is required.');
         done();
       });
@@ -226,7 +226,7 @@ describe(chalk.blue('Budget'), () => {
       .send(budget)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('budget validation failed');
+        res.body.should.have.property('_message').equal('budget validation failed');
         res.body.errors.categories.message.should.equal('Path `categories` is required.');
         done();
       });

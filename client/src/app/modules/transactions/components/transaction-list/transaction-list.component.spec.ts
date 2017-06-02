@@ -21,8 +21,12 @@ describe('TransactionListComponent', () => {
         RouterTestingModule,
         StoreModule.provideStore(reducer),
       ],
-      declarations: [ TransactionListComponent ],
-      schemas: [ NO_ERRORS_SCHEMA ]
+      declarations: [
+        TransactionListComponent,
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA,
+      ]
     })
       .compileComponents();
   }));

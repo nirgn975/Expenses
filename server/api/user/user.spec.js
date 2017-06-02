@@ -31,7 +31,7 @@ describe(chalk.blue('User'), () => {
       .send(user)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('User successfully created!');
+        res.body.should.have.property('_message').equal('User successfully created!');
         res.body.user.should.have.property('_id');
         res.body.user.should.have.property('email');
         res.body.user.should.have.property('token');
@@ -64,7 +64,7 @@ describe(chalk.blue('User'), () => {
       .send(user)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('User successfully updated!');
+        res.body.should.have.property('_message').equal('User successfully updated!');
         res.body.user.should.be.eql(user);
         done();
       });

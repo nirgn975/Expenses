@@ -34,7 +34,9 @@ describe('MainComponent', () => {
         RouterTestingModule,
         StoreModule.provideStore(reducer),
       ],
-      declarations: [ MainComponent ]
+      declarations: [
+        MainComponent,
+      ]
     })
     .compileComponents();
   }));

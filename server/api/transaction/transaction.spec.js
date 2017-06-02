@@ -105,7 +105,7 @@ describe(chalk.blue('Transaction'), () => {
       .send(transaction)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Transaction successfully created!');
+        res.body.should.have.property('_message').equal('Transaction successfully created!');
         res.body.transaction.should.have.property('_id');
         res.body.transaction.should.have.property('amount');
         res.body.transaction.should.have.property('type');
@@ -163,7 +163,7 @@ describe(chalk.blue('Transaction'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(404);
-        res.body.should.have.property('message').equal('No transaction with that id: 589d608c019e406a7a51fb91');
+        res.body.should.have.property('_message').equal('No transaction with that id: 589d608c019e406a7a51fb91');
         res.body.should.have.property('transaction').equal(null);
         done();
       });
@@ -176,7 +176,7 @@ describe(chalk.blue('Transaction'), () => {
       .end((error, res) => {
         res.should.have.status(500);
         res.body.should.be.a('object');
-        res.body.should.have.property('message').equal('No transaction with that id: 12345');
+        res.body.should.have.property('_message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "transaction"');
         done();
       });
   });
@@ -187,7 +187,7 @@ describe(chalk.blue('Transaction'), () => {
       .set('token', this.user2.token)
       .end((error, res) => {
         res.should.have.status(403);
-        res.body.should.have.property('message').equal(`Access Forbidden to transaction id: ${someTransactionId}`);
+        res.body.should.have.property('_message').equal(`Access Forbidden to transaction id: ${someTransactionId}`);
         done();
       });
   });
@@ -201,7 +201,7 @@ describe(chalk.blue('Transaction'), () => {
       .send(this.transaction)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Transaction successfully updated!');
+        res.body.should.have.property('_message').equal('Transaction successfully updated!');
         res.body.transaction.should.be.eql(this.transaction);
         done();
       });
@@ -213,7 +213,7 @@ describe(chalk.blue('Transaction'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Transaction successfully deleted!');
+        res.body.should.have.property('_message').equal('Transaction successfully deleted!');
         res.body.transaction.should.be.a('object');
         done();
       });
@@ -234,7 +234,7 @@ describe(chalk.blue('Transaction'), () => {
       .send(transactionWithoutAmount)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('transaction validation failed');
+        res.body.should.have.property('_message').equal('transaction validation failed');
         res.body.errors.amount.message.should.equal('Path `amount` is required.');
         done();
       });
@@ -255,7 +255,7 @@ describe(chalk.blue('Transaction'), () => {
       .send(transactionWithoutCategory)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('transaction validation failed');
+        res.body.should.have.property('_message').equal('transaction validation failed');
         res.body.errors.category.message.should.equal('Path `category` is required.');
         done();
       });
@@ -276,7 +276,7 @@ describe(chalk.blue('Transaction'), () => {
       .send(transactionWithoutType)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('transaction validation failed');
+        res.body.should.have.property('_message').equal('transaction validation failed');
         res.body.errors.type.message.should.equal('Path `type` is required.');
         done();
       });

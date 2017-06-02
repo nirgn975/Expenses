@@ -19,7 +19,9 @@ describe('TransactionsComponent', () => {
         RouterTestingModule,
         StoreModule.provideStore(reducer),
       ],
-      declarations: [ TransactionsComponent ]
+      declarations: [
+        TransactionsComponent,
+      ]
     })
     .compileComponents();
   }));

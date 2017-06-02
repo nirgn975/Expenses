@@ -11,7 +11,7 @@ exports.params = (req, res, next, id) => {
       if (!transaction) {
         res.status(404);
         res.json({
-          message: `No transaction with that id: ${id}`,
+          _message: `No transaction with that id: ${id}`,
           transaction: null,
         });
       } else {
@@ -20,10 +20,8 @@ exports.params = (req, res, next, id) => {
       }
     }, (error) => {
       res.status(500);
-      res.json({
-        message: `No transaction with that id: ${id}`,
-        error,
-      });
+      error._message = error.message;
+      res.json(error);
     });
 };
 
@@ -52,7 +50,7 @@ exports.post = (req, res) => {
   Transaction.create(newTransaction)
     .then((savedTransaction) => {
       res.json({
-        message: 'Transaction successfully created!',
+        _message: 'Transaction successfully created!',
         transaction: savedTransaction,
       });
     }, (error) => {
@@ -77,7 +75,7 @@ exports.put = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        message: 'Transaction successfully updated!',
+        _message: 'Transaction successfully updated!',
         transaction: saved,
       });
     }
@@ -90,7 +88,7 @@ exports.delete = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        message: 'Transaction successfully deleted!',
+        _message: 'Transaction successfully deleted!',
         transaction: removed,
       });
     }
@@ -140,7 +138,7 @@ exports.transactionPermissions = (req, res, next) => {
   } else {
     res.status(403);
     res.json({
-      message: `Access Forbidden to transaction id: ${req.transaction._id}`,
+      _message: `Access Forbidden to transaction id: ${req.transaction._id}`,
       transaction: null,
     });
   }
