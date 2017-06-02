@@ -17,9 +17,9 @@ describe('ExpComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
+  it('should create the exp', async(() => {
     const fixture = TestBed.createComponent(ExpComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const exp = fixture.debugElement.componentInstance;
+    expect(exp).toBeTruthy();
   }));
 });
