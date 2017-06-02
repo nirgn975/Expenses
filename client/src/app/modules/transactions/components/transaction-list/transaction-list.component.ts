@@ -33,7 +33,7 @@ export class TransactionListComponent implements DoCheck {
     const newMonth = +this.route.snapshot.params['month'];
     const newYear = +this.route.snapshot.params['year'];
 
-    // Check if the date was changed
+    // Check if the date has changed
     if (this.date._id.year !== newYear || this.date._id.month !== newMonth) {
       // Save the new date
       this.date = {

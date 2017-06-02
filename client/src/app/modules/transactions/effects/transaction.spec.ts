@@ -19,7 +19,7 @@ describe('TransactionEffects', () => {
     });
   });
 
-  it('should create the service', inject([TransactionEffects], (service: TransactionEffects) => {
+  it('should create', inject([TransactionEffects], (service: TransactionEffects) => {
     expect(service).toBeTruthy();
   }));
 });

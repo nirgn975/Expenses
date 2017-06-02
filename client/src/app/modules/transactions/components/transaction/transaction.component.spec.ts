@@ -43,7 +43,7 @@ describe('TransactionComponent', () => {
     fixture = TestBed.createComponent(TransactionComponent);
     component = fixture.componentInstance;
 
-    // Create a dummy transaction.
+    // Create a dummy transaction
     component.transaction = transaction;
     fixture.detectChanges();
   });
