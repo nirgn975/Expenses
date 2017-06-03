@@ -9,7 +9,7 @@ exports.param = (req, res, next, id) => {
       if (!category) {
         res.status(404);
         res.json({
-          message: `No category with that id: ${id}`,
+          _message: `No category with that id: ${id}`,
           category: null,
         });
       } else {
@@ -18,6 +18,7 @@ exports.param = (req, res, next, id) => {
       }
     }, (error) => {
       res.status(500);
+      error._message = error.message;
       res.json(error);
     });
 };
@@ -38,7 +39,7 @@ exports.post = (req, res) => {
   Category.create(newCategory)
     .then((savedCategory) => {
       res.json({
-        message: 'Category successfully created!',
+        _message: 'Category successfully created!',
         category: savedCategory,
       });
     }, (error) => {
@@ -63,7 +64,7 @@ exports.put = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        message: 'Category successfully updated!',
+        _message: 'Category successfully updated!',
         category: saved,
       });
     }
@@ -76,7 +77,7 @@ exports.delete = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        message: 'Category successfully deleted!',
+        _message: 'Category successfully deleted!',
         category: removed,
       });
     }
@@ -89,7 +90,7 @@ exports.categoryPermissions = (req, res, next) => {
   } else {
     res.status(403);
     res.json({
-      message: `Access Forbidden to category id: ${req.category._id}`,
+      _message: `Access Forbidden to category id: ${req.category._id}`,
       category: null,
     });
   }

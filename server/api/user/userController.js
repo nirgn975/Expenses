@@ -18,7 +18,7 @@ exports.post = (req, res) => {
   User.create(newuser)
     .then((savedUser) => {
       res.json({
-        message: 'User successfully created!',
+        _message: 'User successfully created!',
         user: savedUser,
       });
     }, (error) => {
@@ -48,7 +48,7 @@ exports.put = (req, res) => {
           res.json(error);
         } else {
           res.json({
-            message: 'User successfully updated!',
+            _message: 'User successfully updated!',
             user: saved,
           });
         }

@@ -32,9 +32,15 @@ describe('TransactionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MaterialModule ],
-      declarations: [ TransactionComponent ],
-      schemas: [ NO_ERRORS_SCHEMA ]
+      imports: [
+        MaterialModule,
+      ],
+      declarations: [
+        TransactionComponent,
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA,
+      ]
     })
     .compileComponents();
   }));
@@ -43,7 +49,7 @@ describe('TransactionComponent', () => {
     fixture = TestBed.createComponent(TransactionComponent);
     component = fixture.componentInstance;
 
-    // Create a dummy transaction.
+    // Create a dummy transaction
     component.transaction = transaction;
     fixture.detectChanges();
   });

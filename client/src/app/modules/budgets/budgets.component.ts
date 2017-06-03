@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'exp-budgets',
   template: `
-    <router-outlet></router-outlet>
+    <p>budgets works!</p>
   `,
   styles: [``]
 })

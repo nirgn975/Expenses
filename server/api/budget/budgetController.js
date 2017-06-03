@@ -10,7 +10,7 @@ exports.param = (req, res, next, id) => {
       if (!budget) {
         res.status(404);
         res.json({
-          message: `No budget with that id: ${id}`,
+          _message: `No budget with that id: ${id}`,
           budget: null,
         });
       } else {
@@ -19,6 +19,7 @@ exports.param = (req, res, next, id) => {
       }
     }, (error) => {
       res.status(500);
+      error._message = error.message;
       res.json(error);
     });
 };
@@ -39,7 +40,7 @@ exports.post = (req, res) => {
   Budget.create(newBudget)
     .then((savedBudget) => {
       res.json({
-        message: 'Budget successfully created!',
+        _message: 'Budget successfully created!',
         budget: savedBudget,
       });
     }, (error) => {
@@ -64,7 +65,7 @@ exports.put = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        message: 'Budget successfully updated!',
+        _message: 'Budget successfully updated!',
         budget: saved,
       });
     }
@@ -77,7 +78,7 @@ exports.delete = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        message: 'Budget successfully deleted!',
+        _message: 'Budget successfully deleted!',
         budget: removed,
       });
     }
@@ -90,7 +91,7 @@ exports.budgetPermissions = (req, res, next) => {
   } else {
     res.status(403);
     res.json({
-      message: `Access Forbidden to budget id: ${req.budget._id}`,
+      _message: `Access Forbidden to budget id: ${req.budget._id}`,
       budget: null,
     });
   }
