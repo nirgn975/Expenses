@@ -1,25 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
-import { reducer } from '../../../reducers/index';
+import { transactionReducer } from './index';
 
 describe('reducers', () => {
   it('should handle "Load Transaction" actions', () => {
     let state;
-    state = reducer({
-      user: {
-        _id: '',
-        __v: 0,
-        email: '',
-        token: '',
-        name: '',
-        profileImage: '',
-        location: '',
-        gender: '',
-        facebookId: '',
-        twitterId: '',
-        googleId: '',
-        githubId: ''
-      },
+    state = transactionReducer({
       transaction: [{
         _id: '',
         amount: 0,
@@ -46,33 +30,26 @@ describe('reducers', () => {
           facebookId: '',
           twitterId: '',
           googleId: '',
-          githubId: ''
+          githubId: '',
         },
         __v: 0,
         coordinates: []
       }],
       transactionMonth: [{
-        _id: {month: 0, year: 0}
+        _id: {
+          month: 0,
+          year: 0
+        }
       }]
     }, {
-      payload: {_id: {month: 12, year: 2017}},
-      type: '[Transaction] Load Transaction'
+      payload: {
+        _id: {
+          month: 7,
+          year: 2017
+        }
+      }, type: '[Transaction] Load Transaction'
     });
     expect(state).toEqual({
-      user: {
-        _id: '',
-        __v: 0,
-        email: '',
-        token: '',
-        name: '',
-        profileImage: '',
-        location: '',
-        gender: '',
-        facebookId: '',
-        twitterId: '',
-        googleId: '',
-        githubId: ''
-      },
       transaction: [{
         _id: '',
         amount: 0,
@@ -99,29 +76,23 @@ describe('reducers', () => {
           facebookId: '',
           twitterId: '',
           googleId: '',
-          githubId: ''
+          githubId: '',
         },
         __v: 0,
         coordinates: []
       }],
-      transactionMonth: [{_id: {month: 0, year: 0}}]
+      transactionMonth: [{
+        _id: {
+          month: 0,
+          year: 0
+        }
+      }]
     });
   });
 
   it('should handle "Load Transactions Success" action', () => {
     let state;
-    state = reducer({
-      user: {
-        _id: '59326ede589e5b7d8f283b95',
-        email: 'nirgn975@gmail.com',
-        token: 'EAAR4ZBkqEW8ABAOY8NiZB9G3VAXd5JHn5Fg480kwbwlwTaTPb2a0Oi4o2jRjhHv',
-        __v: 0,
-        gender: 'male',
-        location: 'Ramat Gan',
-        profileImage: 'https://scontent.xx.fbcdn.net/p50x50/12741928_104043309987217_556335564347947011_n.jpg',
-        name: 'Nir Galon',
-        facebookId: '395055497552662'
-      },
+    state = transactionReducer({
       transaction: [{
         _id: '',
         amount: 0,
@@ -148,87 +119,146 @@ describe('reducers', () => {
           facebookId: '',
           twitterId: '',
           googleId: '',
-          githubId: ''
+          githubId: '',
         },
         __v: 0,
         coordinates: []
       }],
       transactionMonth: [{
-        _id: {month: 12, year: 2017}
-      }]
-    }, {
+        _id: {
+          month: 0,
+          year: 0
+        }
+      }]}, {
       payload: [{
-        _id: '59326ede589e5b7d8f283c55',
-        amount: 7.2,
-        date: '2017-11-30T22:00:00.000Z',
+        _id: '58a173fb78d435e1c6575e08',
+        amount: 12.5,
+        date: '2017-06-30T21:00:00.000Z',
         type: 'expense',
-        description: 'description foo bar 158',
+        description: 'description foo bar 143',
         category: {
-          _id: '59326ede589e5b7d8f283ba3',
-          name: 'taxi',
-          icon: 'local_taxi',
-          color: '#FFEB3B',
-          user: '59326ede589e5b7d8f283b94',
+          _id: '58a173fa78d435e1c6575d73',
+          name: 'health',
+          icon: 'favorite',
+          color: '#E91E63',
+          user: '58a173fa78d435e1c6575d58',
           __v: 0
         },
         user: {
-          _id: '59326ede589e5b7d8f283b95',
-          email: 'nirgn975@gmail.com',
-          token: 'EAAR4ZBkqEW8ABAOY8NiZB9G3VAXd5JHn5Fg480kwbwlwTaTPb2a0Oi4o2',
+          _id: '58b13a2c75807f66705f6c5c',
           __v: 0,
-          gender: 'male',
-          location: 'Ramat Gan',
-          profileImage: 'https://scontent.xx.fbcdn.net/p50x50/12741928_104043309987217_556335564347947011_n.jpg',
+          email: 'nirgn975@gmail.com',
+          token: 'EAAR4ZBkqEW8ABABEqyAaZABZBbFsy4ZCO32',
           name: 'Nir Galon',
-          facebookId: '395055497552662'
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p',
+          location: 'Ramat Gan',
+          gender: 'male',
+          facebookId: '395055497552662',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
         },
         __v: 0,
-        coordinates: [32.07433, 34.792017]
-      }],
-      type: '[Transaction] Load Transactions Success'
+        coordinates: [-79, -15]
+      }, {
+        _id: '58a173fb78d435e1c6575e0b',
+        amount: 14,
+        date: '2017-06-30T21:00:00.000Z',
+        type: 'expense',
+        description: 'description foo bar 146',
+        category: {
+          _id: '58a173fa78d435e1c6575d59',
+          name: 'salary',
+          icon: 'account_balance',
+          color: '#009688',
+          user: '58a173fa78d435e1c6575d56',
+          __v: 0
+        },
+        user: {
+          _id: '58b13f4c75807f236705f6c5c',
+          __v: 0,
+          email: 'adisaar3@gmail.com',
+          token: 'EAAR4ZBkaWvfABABEqyAaZABZBbFsdy4ZCO32',
+          name: 'Adi Saar',
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/g',
+          location: 'Israel',
+          gender: 'female',
+          facebookId: '3920554077552162',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
+        __v: 0,
+        coordinates: [-77, -17]
+      }], type: '[Transaction] Load Transactions Success'
     });
     expect(state).toEqual({
-      user: {
-        _id: '59326ede589e5b7d8f283b95',
-        email: 'nirgn975@gmail.com',
-        token: 'EAAR4ZBkqEW8ABAOY8NiZB9G3VAXd5JHn5Fg480kwbwlwTaTPb2a0Oi4o2jRjhHv',
-        __v: 0,
-        gender: 'male',
-        location: 'Ramat Gan',
-        profileImage: 'https://scontent.xx.fbcdn.net/p50x50/12741928_104043309987217_556335564347947011_n.jpg',
-        name: 'Nir Galon',
-        facebookId: '395055497552662'
-      },
       transaction: [{
-        _id: '59326ede589e5b7d8f283c55',
-        amount: 7.2,
-        date: '2017-11-30T22:00:00.000Z',
+        _id: '58a173fb78d435e1c6575e08',
+        amount: 12.5,
+        date: '2017-06-30T21:00:00.000Z',
         type: 'expense',
-        description: 'description foo bar 158',
+        description: 'description foo bar 143',
         category: {
-          _id: '59326ede589e5b7d8f283ba3',
-          name: 'taxi',
-          icon: 'local_taxi',
-          color: '#FFEB3B',
-          user: '59326ede589e5b7d8f283b94',
+          _id: '58a173fa78d435e1c6575d73',
+          name: 'health',
+          icon: 'favorite',
+          color: '#E91E63',
+          user: '58a173fa78d435e1c6575d58',
           __v: 0
         },
         user: {
-          _id: '59326ede589e5b7d8f283b95',
-          email: 'nirgn975@gmail.com',
-          token: 'EAAR4ZBkqEW8ABAOY8NiZB9G3VAXd5JHn5Fg480kwbwlwTaTPb2a0Oi4o2',
+          _id: '58b13a2c75807f66705f6c5c',
           __v: 0,
-          gender: 'male',
-          location: 'Ramat Gan',
-          profileImage: 'https://scontent.xx.fbcdn.net/p50x50/12741928_104043309987217_556335564347947011_n.jpg',
+          email: 'nirgn975@gmail.com',
+          token: 'EAAR4ZBkqEW8ABABEqyAaZABZBbFsy4ZCO32',
           name: 'Nir Galon',
-          facebookId: '395055497552662'
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p',
+          location: 'Ramat Gan',
+          gender: 'male',
+          facebookId: '395055497552662',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
         },
         __v: 0,
-        coordinates: [32.07433, 34.792017]
+        coordinates: [-79, -15]
+      }, {
+        _id: '58a173fb78d435e1c6575e0b',
+        amount: 14,
+        date: '2017-06-30T21:00:00.000Z',
+        type: 'expense',
+        description: 'description foo bar 146',
+        category: {
+          _id: '58a173fa78d435e1c6575d59',
+          name: 'salary',
+          icon: 'account_balance',
+          color: '#009688',
+          user: '58a173fa78d435e1c6575d56',
+          __v: 0
+        },
+        user: {
+          _id: '58b13f4c75807f236705f6c5c',
+          __v: 0,
+          email: 'adisaar3@gmail.com',
+          token: 'EAAR4ZBkaWvfABABEqyAaZABZBbFsdy4ZCO32',
+          name: 'Adi Saar',
+          profileImage: 'https://scontent.xx.fbcdn.net/v/t1.0-1/g',
+          location: 'Israel',
+          gender: 'female',
+          facebookId: '3920554077552162',
+          twitterId: '',
+          googleId: '',
+          githubId: '',
+        },
+        __v: 0,
+        coordinates: [-77, -17]
       }],
       transactionMonth: [{
-        _id: {month: 12, year: 2017}
+        _id: {
+          month: 0,
+          year: 0
+        }
       }]
     });
   });
