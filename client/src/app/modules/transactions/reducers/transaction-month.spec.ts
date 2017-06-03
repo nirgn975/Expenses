@@ -1,9 +1,9 @@
-import { transactionReducer } from './index';
+import { reducer } from './index';
 
 describe('reducers', () => {
   it('should handle "Load All Transaction Months" action', () => {
     let state;
-    state = transactionReducer({
+    state = reducer({
       transaction: [{_id: '', amount: 0, date: '', type: '', description: '', category: '', __v: 0, coordinates: ''}],
       transactionMonth: [{_id: {month: 0, year: 0}}]
     }, {type: '[Transaction] Load All Transaction Months'});
@@ -15,7 +15,7 @@ describe('reducers', () => {
 
   it('should handle "Load All Transactions Months Success" action', () => {
     let state;
-    state = transactionReducer({
+    state = reducer({
       transaction: [],
       transactionMonth: [{
         _id: {month: 0, year: 0}

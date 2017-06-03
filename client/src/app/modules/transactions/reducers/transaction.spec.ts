@@ -1,9 +1,9 @@
-import { transactionReducer } from './index';
+import { reducer } from './index';
 
 describe('reducers', () => {
   it('should handle "Load Transaction" actions', () => {
     let state;
-    state = transactionReducer({
+    state = reducer({
       transaction: [{
         _id: '',
         amount: 0,
@@ -92,7 +92,7 @@ describe('reducers', () => {
 
   it('should handle "Load Transactions Success" action', () => {
     let state;
-    state = transactionReducer({
+    state = reducer({
       transaction: [{
         _id: '',
         amount: 0,

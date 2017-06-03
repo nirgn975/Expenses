@@ -14,6 +14,8 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
 
+import { reducer } from './reducers';
+
 import { TransactionEffects } from './effects/transaction';
 
 import { TransactionService } from './services/transaction.service';
@@ -30,6 +32,7 @@ import { TransactionService } from './services/transaction.service';
     HttpModule,
     TransactionsRoutingModule,
     MaterialModule,
+    StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(TransactionEffects),
     AgmCoreModule.forRoot({
