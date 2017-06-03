@@ -82,6 +82,69 @@ describe('TransactionComponent', () => {
   });
 });
 
+describe('TransactionComponent with date', () => {
+  let component: TransactionComponent;
+  let fixture: ComponentFixture<TransactionComponent>;
+  let element: HTMLElement;
+  const transaction: any = {
+    _id: '58a173fb78d435e1c6575e08',
+    amount: 12.5,
+    date: new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).toISOString(),
+    type: 'expense',
+    description: 'description foo bar 143',
+    category: {
+      _id: '58a173fa78d435e1c6575d73',
+      name: 'health',
+      icon: 'favorite',
+      color: '#E91E63',
+      user: '58a173fa78d435e1c6575d58',
+      __v: 0
+    },
+    user: '58a173fa78d435e1c6575d57',
+    __v: 0,
+    coordinates: [-79, -15]
+  };
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        MaterialModule,
+      ],
+      declarations: [
+        TransactionComponent,
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA,
+      ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TransactionComponent);
+    component = fixture.componentInstance;
+
+    // Create a dummy transaction
+    component.transaction = transaction;
+    fixture.detectChanges();
+  });
+
+  it('should display the date in a momentjs now format', () => {
+    let month = new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).getMonth().toString();
+    let day = new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).getDate().toString();
+    let year = new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).getFullYear().toString();
+
+    if (month < '9') {
+      month = `0${parseInt(month) + 1}`;
+    } else {
+      month = `${parseInt(month) + 1}`;
+    }
+
+    element = fixture.debugElement.query(By.css('md-card-subtitle')).nativeElement;
+    expect(element.textContent).toContain(`${month}/${day}/${year}`);
+  });
+});
+
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})`;
