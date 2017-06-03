@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { reducer } from './reducers';
+import { transactionReducer } from './modules/transactions/reducers';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -41,7 +42,7 @@ import { UserService } from './services/user.service';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    StoreModule.provideStore(reducer),
+    StoreModule.provideStore({ user: reducer, transaction: transactionReducer }),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),
   ],

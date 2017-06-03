@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -36,9 +36,8 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromUser from './user';
-// import * as fromTransaction from '../modules/transactions/reducers/transaction';
-// import * as fromTransactionMonth from '../modules/transactions/reducers/transaction-month';
+import * as fromTransaction from './transaction';
+import * as fromTransactionMonth from './transaction-month';
 
 
 /**
@@ -46,9 +45,8 @@ import * as fromUser from './user';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  user: fromUser.State;
-  // transaction: fromTransaction.State;
-  // transactionMonth: fromTransactionMonth.State;
+  transaction: fromTransaction.State;
+  transactionMonth: fromTransactionMonth.State;
 }
 
 
@@ -60,15 +58,14 @@ export interface State {
  * the result from right to left.
  */
 const reducers = {
-  user: fromUser.reducer,
-  // transaction: fromTransaction.reducer,
-  // transactionMonth: fromTransactionMonth.reducer,
+  transaction: fromTransaction.reducer,
+  transactionMonth: fromTransactionMonth.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
 const productionReducer: ActionReducer<State> = combineReducers(reducers);
 
-export function reducer(state: any, action: any) {
+export function transactionReducer(state: any, action: any) {
   if (environment.production) {
     return productionReducer(state, action);
   } else {
@@ -92,6 +89,5 @@ export function reducer(state: any, action: any) {
  * }
  * ```
  */
-export const getUserState = (state: State) => state.user;
-// export const getTransactionState = (state: State) => state.transaction;
-// export const getTransactionMonthState = (state: State) => state.transactionMonth;
+export const getTransactionState = (state: State) => state.transaction;
+export const getTransactionMonthState = (state: State) => state.transactionMonth;

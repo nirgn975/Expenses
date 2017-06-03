@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../../../../reducers';
+import * as fromRoot from '../../reducers';
 import * as transactionAction from '../../actions/transaction';
 import { TransactionMonth } from '../../models/transaction-month';
 import { Transaction } from '../../models/transaction';
