@@ -188,7 +188,6 @@ describe(chalk.blue('Budget'), () => {
       .send(budget)
       .end((error, res) => {
         res.should.have.status(200);
-        console.log('body', res.body);
         res.body.should.have.property('_message').equal('budget validation failed');
         res.body.errors.name.message.should.equal('Path `name` is required.');
         done();

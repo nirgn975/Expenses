@@ -63,8 +63,8 @@ describe('MainComponent', () => {
     ];
 
     debugs = fixture.debugElement.queryAll(By.css('md-list-item'));
-    debugs.forEach((debug, index) => {
-      element = debug.nativeElement;
+    debugs.forEach((debugElem, index) => {
+      element = debugElem.nativeElement;
       expect(element.getAttribute('ng-reflect-router-link')).toEqual(links[index].url);
       expect(element.textContent).toContain(links[index].icon);
       expect(element.textContent).toContain(links[index].text);

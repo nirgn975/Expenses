@@ -9,7 +9,7 @@
     "start": "ng serve --open --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test --single-run --code-coverage",
-    "lint": "ng lint",
+    "lint": "ng lint --type-check",
     "e2e": "ng e2e",
     "sw": "sw-precache --root=dist --config=sw-precache-config.js"
   },

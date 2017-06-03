@@ -110,7 +110,6 @@ describe(chalk.blue('Category'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(500);
-        console.log('foo', res.body);
         res.body.should.have.property('_message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "category"');
         res.body.should.have.property('name').equal('CastError');
         done();
