@@ -65,7 +65,7 @@ const reducers = {
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
 const productionReducer: ActionReducer<State> = combineReducers(reducers);
 
-export function transactionReducer(state: any, action: any) {
+export function reducer(state: any, action: any) {
   if (environment.production) {
     return productionReducer(state, action);
   } else {
