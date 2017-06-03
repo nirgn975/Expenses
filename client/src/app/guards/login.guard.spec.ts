@@ -14,7 +14,7 @@ describe('LoginGuard', () => {
   }));
 
   it('should allow access when there is no token', inject([LoginGuard], (guard: LoginGuard) => {
-    // Make sure there is no token.
+    // Make sure there is no token
     localStorage.removeItem('userToken');
 
     expect(guard.canActivate()).toBeTruthy();

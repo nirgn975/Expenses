@@ -8,7 +8,7 @@ export class LoginGuard implements CanActivate {
 
   canActivate() {
     if (localStorage.getItem('userToken')) {
-      // The user is login.
+      // The user is logged in
       return false;
     }
 

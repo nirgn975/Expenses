@@ -68,7 +68,7 @@ describe(chalk.blue('Category'), () => {
       .send(category)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Category successfully created!');
+        res.body.should.have.property('_message').equal('Category successfully created!');
         res.body.category.should.have.property('_id');
         res.body.category.should.have.property('name');
         res.body.category.should.have.property('icon');
@@ -98,7 +98,7 @@ describe(chalk.blue('Category'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(404);
-        res.body.should.have.property('message').equal('No category with that id: 589d608c019e406a7a51fb91');
+        res.body.should.have.property('_message').equal('No category with that id: 589d608c019e406a7a51fb91');
         res.body.should.have.property('category').equal(null);
         done();
       });
@@ -110,7 +110,7 @@ describe(chalk.blue('Category'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(500);
-        res.body.should.have.property('message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "category"');
+        res.body.should.have.property('_message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "category"');
         res.body.should.have.property('name').equal('CastError');
         done();
       });
@@ -122,7 +122,7 @@ describe(chalk.blue('Category'), () => {
       .set('token', this.user2.token)
       .end((error, res) => {
         res.should.have.status(403);
-        res.body.should.have.property('message').equal(`Access Forbidden to category id: ${this.category._id}`);
+        res.body.should.have.property('_message').equal(`Access Forbidden to category id: ${this.category._id}`);
         done();
       });
   });
@@ -136,7 +136,7 @@ describe(chalk.blue('Category'), () => {
       .send(this.category)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Category successfully updated!');
+        res.body.should.have.property('_message').equal('Category successfully updated!');
         res.body.category.should.be.eql(this.category);
 
         this.category = res.body.category;
@@ -150,7 +150,7 @@ describe(chalk.blue('Category'), () => {
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('message').equal('Category successfully deleted!');
+        res.body.should.have.property('_message').equal('Category successfully deleted!');
         res.body.category.should.be.a('object');
         done();
       });

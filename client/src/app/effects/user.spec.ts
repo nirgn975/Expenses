@@ -4,7 +4,7 @@ import { UserEffects } from './user';
 import { UserService } from '../services/user.service';
 import { EffectsTestingModule } from '@ngrx/effects/testing';
 
-describe('TransactionEffects', () => {
+describe('UserEffects', () => {
   const userServiceStub = {};
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('TransactionEffects', () => {
     });
   });
 
-  it('should create the service', inject([UserEffects], (service: UserEffects) => {
+  it('should create', inject([UserEffects], (service: UserEffects) => {
     expect(service).toBeTruthy();
   }));
 });

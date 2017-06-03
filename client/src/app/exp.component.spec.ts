@@ -7,11 +7,13 @@ import { ExpComponent } from './exp.component';
 describe('ExpComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [
+        ExpComponent,
+      ],
       imports: [
         MaterialModule,
         RouterTestingModule,
       ],
-      declarations: [ ExpComponent ],
     }).compileComponents();
   }));
 

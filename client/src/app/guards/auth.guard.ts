@@ -8,13 +8,13 @@ export class AuthGuard implements CanActivateChild {
 
   canActivateChild() {
     if (localStorage.getItem('userToken')) {
-      // The user already authenticated.
+      // The user already authenticated
       return true;
     }
 
     const userToken = this.getCookie('userToken');
     if (userToken) {
-      // The user authenticated for the first time.
+      // The user authenticated for the first time
       this.setCookie('userToken', '', -1);
       localStorage.setItem('userToken', userToken);
       return true;
