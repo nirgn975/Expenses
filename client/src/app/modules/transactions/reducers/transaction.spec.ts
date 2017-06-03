@@ -1,5 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
 import { reducer } from './index';
 
 describe('reducers', () => {
