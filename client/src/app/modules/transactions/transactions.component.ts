@@ -41,7 +41,6 @@ export class TransactionsComponent implements OnInit {
     private router: Router,
   ) {
     this.transactionMonths$ = this.store.select(fromRoot.getTransactionMonthState);
-
   }
 
   ngOnInit() {
