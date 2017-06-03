@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
-import { reducer } from './reducers';
+import { reducer } from '../../reducers';
 import { StoreModule } from '@ngrx/store';
 
 import { TransactionsComponent } from './transactions.component';
