@@ -1,10 +1,30 @@
 import { Injectable } from '@angular/core';
-import { CanActivateChild } from '@angular/router';
+import { Router, CanActivateChild, CanActivate } from '@angular/router';
 
 @Injectable()
-export class AuthGuard implements CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
+
+  canActivate() {
+    if (localStorage.getItem('userToken')) {
+      // The user already authenticated
+      return true;
+    }
+
+    const userToken = this.getCookie('userToken');
+    if (userToken) {
+      // The user authenticated for the first time
+      this.setCookie('userToken', '', -1);
+      localStorage.setItem('userToken', userToken);
+      return true;
+    }
+
+    this.router.navigate(['login']);
+    return false;
+  }
 
   canActivateChild() {
     if (localStorage.getItem('userToken')) {

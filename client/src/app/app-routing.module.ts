@@ -19,6 +19,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: MainComponent,
+    canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
       { path: 'transactions', loadChildren: 'app/modules/transactions/transactions.module#TransactionsModule' },
