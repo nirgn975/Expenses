@@ -117,7 +117,7 @@ describe('TransactionDetailComponent with date', () => {
   const transaction: any = {
     _id: '58a173fb78d435e1c6575e08',
     amount: 12.5,
-    date: new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).toISOString(),
+    date: new Date(new Date().getTime() - (1000 * 20 * 60 * 1000)).toISOString(),
     type: 'expense',
     description: 'description foo bar 143',
     category: {
@@ -171,9 +171,9 @@ describe('TransactionDetailComponent with date', () => {
   });
 
   it('should display the date in a momentjs now format', () => {
-    let month = new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).getMonth().toString();
-    let day = new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).getDate().toString();
-    const year = new Date(new Date().getTime() - (500 * 20 * 60 * 1000)).getFullYear().toString();
+    let month = new Date(new Date().getTime() - (1000 * 20 * 60 * 1000)).getMonth().toString();
+    let day = new Date(new Date().getTime() - (1000 * 20 * 60 * 1000)).getDate().toString();
+    const year = new Date(new Date().getTime() - (1000 * 20 * 60 * 1000)).getFullYear().toString();
 
     if (month < '9') {
       month = `0${parseInt(month, 10) + 1}`;

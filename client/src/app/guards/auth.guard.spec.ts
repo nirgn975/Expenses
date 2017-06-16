@@ -17,6 +17,7 @@ describe('AuthGuard', () => {
 
   it('should not allow access without a token', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard.canActivateChild()).toBeFalsy();
+    expect(guard.canActivate()).toBeFalsy();
   }));
 
   it('should allow access when token is in local storage', inject([AuthGuard], (guard: AuthGuard) => {
@@ -24,12 +25,14 @@ describe('AuthGuard', () => {
     localStorage.setItem('userToken', '12345');
 
     expect(guard.canActivateChild()).toBeTruthy();
+    expect(guard.canActivate()).toBeTruthy();
   }));
 
   it('should allow access when token is in cookie', inject([AuthGuard], (guard: AuthGuard) => {
     cleanLocalStorageAndCreateCookie('userToken', '12345', 1);
 
     expect(guard.canActivateChild()).toBeTruthy();
+    expect(guard.canActivate()).toBeTruthy();
   }));
 
   it('should save token from cookie in local storage', inject([AuthGuard], (guard: AuthGuard) => {
