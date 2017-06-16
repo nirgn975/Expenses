@@ -74,7 +74,7 @@ const createTransactions = (data) => {
   });
 
   return Promise.all(newTransactions)
-    .then(() => ['Seeded DB with 520 Transactions, 29 Categories, 4 Budgets, and 3 Users']);
+    .then(() => [`Seeded DB with ${transactions.length} Transactions, ${categories.length} Categories, ${budgets.length} Budgets, and ${users.length} Users`]);
 };
 
 
