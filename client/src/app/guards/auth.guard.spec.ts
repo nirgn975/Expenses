@@ -35,12 +35,24 @@ describe('AuthGuard', () => {
     expect(guard.canActivate()).toBeTruthy();
   }));
 
-  it('should save token from cookie in local storage', inject([AuthGuard], (guard: AuthGuard) => {
+  it('should save token from cookie in local storage when canActivateChild activate', inject([AuthGuard], (guard: AuthGuard) => {
     const token = '12345';
     cleanLocalStorageAndCreateCookie('userToken', token, 1);
 
     // Call the guard
     guard.canActivateChild();
+
+    // Get the token from localStorage
+    const localStorageToken = localStorage.getItem('userToken');
+    expect(localStorageToken).toEqual(token);
+  }));
+
+  it('should save token from cookie in local storage when canActivate activate', inject([AuthGuard], (guard: AuthGuard) => {
+    const token = '12345';
+    cleanLocalStorageAndCreateCookie('userToken', token, 1);
+
+    // Call the guard
+    guard.canActivate();
 
     // Get the token from localStorage
     const localStorageToken = localStorage.getItem('userToken');
