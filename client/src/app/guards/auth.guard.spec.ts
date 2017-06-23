@@ -1,10 +1,12 @@
 import { TestBed, async, inject } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthGuard } from './auth.guard';
 
 describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [ RouterTestingModule ],
       providers: [ AuthGuard ]
     });
   });
@@ -15,6 +17,7 @@ describe('AuthGuard', () => {
 
   it('should not allow access without a token', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard.canActivateChild()).toBeFalsy();
+    expect(guard.canActivate()).toBeFalsy();
   }));
 
   it('should allow access when token is in local storage', inject([AuthGuard], (guard: AuthGuard) => {
@@ -22,20 +25,34 @@ describe('AuthGuard', () => {
     localStorage.setItem('userToken', '12345');
 
     expect(guard.canActivateChild()).toBeTruthy();
+    expect(guard.canActivate()).toBeTruthy();
   }));
 
   it('should allow access when token is in cookie', inject([AuthGuard], (guard: AuthGuard) => {
     cleanLocalStorageAndCreateCookie('userToken', '12345', 1);
 
     expect(guard.canActivateChild()).toBeTruthy();
+    expect(guard.canActivate()).toBeTruthy();
   }));
 
-  it('should save token from cookie in local storage', inject([AuthGuard], (guard: AuthGuard) => {
+  it('should save token from cookie in local storage when canActivateChild activate', inject([AuthGuard], (guard: AuthGuard) => {
     const token = '12345';
     cleanLocalStorageAndCreateCookie('userToken', token, 1);
 
     // Call the guard
     guard.canActivateChild();
+
+    // Get the token from localStorage
+    const localStorageToken = localStorage.getItem('userToken');
+    expect(localStorageToken).toEqual(token);
+  }));
+
+  it('should save token from cookie in local storage when canActivate activate', inject([AuthGuard], (guard: AuthGuard) => {
+    const token = '12345';
+    cleanLocalStorageAndCreateCookie('userToken', token, 1);
+
+    // Call the guard
+    guard.canActivate();
 
     // Get the token from localStorage
     const localStorageToken = localStorage.getItem('userToken');
