@@ -1,4 +1,4 @@
-import { Category } from './category';
+import { Category } from '../../../models/category';
 import { User } from '../../../models/user';
 
 export interface Transaction {

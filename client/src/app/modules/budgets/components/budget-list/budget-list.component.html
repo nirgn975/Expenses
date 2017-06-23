@@ -1,3 +1,7 @@
-<p>
-  budget-list works!
-</p>
+<div *ngFor="let budget of budget$ | async">
+  <exp-budget [budget]="budget"></exp-budget>
+</div>
+
+<button md-fab>
+  <md-icon class="md-24">add</md-icon>
+</button>

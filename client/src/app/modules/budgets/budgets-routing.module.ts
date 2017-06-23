@@ -7,10 +7,7 @@ import { BudgetListComponent } from './components/budget-list/budget-list.compon
 const routes: Routes = [
   {
     path: '',
-    component: BudgetsComponent,
-    children: [
-      { path: ':year/:month', component: BudgetListComponent, },
-    ],
+    component: BudgetListComponent,
   },
 ];
 
