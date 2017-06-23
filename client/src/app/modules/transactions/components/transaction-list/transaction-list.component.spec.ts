@@ -14,8 +14,6 @@ import { TransactionListComponent } from './transaction-list.component';
 describe('TransactionListComponent', () => {
   let component: TransactionListComponent;
   let fixture: ComponentFixture<TransactionListComponent>;
-  let elements: DebugElement[];
-  let element: HTMLElement;
   const transaction$ = Observable.of([{
     _id: '0',
     amount: 0,
@@ -114,7 +112,7 @@ describe('TransactionListComponent', () => {
   });
 
   it('should display two transaction components', () => {
-    const elements = fixture.debugElement.queryAll(By.css('exp-transaction'));
+    const elements: DebugElement[] = fixture.debugElement.queryAll(By.css('exp-transaction'));
     expect(elements.length).toEqual(2);
   });
 });

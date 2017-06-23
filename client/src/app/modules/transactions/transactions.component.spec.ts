@@ -14,7 +14,6 @@ describe('TransactionsComponent', () => {
   let component: TransactionsComponent;
   let fixture: ComponentFixture<TransactionsComponent>;
   let elements: DebugElement[];
-  let element: HTMLElement;
   const transactionMonths$ = Observable.of([{
     _id: {
       month: 6,
@@ -63,8 +62,8 @@ describe('TransactionsComponent', () => {
     elements = fixture.debugElement.queryAll(By.css('nav a'));
     const transactionMonths = ['2017-6', '2017-7', '2017-8'];
 
-    elements.map((element, index) => {
-      expect(element.nativeElement.textContent).toContain(transactionMonths[index]);
+    elements.map((elem, index) => {
+      expect(elem.nativeElement.textContent).toContain(transactionMonths[index]);
     });
   });
 });
