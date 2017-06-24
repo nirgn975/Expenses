@@ -16,6 +16,7 @@ import { reducer } from './reducers';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ExpComponent } from './exp.component';
+import { FeedComponent } from './components/feed/feed.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -30,6 +31,7 @@ import { UserService } from './services/user.service';
 @NgModule({
   declarations: [
     ExpComponent,
+    FeedComponent,
     LoginComponent,
     MainComponent,
     SettingsComponent,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
+import { FeedComponent } from './components/feed/feed.component';
 import { MainComponent } from './components/main/main.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
@@ -10,7 +11,7 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', redirectTo: 'home/transactions', pathMatch: 'full' },
+  { path: 'home', redirectTo: 'home/feed', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
@@ -22,6 +23,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
+      { path: 'feed', component: FeedComponent },
       { path: 'transactions', loadChildren: 'app/modules/transactions/transactions.module#TransactionsModule' },
       { path: 'overview', loadChildren: 'app/modules/overviews/overviews.module#OverviewsModule' },
       { path: 'budgets', loadChildren: 'app/modules/budgets/budgets.module#BudgetsModule' },
