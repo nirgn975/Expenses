@@ -56,6 +56,7 @@ describe('MainComponent', () => {
 
   it('should display those nav buttons, in that order, with those icons and links', () => {
     const links = [
+      { url: '/home/feed', icon: 'list', text: 'Feed', },
       { url: '/home/transactions', icon: 'list', text: 'Transactions', },
       { url: '/home/overview', icon: 'timeline', text: 'Overview', },
       { url: '/home/budgets', icon: 'work', text: 'Budgets', },

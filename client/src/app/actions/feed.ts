@@ -13,7 +13,7 @@ export class LoadFeedAction implements Action {
 export class LoadFeedSuccessAction implements Action {
   readonly type = LOAD_FEED_SUCCESS;
 
-  constructor(public payload: Feed) { }
+  constructor(public payload: Feed[]) { }
 }
 
 export type Actions

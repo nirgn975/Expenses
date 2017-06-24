@@ -2,14 +2,14 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule, Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { UserService } from './user.service';
+import { FeedService } from './feed.service';
 
-describe('UserService', () => {
+describe('FeedService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       providers: [
-        UserService,
+        FeedService,
         {
           provide: Http,
           useFactory: (mockBackend, options) => {
@@ -23,18 +23,24 @@ describe('UserService', () => {
     });
   });
 
-  it('should create', inject([UserService], (service: UserService) => {
+  it('should create', inject([FeedService], (service: FeedService) => {
     expect(service).toBeTruthy();
   }));
 
-  it('should GET all the months where there are transactions',
-  inject([UserService, MockBackend], (service: UserService, mockBackend: MockBackend) => {
+  it('should GET the feed',
+  inject([FeedService, MockBackend], (service: FeedService, mockBackend: MockBackend) => {
+    const date = new Date();
     const mockResponse = {
       '_id': 'a1b2c3',
       '__v': 0,
-      'email': 'nir@galon.io',
-      'token': '12345',
-      'name': 'Nir Galon',
+      'date': date,
+      'message_title': 'This is the message title',
+      'message_body': 'This is the message body',
+      'user': {
+        '_id': 'zaq123',
+        '__v': 0,
+        'name': 'Nir Galon',
+      },
     };
 
     mockBackend.connections.subscribe((connection) => {
@@ -45,9 +51,10 @@ describe('UserService', () => {
 
     service.getOwenInfo().subscribe(userInfo => {
       expect(userInfo._id).toEqual('a1b2c3');
-      expect(userInfo.email).toEqual('nir@galon.io');
-      expect(userInfo.token).toEqual('12345');
-      expect(userInfo.name).toEqual('Nir Galon');
+      expect(userInfo.date).toEqual(date);
+      expect(userInfo.message_title).toEqual('This is the message title');
+      expect(userInfo.message_body).toEqual('This is the message body');
+      expect(userInfo.user.name).toEqual('Nir Galon');
     });
   }));
 });

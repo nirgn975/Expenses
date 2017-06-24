@@ -26,6 +26,7 @@ exports.params = (req, res, next, id) => {
 
 exports.get = (req, res) => {
   const now = new Date();
+  console.log('user2', req.user);
   const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
   const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 1);
   Feed.find({
@@ -33,7 +34,7 @@ exports.get = (req, res) => {
       $gte: firstDay,
       $lte: lastDay,
     },
-    $or: [{ user: req.user }, { shared_with: req.user }],
+    user: req.user,
   })
   .populate('user')
   .exec()

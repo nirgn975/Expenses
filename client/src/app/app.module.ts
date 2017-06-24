@@ -25,8 +25,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
 import { UserEffects } from './effects/user';
+import { FeedEffects } from './effects/feed';
 
 import { UserService } from './services/user.service';
+import { FeedService } from './services/feed.service';
 
 @NgModule({
   declarations: [
@@ -46,11 +48,13 @@ import { UserService } from './services/user.service';
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),
+    EffectsModule.run(FeedEffects),
   ],
   providers: [
     AuthGuard,
     LoginGuard,
     UserService,
+    FeedService,
   ],
   bootstrap: [ExpComponent]
 })
