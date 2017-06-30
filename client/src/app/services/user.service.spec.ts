@@ -43,7 +43,7 @@ describe('UserService', () => {
       })));
     });
 
-    service.getOwenInfo().subscribe(userInfo => {
+    service.getOwenrInfo().subscribe(userInfo => {
       expect(userInfo._id).toEqual('a1b2c3');
       expect(userInfo.email).toEqual('nir@galon.io');
       expect(userInfo.token).toEqual('12345');

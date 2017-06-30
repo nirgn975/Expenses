@@ -1,0 +1,16 @@
+<md-card class="card">
+  <md-card-header>
+    <img md-card-image src="{{ message.user.profileImage }}">
+    <div>
+      <md-card-title>{{ message.user.name }}</md-card-title>
+      <md-card-subtitle>{{ messageDate }}</md-card-subtitle>
+    </div>
+  </md-card-header>
+
+  <md-card-content>
+    <p>
+      {{ message.message_title }}
+      {{ message.message_body }}
+    </p>
+  </md-card-content>
+</md-card>

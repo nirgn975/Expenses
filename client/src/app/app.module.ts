@@ -29,6 +29,7 @@ import { FeedEffects } from './effects/feed';
 
 import { UserService } from './services/user.service';
 import { FeedService } from './services/feed.service';
+import { MessageComponent } from './components/feed/message/message.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FeedService } from './services/feed.service';
     LoginComponent,
     MainComponent,
     SettingsComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ describe('UsersComponent', () => {
         MaterialModule,
         RouterTestingModule,
       ],
-      declarations: [ UsersComponent ]
+      declarations: [UsersComponent]
     })
     .compileComponents();
   }));

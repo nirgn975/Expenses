@@ -30,7 +30,7 @@ describe('FeedService', () => {
   it('should GET the feed',
   inject([FeedService, MockBackend], (service: FeedService, mockBackend: MockBackend) => {
     const date = new Date();
-    const mockResponse = {
+    const mockResponse = [{
       '_id': 'a1b2c3',
       '__v': 0,
       'date': date,
@@ -41,7 +41,7 @@ describe('FeedService', () => {
         '__v': 0,
         'name': 'Nir Galon',
       },
-    };
+    }];
 
     mockBackend.connections.subscribe((connection) => {
       connection.mockRespond(new Response(new ResponseOptions({
@@ -49,12 +49,12 @@ describe('FeedService', () => {
       })));
     });
 
-    service.getOwenInfo().subscribe(userInfo => {
-      expect(userInfo._id).toEqual('a1b2c3');
-      expect(userInfo.date).toEqual(date);
-      expect(userInfo.message_title).toEqual('This is the message title');
-      expect(userInfo.message_body).toEqual('This is the message body');
-      expect(userInfo.user.name).toEqual('Nir Galon');
+    service.getFeed().subscribe(feedInfo => {
+      console.log('feedInfo', feedInfo);
+      expect(feedInfo[0]._id).toEqual('a1b2c3');
+      expect(feedInfo[0].message_title).toEqual('This is the message title');
+      expect(feedInfo[0].message_body).toEqual('This is the message body');
+      expect(feedInfo[0].user.name).toEqual('Nir Galon');
     });
   }));
 });

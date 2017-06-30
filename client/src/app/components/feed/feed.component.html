@@ -1,3 +1,1 @@
-<p>
-  feed works!
-</p>
+<exp-message *ngFor="let message of feed$ | async" [message]="message"></exp-message>

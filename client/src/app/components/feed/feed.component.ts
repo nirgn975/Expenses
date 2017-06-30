@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
@@ -13,14 +13,12 @@ import { Feed } from '../../models/feed';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeedComponent implements OnInit {
-  public feed$: Array<Feed>;
+  public feed$: Observable<Feed[]>;
 
   constructor(
     private store: Store<fromRoot.State>,
   ) {
-    store.select(fromRoot.getFeedState).subscribe(
-      res => this.feed$ = res
-    );
+    this.feed$ = this.store.select(fromRoot.getFeedState);
   }
 
   ngOnInit() {

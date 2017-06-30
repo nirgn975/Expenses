@@ -17,7 +17,8 @@ export class UserService {
     return new RequestOptions({ headers: headers });
   }
 
-  getOwenInfo(): Observable<User> {
+  getOwenrInfo(): Observable<User> {
+    console.log('in getOwenrInfo');
     const options = this.appendToken();
 
     return this.http.get('/api/user/me', options)

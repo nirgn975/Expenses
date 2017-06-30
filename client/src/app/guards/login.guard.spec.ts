@@ -6,7 +6,7 @@ import { LoginGuard } from './login.guard';
 describe('LoginGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
+      imports: [RouterTestingModule],
       providers: [LoginGuard]
     });
   });

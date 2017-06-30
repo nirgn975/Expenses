@@ -1,4 +1,8 @@
+import 'hammerjs';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@angular/material';
+import { reducer } from '../../reducers';
+import { StoreModule } from '@ngrx/store';
 
 import { FeedComponent } from './feed.component';
 
@@ -8,7 +12,11 @@ describe('FeedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedComponent ]
+      imports: [
+        MaterialModule,
+        StoreModule.provideStore(reducer),
+      ],
+      declarations: [FeedComponent]
     })
     .compileComponents();
   }));

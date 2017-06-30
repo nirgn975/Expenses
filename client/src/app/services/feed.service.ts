@@ -19,7 +19,6 @@ export class FeedService {
 
   getFeed(): Observable<Feed[]> {
     const options = this.appendToken();
-    console.log('in get feed service ');
 
     return this.http.get('/api/feed', options)
       .map(res => res.json())
