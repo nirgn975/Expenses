@@ -5,6 +5,8 @@ const logger = require('../../util/logger');
 exports.param = (req, res, next, id) => {
   Budget.findById(id)
     .populate('categories')
+    .populate('users')
+    .populate('transactions')
     .exec()
     .then((budget) => {
       if (!budget) {
@@ -86,13 +88,15 @@ exports.delete = (req, res) => {
 };
 
 exports.budgetPermissions = (req, res, next) => {
-  if (req.user._id.toString() === req.budget.user.toString()) {
-    next();
-  } else {
-    res.status(403);
-    res.json({
-      _message: `Access Forbidden to budget id: ${req.budget._id}`,
-      budget: null,
-    });
-  }
+  req.budget.users.map((user) => {
+    if (req.user._id.toString() === user._id.toString()) {
+      next();
+    } else {
+      res.status(403);
+      res.json({
+        _message: `Access Forbidden to budget id: ${req.budget._id}`,
+        budget: null,
+      });
+    }
+  });
 };

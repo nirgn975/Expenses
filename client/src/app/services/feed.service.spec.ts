@@ -50,7 +50,6 @@ describe('FeedService', () => {
     });
 
     service.getFeed().subscribe(feedInfo => {
-      console.log('feedInfo', feedInfo);
       expect(feedInfo[0]._id).toEqual('a1b2c3');
       expect(feedInfo[0].message_title).toEqual('This is the message title');
       expect(feedInfo[0].message_body).toEqual('This is the message body');

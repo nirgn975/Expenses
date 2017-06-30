@@ -18,7 +18,6 @@ export class UserService {
   }
 
   getOwenrInfo(): Observable<User> {
-    console.log('in getOwenrInfo');
     const options = this.appendToken();
 
     return this.http.get('/api/user/me', options)
