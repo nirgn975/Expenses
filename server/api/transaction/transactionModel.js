@@ -32,7 +32,7 @@ const TransactionSchema = new Schema({
     ref: 'user',
     required: true,
   },
-  shared_with: {
+  sharedWith: {
     type: 'array',
     values: {
       type: Schema.Types.ObjectId,

@@ -11,5 +11,5 @@ export interface User {
   twitterId: string;
   googleId: string;
   githubId: string;
-  connected_accounts: Array<User>;
+  connectedAccounts: Array<User>;
 }

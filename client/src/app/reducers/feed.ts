@@ -22,7 +22,7 @@ const initialState: State = [{
     twitterId: '',
     googleId: '',
     githubId: '',
-    connected_accounts: [],
+    connectedAccounts: [],
   },
 }];
 

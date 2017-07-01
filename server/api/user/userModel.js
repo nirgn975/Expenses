@@ -23,7 +23,7 @@ const UserSchema = new Schema({
   twitterId: String,
   googleId: String,
   githubId: String,
-  connected_accounts: {
+  connectedAccounts: {
     type: 'array',
     values: {
       type: Schema.Types.ObjectId,

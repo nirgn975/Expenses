@@ -29,7 +29,7 @@ describe('MessageComponent', () => {
       twitterId: '58a173fa78d435e1c6575d58',
       googleId: '58a173fa78d435e1c6575d58',
       githubId: '58a173fa78d435e1c6575d58',
-      connected_accounts: [],
+      connectedAccounts: [],
     }
   };
 

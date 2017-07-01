@@ -28,7 +28,7 @@ describe('FeedComponent', () => {
       profileImage: 'https://scontent.xx.fbcdn.net/12741928_104043309987217_556335564347947011_n.jpg',
       name: 'Nir Galon',
       facebookId: '395055497552662',
-      connected_accounts: []
+      connectedAccounts: []
     },
     __v: 0
   }, {
@@ -46,7 +46,7 @@ describe('FeedComponent', () => {
       profileImage: 'https://scontent.xx.fbcdn.net/12741928_104043309987217_556335564347947011_n.jpg',
       name: 'Nir Galon',
       facebookId: '395055497552662',
-      connected_accounts: []
+      connectedAccounts: []
     },
     __v: 0
   }]);
