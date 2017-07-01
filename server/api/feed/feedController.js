@@ -10,7 +10,7 @@ exports.params = (req, res, next, id) => {
       if (!feed) {
         res.status(404);
         res.json({
-          _message: `No feed with that id: ${id}`,
+          _message: `No feed message with that id: ${id}`,
           feed: null,
         });
       } else {
@@ -51,7 +51,7 @@ exports.post = (req, res) => {
   Feed.create(newFeed)
     .then((savedFeed) => {
       res.json({
-        _message: 'Feed successfully created!',
+        _message: 'Feed messsage successfully created!',
         feed: savedFeed,
       });
     }, (error) => {
@@ -76,7 +76,7 @@ exports.put = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        _message: 'Feed successfully updated!',
+        _message: 'Feed message successfully updated!',
         feed: saved,
       });
     }
@@ -89,7 +89,7 @@ exports.delete = (req, res) => {
       res.json(error);
     } else {
       res.json({
-        _message: 'Feed successfully deleted!',
+        _message: 'Feed message successfully deleted!',
         feed: removed,
       });
     }
@@ -102,7 +102,7 @@ exports.feedPermissions = (req, res, next) => {
   } else {
     res.status(403);
     res.json({
-      _message: `Access Forbidden to feed id: ${req.feed._id}`,
+      _message: `Access Forbidden to feed message id: ${req.feed._id}`,
       transaction: null,
     });
   }
