@@ -10,7 +10,7 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe(chalk.blue('Category'), () => {
+describe(chalk.blue('Feed'), () => {
   before((done) => {
     // Empty all the collection.
     Object.keys(mongoose.connection.collections).forEach((collectionName) => {
@@ -43,9 +43,9 @@ describe(chalk.blue('Category'), () => {
       });
   });
 
-  it('should GET all categories', (done) => {
+  it('should GET all feed', (done) => {
     chai.request(server)
-      .get('/api/category')
+      .get('/api/feed')
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
@@ -55,62 +55,65 @@ describe(chalk.blue('Category'), () => {
       });
   });
 
-  it('should POST a category', (done) => {
-    const category = {
-      name: 'food',
-      icon: 'burger',
-      color: '#F44336',
+  it('should POST a feed message', (done) => {
+    const now = new Date();
+    const message = {
+      date: new Date(now.getFullYear(), now.getMonth() + 2),
+      messageTitle: 'Feed message title',
+      messageBody: 'This is the message body',
+      user: this.user,
     };
 
     chai.request(server)
-      .post('/api/category')
+      .post('/api/feed')
       .set('token', this.user.token)
-      .send(category)
+      .send(message)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('_message').equal('Category successfully created!');
-        res.body.category.should.have.property('_id');
-        res.body.category.should.have.property('name');
-        res.body.category.should.have.property('icon');
-        res.body.category.should.have.property('color');
+        res.body.should.have.property('_message').equal('Feed messsage successfully created!');
+        res.body.feed.should.have.property('_id');
+        res.body.feed.should.have.property('messageTitle');
+        res.body.feed.should.have.property('messageBody');
+        res.body.feed.should.have.property('user');
 
-        this.category = res.body.category;
+        this.feed = res.body.feed;
         done();
       });
   });
 
-  it('should GET a specific category', (done) => {
+  it('should GET a specific feed message', (done) => {
     chai.request(server)
-      .get(`/api/category/${this.category._id}`)
+      .get(`/api/feed/${this.feed._id}`)
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.have.property('_id');
-        res.body.should.have.property('name');
-        res.body.should.have.property('icon');
+        res.body.should.have.property('messageTitle');
+        res.body.should.have.property('messageBody');
+        res.body.should.have.property('user');
         done();
       });
   });
 
-  it('should not GET a category with none existed id ', (done) => {
+  it('should not GET a feed message with none existed id ', (done) => {
     chai.request(server)
-      .get('/api/category/589d608c019e406a7a51fb91')
+      .get('/api/feed/589d608c019e406a7a51fb91')
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(404);
-        res.body.should.have.property('_message').equal('No category with that id: 589d608c019e406a7a51fb91');
-        res.body.should.have.property('category').equal(null);
+        res.body.should.have.property('_message').equal('No feed message with that id: 589d608c019e406a7a51fb91');
+        res.body.should.have.property('feed').equal(null);
         done();
       });
   });
 
-  it('should not GET a category with the wrong id ', (done) => {
+  it('should not GET a feed message with the wrong id ', (done) => {
     chai.request(server)
-      .get('/api/category/12345')
+      .get('/api/feed/12345')
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(500);
-        res.body.should.have.property('_message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "category"');
+        res.body.should.have.property('_message').equal('Cast to ObjectId failed for value "12345" at path "_id" for model "feed"');
         res.body.should.have.property('name').equal('CastError');
         done();
       });
@@ -118,40 +121,40 @@ describe(chalk.blue('Category'), () => {
 
   it('should GET "Access Forbidden" without a user token', (done) => {
     chai.request(server)
-      .get(`/api/category/${this.category._id}`)
+      .get(`/api/feed/${this.feed._id}`)
       .set('token', this.user2.token)
       .end((error, res) => {
         res.should.have.status(403);
-        res.body.should.have.property('_message').equal(`Access Forbidden to category id: ${this.category._id}`);
+        res.body.should.have.property('_message').equal(`Access Forbidden to feed message id: ${this.feed._id}`);
         done();
       });
   });
 
-  it('should PUT a category', (done) => {
-    this.category.name = 'drink';
+  it('should PUT a feed message', (done) => {
+    this.feed.messageBody = 'this is the new message body';
 
     chai.request(server)
-      .put(`/api/category/${this.category._id}`)
+      .put(`/api/feed/${this.feed._id}`)
       .set('token', this.user.token)
-      .send(this.category)
+      .send(this.feed)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('_message').equal('Category successfully updated!');
-        res.body.category.should.be.eql(this.category);
+        res.body.should.have.property('_message').equal('Feed message successfully updated!');
+        res.body.feed.should.be.eql(this.feed);
 
-        this.category = res.body.category;
+        this.feed = res.body.feed;
         done();
       });
   });
 
-  it('should DELETE a category', (done) => {
+  it('should DELETE a feed message', (done) => {
     chai.request(server)
-      .del(`/api/category/${this.category._id}`)
+      .del(`/api/feed/${this.feed._id}`)
       .set('token', this.user.token)
       .end((error, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('_message').equal('Category successfully deleted!');
-        res.body.category.should.be.a('object');
+        res.body.should.have.property('_message').equal('Feed message successfully deleted!');
+        res.body.feed.should.be.a('object');
         done();
       });
   });

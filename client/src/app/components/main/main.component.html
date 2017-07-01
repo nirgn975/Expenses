@@ -1,11 +1,15 @@
 <md-sidenav-container fullscreen>
   <md-sidenav #start>
     <div id="nav-hero">
-      <img class="user-profile-img" src="{{user$.profileImage}}" alt="{{user$.name}} profile image">
+      <img class="user-profile-img" src="{{ user$.profileImage }}" alt="{{ user$.name }} profile image">
       <h2>{{ user$.name }}</h2>
     </div>
 
     <md-list>
+      <md-list-item [routerLink]="['/home/feed']" routerLinkActive="active">
+        <md-icon>dashboard</md-icon>
+        <span>Feed</span>
+      </md-list-item>
       <md-list-item [routerLink]="['/home/transactions']" routerLinkActive="active">
         <md-icon>list</md-icon>
         <span>Transactions</span>

@@ -1,8 +1,7 @@
 import 'hammerjs';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
 import { TransactionDetailComponent } from './transaction-detail.component';
@@ -45,15 +44,9 @@ describe('TransactionDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-      ],
-      declarations: [
-        TransactionDetailComponent,
-      ],
-      schemas: [
-        NO_ERRORS_SCHEMA,
-      ]
+      imports: [ MaterialModule ],
+      declarations: [ TransactionDetailComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -148,15 +141,9 @@ describe('TransactionDetailComponent with date', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-      ],
-      declarations: [
-        TransactionDetailComponent,
-      ],
-      schemas: [
-        NO_ERRORS_SCHEMA,
-      ]
+      imports: [ MaterialModule ],
+      declarations: [ TransactionDetailComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));

@@ -30,6 +30,7 @@ const initialState: State = [{
     twitterId: '',
     googleId: '',
     githubId: '',
+    connectedAccounts: [],
   },
   __v: 0,
   coordinates: [],

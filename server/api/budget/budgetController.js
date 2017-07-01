@@ -5,6 +5,8 @@ const logger = require('../../util/logger');
 exports.param = (req, res, next, id) => {
   Budget.findById(id)
     .populate('categories')
+    .populate('users')
+    .populate('transactions')
     .exec()
     .then((budget) => {
       if (!budget) {
@@ -86,7 +88,11 @@ exports.delete = (req, res) => {
 };
 
 exports.budgetPermissions = (req, res, next) => {
-  if (req.user._id.toString() === req.budget.user.toString()) {
+  const hasPermissions = req.budget.users.some((user) => {
+    return req.user._id.toString() === user._id.toString();
+  });
+
+  if (hasPermissions) {
     next();
   } else {
     res.status(403);

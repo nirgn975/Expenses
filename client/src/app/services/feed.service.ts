@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { User } from '../models/user';
+import { Feed } from '../models/feed';
 
 @Injectable()
-export class UserService {
+export class FeedService {
 
   constructor(
     private http: Http,
@@ -17,10 +17,10 @@ export class UserService {
     return new RequestOptions({ headers: headers });
   }
 
-  getOwenrInfo(): Observable<User> {
+  getFeed(): Observable<Feed[]> {
     const options = this.appendToken();
 
-    return this.http.get('/api/user/me', options)
+    return this.http.get('/api/feed', options)
       .map(res => res.json())
       .catch(this.handleError);
   }

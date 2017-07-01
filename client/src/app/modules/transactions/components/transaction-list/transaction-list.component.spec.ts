@@ -1,8 +1,7 @@
 import 'hammerjs';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -83,12 +82,8 @@ describe('TransactionListComponent', () => {
         RouterTestingModule,
         StoreModule.provideStore(reducer),
       ],
-      declarations: [
-        TransactionListComponent,
-      ],
-      schemas: [
-        NO_ERRORS_SCHEMA,
-      ]
+      declarations: [ TransactionListComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
       .compileComponents();
   }));

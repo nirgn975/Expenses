@@ -7,29 +7,37 @@ const TransactionSchema = new Schema({
     type: Number,
     required: true,
   },
-  date: {
-    type: Date,
-    defaultValue: Date.now(),
-  },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'category',
     required: true,
+  },
+  coordinates: [Number],
+  date: {
+    type: Date,
+    defaultValue: Date.now(),
+    required: true,
+  },
+  description: {
+    type: String,
+    lowercase: true,
   },
   type: {
     type: String,
     enum: ['expense', 'income'],
     required: true,
   },
-  coordinates: [Number],
-  description: {
-    type: String,
-    lowercase: true,
-  },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'user',
     required: true,
+  },
+  sharedWith: {
+    type: 'array',
+    values: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+    },
   },
 });
 

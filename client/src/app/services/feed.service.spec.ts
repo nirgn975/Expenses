@@ -2,14 +2,14 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule, Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { UserService } from './user.service';
+import { FeedService } from './feed.service';
 
-describe('UserService', () => {
+describe('FeedService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       providers: [
-        UserService,
+        FeedService,
         {
           provide: Http,
           useFactory: (mockBackend, options) => {
@@ -23,19 +23,25 @@ describe('UserService', () => {
     });
   });
 
-  it('should create', inject([UserService], (service: UserService) => {
+  it('should create', inject([FeedService], (service: FeedService) => {
     expect(service).toBeTruthy();
   }));
 
-  it('should GET all the months where there are transactions',
-  inject([UserService, MockBackend], (service: UserService, mockBackend: MockBackend) => {
-    const mockResponse = {
+  it('should GET the feed',
+  inject([FeedService, MockBackend], (service: FeedService, mockBackend: MockBackend) => {
+    const date = new Date();
+    const mockResponse = [{
       '_id': 'a1b2c3',
       '__v': 0,
-      'email': 'nir@galon.io',
-      'token': '12345',
-      'name': 'Nir Galon',
-    };
+      'date': date,
+      'messageTitle': 'This is the message title',
+      'messageBody': 'This is the message body',
+      'user': {
+        '_id': 'zaq123',
+        '__v': 0,
+        'name': 'Nir Galon',
+      },
+    }];
 
     mockBackend.connections.subscribe((connection) => {
       connection.mockRespond(new Response(new ResponseOptions({
@@ -43,11 +49,11 @@ describe('UserService', () => {
       })));
     });
 
-    service.getOwenrInfo().subscribe(userInfo => {
-      expect(userInfo._id).toEqual('a1b2c3');
-      expect(userInfo.email).toEqual('nir@galon.io');
-      expect(userInfo.token).toEqual('12345');
-      expect(userInfo.name).toEqual('Nir Galon');
+    service.getFeed().subscribe(feedInfo => {
+      expect(feedInfo[0]._id).toEqual('a1b2c3');
+      expect(feedInfo[0].messageTitle).toEqual('This is the message title');
+      expect(feedInfo[0].messageBody).toEqual('This is the message body');
+      expect(feedInfo[0].user.name).toEqual('Nir Galon');
     });
   }));
 });

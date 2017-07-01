@@ -8,21 +8,28 @@ const UserSchema = new Schema({
     trim: true,
     required: true,
   },
-  token: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
     lowercase: true,
   },
-  profileImage: String,
-  location: String,
+  token: {
+    type: String,
+    required: true,
+  },
   gender: String,
+  location: String,
+  profileImage: String,
   facebookId: String,
   twitterId: String,
   googleId: String,
   githubId: String,
+  connectedAccounts: {
+    type: 'array',
+    values: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+    },
+  },
 });
 
 module.exports = mongoose.model('user', UserSchema);
