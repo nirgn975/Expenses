@@ -16,6 +16,7 @@ const initialState: State = {
   twitterId: '',
   googleId: '',
   githubId: '',
+  connected_accounts: [],
 };
 
 export function reducer(state = initialState, action: user.Actions): State {

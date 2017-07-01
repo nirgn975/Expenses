@@ -16,7 +16,7 @@ describe('BudgetsComponent', () => {
         MaterialModule,
         RouterTestingModule,
       ],
-      declarations: [BudgetsComponent]
+      declarations: [ BudgetsComponent ]
     })
     .compileComponents();
   }));

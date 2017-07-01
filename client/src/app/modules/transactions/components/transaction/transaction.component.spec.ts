@@ -1,8 +1,7 @@
 import 'hammerjs';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
 import { TransactionComponent } from './transaction.component';
@@ -32,15 +31,9 @@ describe('TransactionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-      ],
-      declarations: [
-        TransactionComponent,
-      ],
-      schemas: [
-        NO_ERRORS_SCHEMA,
-      ]
+      imports: [ MaterialModule ],
+      declarations: [ TransactionComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -49,7 +42,7 @@ describe('TransactionComponent', () => {
     fixture = TestBed.createComponent(TransactionComponent);
     component = fixture.componentInstance;
 
-    // Create a dummy transaction
+    // Create a dummy transaction.
     component.transaction = transaction;
     fixture.detectChanges();
   });
@@ -107,15 +100,9 @@ describe('TransactionComponent with date', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-      ],
-      declarations: [
-        TransactionComponent,
-      ],
-      schemas: [
-        NO_ERRORS_SCHEMA,
-      ]
+      imports: [ MaterialModule ],
+      declarations: [ TransactionComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));

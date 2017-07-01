@@ -88,15 +88,17 @@ exports.delete = (req, res) => {
 };
 
 exports.budgetPermissions = (req, res, next) => {
-  req.budget.users.map((user) => {
-    if (req.user._id.toString() === user._id.toString()) {
-      next();
-    } else {
-      res.status(403);
-      res.json({
-        _message: `Access Forbidden to budget id: ${req.budget._id}`,
-        budget: null,
-      });
-    }
+  const hasPermissions = req.budget.users.some((user) => {
+    return req.user._id.toString() === user._id.toString();
   });
+
+  if (hasPermissions) {
+    next();
+  } else {
+    res.status(403);
+    res.json({
+      _message: `Access Forbidden to budget id: ${req.budget._id}`,
+      budget: null,
+    });
+  }
 };

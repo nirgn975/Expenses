@@ -1,7 +1,7 @@
 import 'hammerjs';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
 import { LoginComponent } from './login.component';
@@ -15,12 +15,9 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-      ],
-      declarations: [
-        LoginComponent,
-      ]
+      imports: [ MaterialModule ],
+      declarations: [ LoginComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
