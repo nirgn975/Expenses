@@ -1,1 +1,10 @@
-<exp-message *ngFor="let message of feed$ | async" [message]="message"></exp-message>
+<!-- <exp-message *ngFor="let message of feed$ | async" [message]="message"></exp-message> -->
+
+
+<md-grid-list cols="3" rowHeight="4:1">
+  <md-grid-tile
+      *ngFor="let message of feed$ | async">
+    <!-- {{tile.text}} -->
+    <exp-message [message]="message"></exp-message>
+  </md-grid-tile>
+</md-grid-list>
