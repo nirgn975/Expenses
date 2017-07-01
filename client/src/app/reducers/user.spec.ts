@@ -23,8 +23,8 @@ describe('reducers', () => {
          _id: '',
          __v: 0,
          date: '',
-         message_title: '',
-         message_body: '',
+         messageTitle: '',
+         messageBody: '',
          user: {
            _id: '',
            __v: 0,
@@ -64,8 +64,8 @@ describe('reducers', () => {
          _id: '',
          __v: 0,
          date: '',
-         message_title: '',
-         message_body: '',
+         messageTitle: '',
+         messageBody: '',
          user: {
            _id: '',
            __v: 0,
@@ -107,8 +107,8 @@ describe('reducers', () => {
         _id: '',
         __v: 0,
         date: '',
-        message_title: '',
-        message_body: '',
+        messageTitle: '',
+        messageBody: '',
         user: {
           _id: '',
           __v: 0,
@@ -157,8 +157,8 @@ describe('reducers', () => {
         _id: '',
         __v: 0,
         date: '',
-        message_title: '',
-        message_body: '',
+        messageTitle: '',
+        messageBody: '',
         user: {
           _id: '',
           __v: 0,

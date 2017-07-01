@@ -8,11 +8,11 @@ const FeedSchema = new Schema({
     defaultValue: Date.now(),
     required: true,
   },
-  message_title: {
+  messageTitle: {
     type: String,
     lowercase: true,
   },
-  message_body: {
+  messageBody: {
     type: String,
     lowercase: true,
   },

@@ -23,8 +23,8 @@ describe('reducers', () => {
         _id: '',
         __v: 0,
         date: '',
-        message_title: '',
-        message_body: '',
+        messageTitle: '',
+        messageBody: '',
         user: {
           _id: '',
           __v: 0,
@@ -64,8 +64,8 @@ describe('reducers', () => {
         _id: '',
         __v: 0,
         date: '',
-        message_title: '',
-        message_body: '',
+        messageTitle: '',
+        messageBody: '',
         user: {
           _id: '',
           __v: 0,
@@ -104,8 +104,8 @@ describe('reducers', () => {
           _id: '',
           __v: 0,
           date: '',
-          message_title: '',
-          message_body: '',
+          messageTitle: '',
+          messageBody: '',
           user: {
             _id: '',
             __v: 0,
@@ -126,8 +126,8 @@ describe('reducers', () => {
         payload: [{
           _id: '5956ccd8e3d7509659e75a68',
           date: '2017-06-30T22:32:39.790Z',
-          message_title: 'adi added a new budget!',
-          message_body: 'adi add a new budget for movies, it\'s includes food, movies, and dvd categories.',
+          messageTitle: 'adi added a new budget!',
+          messageBody: 'adi add a new budget for movies, it\'s includes food, movies, and dvd categories.',
           user: {
             _id: '5956ccd7e3d7509659e7583c',
             email: 'nirgn975@gmail.com',
@@ -144,8 +144,8 @@ describe('reducers', () => {
         }, {
           _id: '5956ccd8e3d7509659e75a6b',
           date: '2017-06-30T22:12:39.790Z',
-          message_title: 'feed title 2',
-          message_body: 'feed body 2',
+          messageTitle: 'feed title 2',
+          messageBody: 'feed body 2',
           user: {
             _id: '5956ccd7e3d7509659e7583c',
             email: 'nirgn975@gmail.com',
@@ -178,8 +178,8 @@ describe('reducers', () => {
       feed: [{
         _id: '5956ccd8e3d7509659e75a68',
         date: '2017-06-30T22:32:39.790Z',
-        message_title: 'adi added a new budget!',
-        message_body: 'adi add a new budget for movies, it\'s includes food, movies, and dvd categories.',
+        messageTitle: 'adi added a new budget!',
+        messageBody: 'adi add a new budget for movies, it\'s includes food, movies, and dvd categories.',
         user: {
           _id: '5956ccd7e3d7509659e7583c',
           email: 'nirgn975@gmail.com',
@@ -196,8 +196,8 @@ describe('reducers', () => {
       }, {
         _id: '5956ccd8e3d7509659e75a6b',
         date: '2017-06-30T22:12:39.790Z',
-        message_title: 'feed title 2',
-        message_body: 'feed body 2',
+        messageTitle: 'feed title 2',
+        messageBody: 'feed body 2',
         user: {
           _id: '5956ccd7e3d7509659e7583c',
           email: 'nirgn975@gmail.com',

@@ -4,7 +4,7 @@ export interface Feed {
   _id: string;
   __v: number;
   date: string;
-  message_title: string;
-  message_body: string;
+  messageTitle: string;
+  messageBody: string;
   user: User;
 }

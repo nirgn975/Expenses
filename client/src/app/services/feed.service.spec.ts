@@ -34,8 +34,8 @@ describe('FeedService', () => {
       '_id': 'a1b2c3',
       '__v': 0,
       'date': date,
-      'message_title': 'This is the message title',
-      'message_body': 'This is the message body',
+      'messageTitle': 'This is the message title',
+      'messageBody': 'This is the message body',
       'user': {
         '_id': 'zaq123',
         '__v': 0,
@@ -51,8 +51,8 @@ describe('FeedService', () => {
 
     service.getFeed().subscribe(feedInfo => {
       expect(feedInfo[0]._id).toEqual('a1b2c3');
-      expect(feedInfo[0].message_title).toEqual('This is the message title');
-      expect(feedInfo[0].message_body).toEqual('This is the message body');
+      expect(feedInfo[0].messageTitle).toEqual('This is the message title');
+      expect(feedInfo[0].messageBody).toEqual('This is the message body');
       expect(feedInfo[0].user.name).toEqual('Nir Galon');
     });
   }));

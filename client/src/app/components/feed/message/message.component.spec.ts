@@ -14,8 +14,8 @@ describe('MessageComponent', () => {
     _id: '58a173fb78d435e1c6575e08',
     __v: 0,
     date: new Date(new Date().getTime() - (20 * 60 * 1000)).toISOString(),
-    message_title: 'adi added a new budget!',
-    message_body: 'adi add a new budget for movies, it\'s includes food, movies, and dvd categories.',
+    messageTitle: 'adi added a new budget!',
+    messageBody: 'adi add a new budget for movies, it\'s includes food, movies, and dvd categories.',
     user: {
       _id: '58a173fa78d435e1c6575d73',
       __v: 0,
@@ -67,7 +67,7 @@ describe('MessageComponent', () => {
 
   it('should display the message title and body', () => {
     const element: HTMLElement = fixture.debugElement.query(By.css('md-card-content')).nativeElement;
-    expect(element.textContent).toContain(feed.message_title);
-    expect(element.textContent).toContain(feed.message_body);
+    expect(element.textContent).toContain(feed.messageTitle);
+    expect(element.textContent).toContain(feed.messageBody);
   });
 });
