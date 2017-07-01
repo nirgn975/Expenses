@@ -16,6 +16,7 @@ import { reducer } from './reducers';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ExpComponent } from './exp.component';
+import { FeedComponent } from './components/feed/feed.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -24,15 +25,20 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
 import { UserEffects } from './effects/user';
+import { FeedEffects } from './effects/feed';
 
 import { UserService } from './services/user.service';
+import { FeedService } from './services/feed.service';
+import { MessageComponent } from './components/feed/message/message.component';
 
 @NgModule({
   declarations: [
     ExpComponent,
+    FeedComponent,
     LoginComponent,
     MainComponent,
     SettingsComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,11 +50,13 @@ import { UserService } from './services/user.service';
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),
+    EffectsModule.run(FeedEffects),
   ],
   providers: [
     AuthGuard,
     LoginGuard,
     UserService,
+    FeedService,
   ],
   bootstrap: [ExpComponent]
 })

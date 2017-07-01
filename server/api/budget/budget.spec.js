@@ -75,6 +75,7 @@ describe(chalk.blue('Budget'), () => {
       limit: 100,
       currentAmount: 20,
       categories: [this.category],
+      users: [this.user],
     };
 
     chai.request(server)

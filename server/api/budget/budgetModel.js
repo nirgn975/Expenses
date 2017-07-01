@@ -8,14 +8,6 @@ const BudgetSchema = new Schema({
     required: true,
     lowercase: true,
   },
-  limit: {
-    type: Number,
-    required: true,
-  },
-  currentAmount: {
-    type: Number,
-    defaultValue: 0,
-  },
   categories: {
     type: 'array',
     values: {
@@ -24,10 +16,28 @@ const BudgetSchema = new Schema({
     },
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
+  limit: {
+    type: Number,
     required: true,
+  },
+  currentAmount: {
+    type: Number,
+    defaultValue: 0,
+  },
+  users: {
+    type: 'array',
+    values: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+    },
+    required: true,
+  },
+  transactions: {
+    type: 'array',
+    values: {
+      type: Schema.Types.ObjectId,
+      ref: 'transaction',
+    },
   },
 });
 

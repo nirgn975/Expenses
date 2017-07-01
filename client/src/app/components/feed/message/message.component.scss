@@ -1,0 +1,17 @@
+md-card {
+  width: 90%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.mat-card-image {
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0.5em 0 -1em;
+  width: 10%;
+  height: 10%;
+}
+
+.mat-card-header-text {
+  margin: 0;
+}

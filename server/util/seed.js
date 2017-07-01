@@ -2,14 +2,20 @@ const Transaction = require('../api/transaction/transactionModel');
 const Category = require('../api/category/categoryModel');
 const Budget = require('../api/budget/budgetModel');
 const User = require('../api/user/userModel');
+const Feed = require('../api/feed/feedModel');
 const _ = require('lodash');
 const logger = require('./logger');
-const dummyData = require('./dummyData');
+const dummyTransactions = require('./dummyTransactions');
+const dummyCategories = require('./dummyCategories');
+const dummyBudgets = require('./dummyBudgets');
+const dummyUsers = require('./dummyUsers');
+const dummyFeed = require('./dummyFeed');
 
-const transactions = dummyData.transactions;
-const categories = dummyData.categories;
-const budgets = dummyData.budgets;
-const users = dummyData.users;
+const transactions = dummyTransactions.transactions;
+const categories = dummyCategories.categories;
+const budgets = dummyBudgets.budgets;
+const users = dummyUsers.users;
+const feedMessages = dummyFeed.feed;
 
 logger.log(['Seeding the Database']);
 
@@ -56,7 +62,7 @@ const createCategories = (data) => {
 const createBudgets = (data) => {
   const newBudgets = budgets.map((budget, i) => {
     budget.categories = [data.categories[i % categories.length]];
-    budget.user = data.users[i % users.length];
+    budget.users = [data.users[i % users.length]];
     return createDoc(Budget, budget);
   });
 
@@ -74,7 +80,19 @@ const createTransactions = (data) => {
   });
 
   return Promise.all(newTransactions)
-    .then(() => [`Seeded DB with ${transactions.length} Transactions, ${categories.length} Categories, ${budgets.length} Budgets, and ${users.length} Users`]);
+    .then((savedTransactions) => {
+      return _.merge({ transactions: savedTransactions }, data || {});
+    });
+};
+
+const createFeed = (data) => {
+  const newFeed = feedMessages.map((message, i) => {
+    message.user = data.users[i % users.length];
+    return createDoc(Feed, message);
+  });
+
+  return Promise.all(newFeed)
+    .then(() => [`Seeded DB with ${feedMessages.length} Feed messages, ${transactions.length} Transactions, ${categories.length} Categories, ${budgets.length} Budgets, and ${users.length} Users`]);
 };
 
 
@@ -83,5 +101,6 @@ cleanDB()
   .then(createCategories)
   .then(createBudgets)
   .then(createTransactions)
+  .then(createFeed)
   .then(logger.log.bind([logger]))
   .catch(logger.log.bind([logger]));

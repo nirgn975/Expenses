@@ -31,6 +31,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: []
@@ -77,6 +78,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: []
@@ -120,6 +122,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: []
@@ -157,6 +160,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: [-79, -15]
@@ -187,6 +191,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: [-77, -17]
@@ -220,6 +225,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: [-79, -15]
@@ -250,6 +256,7 @@ describe('reducers', () => {
           twitterId: '',
           googleId: '',
           githubId: '',
+          connectedAccounts: [],
         },
         __v: 0,
         coordinates: [-77, -17]
