@@ -98,5 +98,5 @@ Not yet..
 [codecov-url]: https://codecov.io/gh/nirgn975/Expenses
 [dependencyci-image]: https://dependencyci.com/github/nirgn975/Expenses/badge
 [dependencyci-url]: https://dependencyci.com/github/nirgn975/Expenses
-[donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
+[donate-image]: https://img.shields.io/badge/PayPal-Donate-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
