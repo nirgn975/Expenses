@@ -1,4 +1,4 @@
-/** Setup global middleware here **/
+/* Setup global middleware here */
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
