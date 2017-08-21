@@ -12,16 +12,6 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-  <exp-root>Loading...</exp-root>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-        console.log('Service Worker registered');
-      }).catch(function(err) {
-        console.log('Service Worker registration failed: ', err);
-      });
-    }
-  </script>
+  <app-root>Loading...</app-root>
 </body>
 </html>
