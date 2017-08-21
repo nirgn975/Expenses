@@ -17,6 +17,8 @@ export class FeedEffects {
   @Effect()
   loadFeed$: Observable<Action>= this.actions$
     .ofType(feed.LOAD_FEED)
-    .switchMap(() => this.feedService.getFeed())
-    .map(info => new feed.LoadFeedSuccessAction(info));
+    .switchMap(_ => this.feedService.getFeed()
+      .map(info => new feed.LoadFeedSuccessAction(info))
+      // .catch(error => Observable.of(getPostsFail(error)))
+    );
 }
